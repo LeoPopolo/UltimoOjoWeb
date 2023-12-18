@@ -1,0 +1,42 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: tools.colors(beigeTwo);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+
+    &__image {
+      height: 140px;
+    }
+
+    &__title {
+      color: #fff;
+      font-weight: 300;
+      font-size: 40px;
+      margin-left: 20px;
+    }
+  }
+
+  &__sections {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+
+    &__link {
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+    }
+  }
+
+  &__cart {
+    margin-right: 100px;
+  }
+}

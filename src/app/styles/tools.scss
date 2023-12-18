@@ -1,0 +1,5 @@
+@use './settings.scss' as settings;
+
+@function colors($color) {
+  @return map-get(settings.$colors, $color);
+}

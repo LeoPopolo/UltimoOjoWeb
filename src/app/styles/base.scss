@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+
+@font-face {
+  font-family: 'Hatton'; // Puedes darle el nombre que desees
+  src: url('../../assets/fonts/hatton-font-family/PP\ Hatton\ Bold\ 700.otf') format('opentype'),
+       url('../../assets/fonts/hatton-font-family/PP\ Hatton\ Medium\ 500.otf') format('opentype'),
+       url('../../assets/fonts/hatton-font-family/PP\ Hatton\ Ultralight\ 200.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

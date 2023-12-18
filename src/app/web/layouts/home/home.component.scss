@@ -1,0 +1,53 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__body {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 100%;
+
+    &__welcome {
+      background-color: tools.colors(beigeThree);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 100px;
+
+      &__title {
+        font-size: 70px;
+        font-family: 'Hatton';
+        font-weight: lighter;
+      }
+
+      &__button {
+        background-color: tools.colors(beigeOne);
+        border-radius: 100px;
+        padding: 15px 35px;
+        font-size: 25px;
+        font-family: 'Hatton';
+        font-weight: lighter;
+      }
+
+      &__isoimage {
+        height: 100px;
+        position: absolute;
+        right: 50px;
+        bottom: 50px;
+      }
+    }
+
+    &__banner {
+      background: url('https://picsum.photos/200/300');
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+}
