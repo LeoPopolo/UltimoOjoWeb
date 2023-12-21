@@ -12,13 +12,14 @@
     margin-left: 100px;
 
     &__image {
-      height: 140px;
+      height: 90px;
+      padding-block: tools.spacing(xs);
     }
 
     &__title {
       color: #fff;
       font-weight: 300;
-      font-size: 40px;
+      font-size: tools.fontSizes(l);
       margin-left: 20px;
     }
   }
