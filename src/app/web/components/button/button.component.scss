@@ -1,0 +1,16 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Button {
+    width: 100%;
+    padding: tools.spacing(xxs);
+    border: none;
+    border-radius: 100px;
+    background-color: tools.colors(blackOne);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    font-size: tools.fontSizes(s);
+    font-family: 'Poppins', sans-serif;
+    margin: tools.spacing(s);
+  }
+  

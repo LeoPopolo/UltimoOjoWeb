@@ -1,6 +1,27 @@
 $colors: (
-  beigeOne: #AEA69C,
-  beigeTwo: #CBC5BF,
-  beigeThree: #DEDAD6,
-  beigeFour: #F0EFED
+  beigeOne: #aea69c,
+  beigeTwo: #cbc5bf,
+  beigeThree: #dedad6,
+  beigeFour: #f0efed,
+  blackOne:#232323,
+);
+
+$fontSizes: (
+  xxs: 6px,
+  xs: 12px,
+  s: 18px,
+  m: 24px,
+  l: 30px,
+  xl: 60px,
+  xxl: 70px,
+);
+
+$spacing: (
+  xxs: 6px,
+  xs: 12px,
+  s: 18px,
+  m: 24px,
+  l: 30px,
+  xl: 36px,
+  xxl: 42px,
 );

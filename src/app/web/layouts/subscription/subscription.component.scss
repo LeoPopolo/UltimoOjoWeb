@@ -1,0 +1,58 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__body {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 100%;
+
+    &__form {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 100px;
+
+      &__title {
+        font-size: tools.fontSizes(xxl);
+        font-family: "Hatton";
+        font-weight: lighter;
+        text-align: center;
+      }
+
+      &__subtitle {
+        font-size: tools.fontSizes(l);
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+      }
+
+      &__inputs {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 5px;
+
+        &__name {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          gap: tools.spacing(s);
+        }
+      }
+    }
+
+    &__banner {
+      background: url("https://picsum.photos/200/300");
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
