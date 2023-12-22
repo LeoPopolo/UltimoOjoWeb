@@ -1,0 +1,14 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    border-bottom: 1px solid tools.colors(blackOne);
+    outline: none;
+    font-size: tools.fontSizes(s);
+    font-family: 'Poppins', sans-serif;
+    color: tools.colors(blackOne);
+    margin: tools.spacing(s);
+    padding: tools.spacing(xxs);
+}

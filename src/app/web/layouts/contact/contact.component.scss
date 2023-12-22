@@ -1,0 +1,46 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__body {
+    display: grid;
+    height: 100%;
+
+    &__form {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: tools.spacing(xxl);
+      margin-bottom: tools.spacing(xxl);
+
+      &__title {
+        font-size: tools.fontSizes(xl);
+        font-family: "Hatton";
+        font-weight: lighter;
+        text-align: center;
+      }
+
+      &__inputs {
+        width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 5px;
+
+        &__name {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          flex-wrap: nowrap;
+          gap: tools.spacing(s);
+        }
+      }
+    }
+  }
+}

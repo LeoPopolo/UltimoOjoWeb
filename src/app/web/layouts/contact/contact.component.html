@@ -1,1 +1,19 @@
-<p>contact works!</p>
+<main class="Main">
+  <app-navbar class="Main__navbar" />
+
+  <section class="Main__body">
+    <section class="Main__body__form">
+      <h1 class="Main__body__form__title">Contactanos</h1>
+
+      <form class="Main__body__form__inputs">
+        <section class="Main__body__form__inputs__name">
+          <app-input placeholderValue="Nombre"></app-input>
+          <app-input placeholderValue="Apellido"></app-input>
+        </section>
+        <app-input [placeholderValue]="'Email'"></app-input>
+        <app-textarea placeholderValue="Mensaje"></app-textarea>
+        <app-button [text]="'Enviar Mensaje'"></app-button>
+      </form>
+    </section>
+  </section>
+</main>

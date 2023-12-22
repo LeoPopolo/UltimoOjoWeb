@@ -38,13 +38,15 @@
         flex-direction: column;
         margin: 5px;
 
-        &__name {
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          gap: tools.spacing(s);
+        &__name{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: tools.spacing(s);
+
         }
+
       }
     }
 
