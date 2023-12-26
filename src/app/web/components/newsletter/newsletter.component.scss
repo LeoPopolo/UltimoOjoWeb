@@ -6,12 +6,13 @@
   flex-direction: column;
   margin: 5px;
   width: 100%;
+  gap: tools.spacing(m);
 
   &__name {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     flex-wrap: nowrap;
-    gap: tools.spacing(s);
+    gap: tools.spacing(m);
   }
 }

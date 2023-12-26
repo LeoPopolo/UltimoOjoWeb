@@ -1,0 +1,10 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Dashboard {
+  display: flex;
+
+  &__content {
+    background-color: tools.colors(beigeThree);
+    width: 100%;
+  }
+}
