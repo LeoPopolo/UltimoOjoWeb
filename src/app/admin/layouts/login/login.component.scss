@@ -1,0 +1,23 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 5px;
+
+    &__title {
+      text-align: center;
+      font-family: "Hatton";
+      font-size: tools.fontSizes(l);
+      width: 100%;
+    }
+  }
+}
