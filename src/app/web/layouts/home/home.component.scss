@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Main {
   display: flex;
@@ -21,7 +21,7 @@
 
       &__title {
         font-size: 70px;
-        font-family: 'Hatton';
+        font-family: "Hatton";
         font-weight: lighter;
       }
 
@@ -30,7 +30,7 @@
         border-radius: 100px;
         padding: 15px 35px;
         font-size: 25px;
-        font-family: 'Hatton';
+        font-family: "Hatton";
         font-weight: lighter;
       }
 
@@ -43,11 +43,137 @@
     }
 
     &__banner {
-      background: url('https://picsum.photos/200/300');
+      background: url("https://picsum.photos/200/300");
       background-size: cover;
       width: 100%;
       height: 100%;
     }
   }
+  &__about {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
 
+    &__text {
+      font-size: tools.fontSizes(m);
+      font-family: "Poppins", sans-serif;
+      font-weight: lighter;
+      text-align: center;
+      margin: 0px 250px;
+    }
+  }
+}
+
+.Article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: tools.spacing(xxl);
+
+  &__templates {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 70%;
+    height: 1000px;
+
+    &__info {
+      background-color: tools.colors(beigeThree);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 10px;
+
+      &__title {
+        font-size: tools.spacing(l);
+        font-family: "Hatton";
+        font-weight: lighter;
+        text-align: center;
+        margin: tools.spacing(m);
+      }
+
+      &__body {
+        font-size: tools.fontSizes(s);
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin: 0px 70px;
+      }
+
+      &__button {
+        background-color: tools.colors(beigeOne);
+        border-radius: 100px;
+        padding: 5px 70px;
+        font-size: tools.fontSizes(s);
+        font-family: "Hatton";
+        font-weight: lighter;
+        margin: tools.spacing(l);
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: tools.colors(beigeThree);
+
+      &__banner {
+        background: url("https://picsum.photos/200/300");
+        background-size: cover;
+        width: 80%;
+        height: 80%;
+      }
+    }
+  }
+
+  &__news {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 70%;
+    height: 1000px;
+
+    &__form {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 20px;
+
+      &__title {
+        font-size: tools.fontSizes(l);
+        font-family: "Hatton";
+        font-weight: lighter;
+        text-align: center;
+        margin: 0px 70px;
+      }
+
+      &__subtitle {
+        font-size: tools.fontSizes(s);
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin: 0px 15px;
+      }
+    }
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: tools.colors(beigeThree);
+
+      &__banner {
+        background: url("https://picsum.photos/200/300");
+        background-size: cover;
+        width: 80%;
+        height: 80%;
+      }
+    }
+  }
 }

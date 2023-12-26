@@ -4,19 +4,10 @@
   <section class="Main__body">
     <section class="Main__body__form">
       <h1 class="Main__body__form__title">SUSCRIBETE AL NEWSLETTER</h1>
-      <h4 class="Main__body__form__subtitle">
-        Recibe a Último ojo en tu bandeja de entrada!
-      </h4>
 
-      <form class="Main__body__form__inputs">
-        <section class="Main__body__form__inputs__name">
-          <app-input placeholderValue="Nombre"></app-input>
-          <app-input placeholderValue="Apellido"></app-input>
-        </section>
-        <app-input [placeholderValue]="'Email'"></app-input>
-        <app-button [text]="'Suscribirme'"></app-button>
-      </form>
+      <section class="Main__body__form__inputs">
+        <app-newsletter></app-newsletter>
+      </section>
     </section>
-    <section class="Main__body__banner"></section>
   </section>
 </main>

@@ -8,9 +8,9 @@
   &__body {
     display: grid;
     height: 100%;
+    background-color:tools.colors(beigeThree) ;
 
     &__form {
-      background-color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
