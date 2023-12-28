@@ -11,6 +11,7 @@
     <span routerLink="/contact" class="Navbar__sections__link">Contacto</span>
   </div>
   <div class="Navbar__cart">
-    carrito $0
+    <span class="Navbar__cart__total">{{ 0 | currency }} </span>
+    <img class="Navbar__cart__image" src="../../../../assets/svg/cart.svg" alt="Carrito">
   </div>
 </nav>

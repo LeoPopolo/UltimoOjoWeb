@@ -1,0 +1,68 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Footer {
+  width: 100%;
+  background-color: tools.colors(blackOne);
+  display: flex;
+  flex-direction: column;
+  color: #fbfbfb;
+  padding-bottom: 50px;
+
+  &__sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 50px 20%;
+
+    &__contact {
+      &__title {
+
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+        color: #ddd;
+
+        &__item {
+          transition: all 200ms;
+          cursor: pointer;
+
+          &:hover {
+            color: #fff;
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+
+    &__legal {
+      &__title {
+
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 10px;
+        color: #ddd;
+
+        &__item {
+          transition: all 200ms;
+          cursor: pointer;
+
+          &:hover {
+            color: #fff;
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+  }
+
+  &__copyright {
+    margin-left: 20%;
+  }
+}

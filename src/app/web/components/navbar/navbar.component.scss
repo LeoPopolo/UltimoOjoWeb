@@ -40,5 +40,12 @@
 
   &__cart {
     margin-right: 100px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__image {
+      height: 35px;
+    }
   }
 }
