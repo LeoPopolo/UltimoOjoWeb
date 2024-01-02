@@ -1,0 +1,13 @@
+@use './tools.scss' as tools;
+
+.Input {
+  width: 100%;
+  border-radius: 5px;
+  border-bottom: 1px solid tools.colors(blackOne);
+  outline: none;
+  font-size: tools.fontSizes(s);
+  font-family: 'Poppins', sans-serif;
+  color: tools.colors(blackOne);
+  padding: tools.spacing(xxs);
+  background-color: transparent;
+}

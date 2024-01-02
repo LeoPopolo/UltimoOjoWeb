@@ -1,1 +1,5 @@
-<button class="Button">{{text}}</button>
+<button
+  class="Button"
+  [class.Button--primary]="type === 'Primary'"
+  [class.Button--secondary]="type === 'Secondary'"
+>{{text}}</button>

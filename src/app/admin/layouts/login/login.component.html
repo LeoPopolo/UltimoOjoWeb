@@ -1,8 +1,12 @@
 <section class="Wrapper">
-  <form class="Wrapper__form">
+  <form class="Wrapper__form" [formGroup]="form">
     <h1 class="Wrapper__form__title">Acceso al sistema</h1>
-    <app-input placeholderValue="Usuario"></app-input>
-    <app-input placeholderValue="Contraseña" type="password"></app-input>
-    <app-button text="Acceder"></app-button>
+    <input class="Input" formControlName="username" type="text" placeholder="Usuario">
+    <input class="Input" formControlName="password" type="password" placeholder="Contraseña">
+
+    <footer class="Wrapper__form__actions">
+      <app-button type="Primary" text="Acceder" (click)="login()"></app-button>
+      <app-button type="Secondary" text="Volver" routerLink="/home"></app-button>
+    </footer>
   </form>
 </section>
