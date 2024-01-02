@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class GalleryComponent {
   galleryPosts: IGalleryPost[] = [
-    { imageUrl: 'https://picsum.photos/300/300' },
+    { imageUrl: 'https://www.instagram.com/p/C01fpZWAKni/' },
     { imageUrl: 'https://picsum.photos/300/300' },
     { imageUrl: 'https://picsum.photos/300/300' },
     { imageUrl: 'https://picsum.photos/300/300' },
@@ -18,6 +18,10 @@ export class GalleryComponent {
     { imageUrl: 'https://picsum.photos/300/300' },
     { imageUrl: 'https://picsum.photos/300/300' },
   ];
+
+  redirectTo(post: IGalleryPost) {
+    location.href = post.imageUrl;
+  }
 }
 
 interface IGalleryPost {

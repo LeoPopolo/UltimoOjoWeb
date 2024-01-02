@@ -39,13 +39,25 @@
   }
 
   &__cart {
-    margin-right: 100px;
     display: flex;
     align-items: center;
     gap: 10px;
 
     &__image {
       height: 35px;
+    }
+  }
+
+  &__login {
+    margin-right: 100px;
+
+    &__button {
+      padding: 10px 20px;
+      background-color: tools.colors(beigeOne);
+      color: #fff;
+      border-radius: 100px;
+      font-size: tools.fontSizes(s);
+      cursor: pointer;
     }
   }
 }

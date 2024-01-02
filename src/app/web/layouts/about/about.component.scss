@@ -3,8 +3,6 @@
 .Main {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  text-align: center;
   justify-content: center;
 
   &__body {
@@ -13,12 +11,14 @@
     height: 100%;
 
     &__welcome {
-      background-color: #ffff;
+      background-color: tools.colors(beigeThree);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       position: relative;
+      text-align: center;
+      padding-block: 10%;
       gap: 100px;
 
       &__title {
@@ -45,20 +45,46 @@
       height: 100%;
     }
   }
-  &__about {   
-    width: 100%;
+
+  &__about {
+    width: 70%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding:80px;
+    padding: 80px;
+    margin: 0 auto;
 
     &__text{
         font-size: tools.fontSizes(m);
         font-family: "Poppins", sans-serif;
         font-weight: lighter;
         text-align: center;
-        margin: 0px 250px;
     }
 
+    &__description {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      width: 100%;
+      height: auto;
+      margin-top: 100px;
+
+      &__image {
+        width: 100%;
+        height: auto;
+
+        img {
+          height: 300px;
+          width: 100%;
+        }
+      }
+
+      &__text {
+        font-size: tools.fontSizes(m);
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+      }
+    }
   }
 }

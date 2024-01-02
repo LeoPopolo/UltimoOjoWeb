@@ -1,7 +1,7 @@
 <main class="Gallery">
   <section class="Gallery__posts">
     @for (post of galleryPosts; track $index) {
-      <div class="Gallery__posts__card">
+      <div class="Gallery__posts__card" (click)="redirectTo(post)">
         <img class="Gallery__posts__card__image" [src]="post.imageUrl">
       </div>
     }
