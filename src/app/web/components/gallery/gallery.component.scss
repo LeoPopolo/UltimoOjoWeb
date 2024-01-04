@@ -10,6 +10,10 @@
     gap: 50px;
     width: 100%;
 
+    @media screen and (max-width: 799px) {
+      grid-template-columns: 1fr;
+    }
+
     &__card {
       width: 100%;
       height: 300px;

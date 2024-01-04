@@ -1,0 +1,58 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #25252580;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  .Sidebar {
+    position: relative;
+    width: 75%;
+    background-color: tools.colors(beigeTwo);
+    height: 100%;
+    z-index: 100;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 3em 1em;
+      gap: 20px;
+      height: 100%;
+      z-index: 101;
+
+      &__option {
+        color: #fff;
+        font-size: 20px;
+        z-index: 102;
+      }
+
+      &__login {
+        color: #fff;
+        font-size: 20px;
+        position: absolute;
+        bottom: 40px;
+        padding: 10px 20px;
+        background-color: tools.colors(beigeOne);
+        border-radius: 100px;
+        font-size: tools.fontSizes(s);
+      }
+    }
+
+    &__close {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+
+      img {
+        height: 40px;
+      }
+    }
+  }
+}

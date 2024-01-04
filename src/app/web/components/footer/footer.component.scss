@@ -13,10 +13,13 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 50px 20%;
 
-    &__contact {
-      &__title {
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
 
-      }
+    &__contact {
 
       &__list {
         display: flex;

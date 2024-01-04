@@ -10,6 +10,12 @@
     grid-template-columns: 60% 40%;
     height: 100%;
 
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
     &__welcome {
       background-color: tools.colors(beigeThree);
       display: flex;
@@ -20,9 +26,17 @@
       gap: 100px;
       padding-block: 15%;
 
+      @media screen and (max-width: 799px) {
+        gap: 30px;
+      }
+
       &__title {
         font-size: 70px;
         font-family: "Hatton";
+
+        @media screen and (max-width: 799px) {
+          font-size: 40px;
+        }
       }
 
       &__button {
@@ -32,6 +46,10 @@
         font-size: 25px;
         font-family: "Hatton";
         font-weight: lighter;
+
+        @media screen and (max-width: 799px) {
+          font-size: 15px;
+        }
       }
 
       &__isoimage {
@@ -39,6 +57,12 @@
         position: absolute;
         right: 50px;
         bottom: 50px;
+
+        @media screen and (max-width: 799px) {
+          height: 40px;
+          right: 20px;
+          bottom: 20px;
+        }
       }
     }
 
@@ -48,6 +72,11 @@
       background-position-y: -15vh;
       width: 100%;
       height: 100%;
+
+      @media screen and (max-width: 799px) {
+        background-position-y: -5vh;
+        height: 400px;
+      }
     }
   }
 
@@ -58,12 +87,22 @@
     justify-content: center;
     padding: 100px;
 
+    @media screen and (max-width: 799px) {
+      padding: 10px;
+    }
+
     &__text {
       font-size: tools.fontSizes(m);
       font-family: "Poppins", sans-serif;
       font-weight: lighter;
       text-align: center;
       margin: 0px 250px;
+
+      @media screen and (max-width: 799px) {
+        font-size: tools.fontSizes(s);
+        text-align: left;
+        margin: 50px 10px;
+      }
     }
   }
 
@@ -72,6 +111,13 @@
     grid-template-columns: 50% 50%;
     width: 60%;
     margin: 0 auto;
+
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 90%;
+    }
 
     &__info {
       background-color: tools.colors(beigeThree);
@@ -83,12 +129,21 @@
       gap: 10px;
       padding-block: 100px;
 
+      @media screen and (max-width: 799px) {
+        padding-block: 10px;
+      }
+
       &__title {
         font-size: tools.spacing(l);
         font-family: "Hatton";
         font-weight: lighter;
         text-align: center;
         margin: tools.spacing(m);
+
+        @media screen and (max-width: 799px) {
+          font-size: tools.spacing(m);
+          margin: 0;
+        }
       }
 
       &__body {
@@ -97,6 +152,10 @@
         font-weight: lighter;
         text-align: center;
         margin: 0px 70px;
+
+        @media screen and (max-width: 799px) {
+          margin: 10px;
+        }
       }
 
       &__button {
@@ -107,6 +166,10 @@
         font-family: "Hatton";
         font-weight: lighter;
         margin: tools.spacing(l);
+
+        @media screen and (max-width: 799px) {
+          margin-bottom: 1em;
+        }
       }
     }
 
@@ -116,11 +179,38 @@
       justify-content: center;
       background: tools.colors(beigeThree);
 
+      @media screen and (max-width: 799px) {
+        display: none;
+      }
+
+      &--mobile {
+        @media screen and (max-width: 799px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: tools.colors(beigeThree);
+          width: 90%;
+        }
+      }
+
       &__banner {
         background: url("https://picsum.photos/200/300");
         background-size: cover;
         width: 80%;
         height: 80%;
+
+        @media screen and (max-width: 799px) {
+          display: none;
+        }
+
+        &--mobile {
+          @media screen and (max-width: 799px) {
+            background: url("https://picsum.photos/200/300");
+            background-size: cover;
+            width: 100%;
+            height: 200px;
+          }
+        }
       }
     }
   }
@@ -130,6 +220,12 @@
     grid-template-columns: 50% 50%;
     width: 60%;
     margin: 100px auto;
+
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+    }
 
     &__form {
       background-color: #fff;
@@ -141,12 +237,22 @@
       gap: 20px;
       padding-block: 100px;
 
+      @media screen and (max-width: 799px) {
+        background: tools.colors(beigeThree);
+        padding: 10px;
+      }
+
       &__title {
         font-size: tools.fontSizes(l);
         font-family: "Hatton";
         font-weight: lighter;
         text-align: center;
         margin: 0px 70px;
+
+        @media screen and (max-width: 799px) {
+          margin: 10px 0;
+          font-size: tools.fontSizes(m);
+        }
       }
 
       &__subtitle {
@@ -164,6 +270,10 @@
       justify-content: center;
       background: tools.colors(beigeThree);
 
+      @media screen and (max-width: 799px) {
+        display: none;
+      }
+
       &__banner {
         background: url("https://picsum.photos/200/300");
         background-size: cover;
@@ -176,6 +286,10 @@
   &__gallery {
     width: 60%;
     margin: 0 auto 100px;
+
+    @media screen and (max-width: 799px) {
+      width: 90%;
+    }
 
     &__component {
       height: auto;
