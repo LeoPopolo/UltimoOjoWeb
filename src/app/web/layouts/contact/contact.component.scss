@@ -14,6 +14,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
+      padding-block: 31%;
     }
 
     &__form {
@@ -46,7 +47,7 @@
         gap: tools.spacing(m);
 
         @media screen and (max-width: 799px) {
-          width: 100%;
+          width: 80%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -59,11 +60,29 @@
           flex-wrap: nowrap;
           gap: tools.spacing(m);
 
+          &__control {
+            width: 100%;
+          }
+
           @media screen and (max-width: 799px) {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 100%;
+          }
+        }
+
+        &__email {
+          width: 100%;
+          &__control {
+            width: 100%;
+          }
+        }
+
+        &__message {
+          width: 100%;
+          &__control {
             width: 100%;
           }
         }
