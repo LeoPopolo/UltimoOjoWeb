@@ -5,6 +5,7 @@ import { SubscriptionComponent } from './web/layouts/subscription/subscription.c
 import { ContactComponent } from './web/layouts/contact/contact.component';
 import { LoginComponent } from './admin/layouts/login/login.component';
 import { AdminComponent } from './admin/layouts/admin/admin.component';
+import { PostsComponent } from './admin/layouts/posts/posts.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,12 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    children: [
+      {
+        path: 'posts',
+        component: PostsComponent
+      }
+    ]
   },
   {
     path: '',
