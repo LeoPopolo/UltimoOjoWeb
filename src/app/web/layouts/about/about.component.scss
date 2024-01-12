@@ -10,6 +10,12 @@
     grid-template-columns: 60% 40%;
     height: 100%;
 
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
     &__welcome {
       background-color: tools.colors(beigeThree);
       display: flex;
@@ -17,15 +23,22 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      text-align: center;
-      padding-block: 10%;
       gap: 100px;
+      padding-block: 15%;
 
+      @media screen and (max-width: 799px) {
+        gap: 30px;
+        padding-block: 30%;
+      }
       &__title {
         font-size: tools.spacing(xxl);
         font-family: "Hatton";
         font-weight: lighter;
         text-align: center;
+
+        @media screen and (max-width: 799px) {
+          font-size: 40px;
+        }
       }
 
       &__button {
@@ -33,16 +46,25 @@
         border-radius: 100px;
         padding: 15px 35px;
         font-size: 25px;
-        font-family: "Hatton";
+        font-family: "Poppins", sans-serif;
         font-weight: lighter;
+
+        @media screen and (max-width: 799px) {
+          font-size: 15px;
+        }
       }
     }
 
     &__banner {
-      background: url("https://picsum.photos/200/300");
+      background: url("../../../../assets/images/nosotras.jpg");
       background-size: cover;
+      background-position: center;
       width: 100%;
       height: 100%;
+
+      @media screen and (max-width: 799px) {
+        height: 400px;
+      }
     }
   }
 
@@ -54,28 +76,93 @@
     padding: 80px;
     margin: 0 auto;
 
-    &__text{
-        font-size: tools.fontSizes(m);
-        font-family: "Poppins", sans-serif;
-        font-weight: lighter;
-        text-align: center;
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      padding: 50px tools.spacing(s);
+    }
+
+    &__text {
+      font-size: tools.fontSizes(m);
+      font-family: "Poppins", sans-serif;
+      font-weight: lighter;
+      text-align: center;
+
+      @media screen and (max-width: 799px) {
+        font-size: 18px;
+        text-align: left;
+      }
     }
 
     &__description {
-      display: flex;
+      display: grid;
+      grid-template-columns: 40% 60%;
       align-items: center;
-      gap: 50px;
+      gap: 30px;
       width: 100%;
-      height: auto;
+      height: 400px;
+      justify-content: center;
       margin-top: 100px;
 
-      &__image {
+      @media screen and (max-width: 799px) {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: auto;
+        background: tools.colors(beigeThree);
+        padding: tools.spacing(s);
+        margin-top: 50px;
+        height: 100%;
+      }
 
-        img {
-          height: 300px;
-          width: 100%;
+      &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: tools.colors(beigeThree);
+        height: 100%;
+        width: 100%;
+
+        @media screen and (max-width: 799px) {
+          display: none;
+        }
+
+        &--mobile {
+          @media screen and (min-width: 799px) {
+            display: none;
+          }
+
+          @media screen and (max-width: 799px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: tools.colors(beigeThree);
+            width: 90%;
+          }
+        }
+
+        &__banner {
+          background: url("../../../../assets/images/colores.jpg");
+          background-size: cover;
+          background-position: center;
+          width: 80%;
+          height: 80%;
+
+          @media screen and (max-width: 799px) {
+            display: none;
+          }
+
+          &--mobile {
+            @media screen and (min-width: 799px) {
+              display: none;
+            }
+
+            @media screen and (max-width: 799px) {
+              background: url("../../../../assets/images/colores.jpg");
+              background-position: center;
+              background-size: cover;
+              width: 100%;
+              height: 200px;
+            }
+          }
         }
       }
 
@@ -84,6 +171,10 @@
         font-family: "Poppins", sans-serif;
         font-weight: lighter;
         text-align: center;
+
+        @media screen and (max-width: 799px) {
+          font-size: 18px;
+        }
       }
     }
   }
