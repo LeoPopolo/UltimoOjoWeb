@@ -1,26 +1,30 @@
 <main class="Main">
-    <app-navbar class="Main__navbar" />
+  <app-navbar class="Main__navbar" />
 
-    <section class="Main__body">
-      <section class="Main__body__welcome">
-        <h1 class="Main__body__welcome__title">Plantilla Canva | ${{template().price}}</h1>
+  <section class="Main__body">
+    <section class="Main__body__welcome">
+      <h1 class="Main__body__welcome__title">
+        Plantilla Canva | ${{ template().price }}
+      </h1>
 
-        <h2 class="Main__body__welcome__description">{{template().description}}</h2>
+      <h2 class="Main__body__welcome__description">
+        {{ template().description }}
+      </h2>
 
-        <button class="Main__body__welcome__button"
-          (click)="addTemplate()"
-        >
-          <img class="Main__body__welcome__button__icon" src="../../../../assets/svg/cart.svg">
-          Agregar al carrito
-        </button>
-      </section>
-      <section class="Main__body__banner"></section>
+      <button class="Main__body__welcome__button" (click)="addTemplate()">
+        <img
+          class="Main__body__welcome__button__icon"
+          src="../../../../assets/svg/cart.svg"
+        />
+        Agregar al carrito
+      </button>
     </section>
+    <section class="Main__body__banner"></section>
+  </section>
 
-    <section class="Main__bonus">
-      <app-bonus></app-bonus>
-    </section>
+  <section class="Main__bonus">
+    <app-bonus></app-bonus>
+  </section>
 
-    <app-footer class="Main__footer" />
-  </main>
-
+  <app-footer class="Main__footer" />
+</main>

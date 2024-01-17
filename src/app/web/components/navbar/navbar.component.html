@@ -10,8 +10,9 @@
     <span routerLink="/home" class="Navbar__sections__link">Inicio</span>
     <span routerLink="/about" class="Navbar__sections__link">Nosotros</span>
     <span
-      routerLink="/pack"
       class="Navbar__sections__link Navbar__sections__link--templates"
+      [ngStyle]="{'display': ''}"
+      (click)="toggleOptionsMobile()"
     >
       Plantillas
 
@@ -39,7 +40,7 @@
     >
     <span routerLink="/contact" class="Navbar__sections__link">Contacto</span>
   </div>
-  <div class="Navbar__cart">
+  <div class="Navbar__cart" routerLink="/checkout">
     <span class="Navbar__cart__total">{{ 0 | currency }} </span>
     <img
       class="Navbar__cart__image"

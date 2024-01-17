@@ -1,0 +1,44 @@
+<app-navbar/>
+
+<main class="Checkout">
+
+  <section class="Checkout__cart">
+    <h2 class="Checkout__cart__title">Tu carrito:</h2>
+    <div class="Checkout__cart__item">
+      <span>Plantilla de contrato</span>
+      <span>$50</span>
+    </div>
+    <div class="Checkout__cart__item">
+      <span>Plantilla de presupuesto</span>
+      <span>$50</span>
+    </div>
+    <div class="Checkout__cart__total">
+      <span>Total: $100</span>
+    </div>
+  </section>
+
+  <section class="Checkout__form">
+    <h2 class="Checkout__form__title">Datos de facturación</h2>
+
+    <form class="Checkout__form__data">
+      <div class="Checkout__form__data__wrapper">
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Nombre"/>
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Apellido"/>
+      </div>
+      <div class="Checkout__form__data__wrapper">
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="E-mail" type="email"/>
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Teléfono"/>
+      </div>
+      <div class="Checkout__form__data__wrapper">
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="CUIT/CUIL"/>
+        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Dirección"/>
+      </div>
+      <div class="Checkout__form__data__actions">
+        <app-button class="Checkout__form__data__actions__button" type="Primary" text="Comprar"/>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<app-footer/>

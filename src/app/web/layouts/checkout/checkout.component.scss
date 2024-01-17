@@ -1,0 +1,77 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 5%;
+
+  &__cart {
+    width: 500px;
+    display: flex;
+    color: tools.colors(blackOne);
+    flex-direction: column;
+    gap: tools.spacing(m);
+
+    &__title {
+      font-size: tools.fontSizes(xl);
+      text-align: center;
+    }
+
+    &__item {
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 1px 1px 5px 1px #50505050;
+    }
+
+    &__total {
+      padding: 1em;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  &__form {
+    width: 500px;
+    margin-top: 5%;
+
+    &__title {
+      text-align: center;
+      font-size: tools.fontSizes(xl);
+    }
+
+    &__data {
+      margin-top: 5%;
+      display: flex;
+      gap: tools.spacing(m);
+      flex-direction: column;
+
+      &__wrapper {
+        display: flex;
+        width: 100%;
+        gap: tools.spacing(m);
+
+        &__control {
+
+        }
+
+        &__button {
+
+        }
+      }
+
+      &__actions {
+        width: 100%;
+        display: flex;
+
+        &__button {
+
+          width: 100%;
+        }
+      }
+    }
+  }
+}
