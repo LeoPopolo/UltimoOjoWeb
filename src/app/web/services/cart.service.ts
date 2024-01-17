@@ -37,6 +37,11 @@ export class CartService {
       this.cart.push(template);
     }
 
+    if (this.cart.length >= 3) {
+      this.cart = [];
+      this.cart = [{ name: 'Pack 20% de descuento', price: 76 }];
+    }
+
     localStorage.setItem('cart', JSON.stringify(this.cart));
     this.cart$.next(this.cart);
   }
