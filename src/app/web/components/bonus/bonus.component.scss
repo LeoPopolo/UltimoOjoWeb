@@ -1,0 +1,111 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Bonus {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 60%;
+    margin: 80px auto;
+
+    @media screen and (max-width: 799px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 90%;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 10px;
+      padding-block: 100px;
+
+      @media screen and (max-width: 799px) {
+        padding-block: 10px;
+      }
+
+      &__title {
+        font-size: tools.spacing(l);
+        font-family: "Hatton";
+        font-weight: lighter;
+        text-align: center;
+        margin: tools.spacing(m);
+
+        @media screen and (max-width: 799px) {
+          font-size: tools.spacing(m);
+          margin: 0;
+        }
+      }
+
+      &__body {
+        font-size: tools.fontSizes(s);
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin: 0px 70px;
+
+        @media screen and (max-width: 799px) {
+          margin: 10px;
+        }
+      }
+
+      &__button {
+        background-color: tools.colors(beigeOne);
+        border-radius: 100px;
+        padding: 5px 70px;
+        font-size: tools.fontSizes(s);
+        font-family: "Hatton";
+        font-weight: lighter;
+        margin: tools.spacing(l);
+
+        @media screen and (max-width: 799px) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: tools.colors(beigeThree);
+
+      @media screen and (max-width: 799px) {
+        display: none;
+      }
+
+      &--mobile {
+        @media screen and (max-width: 799px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: tools.colors(beigeThree);
+          width: 90%;
+        }
+      }
+
+      &__banner {
+        background: url("../../../../assets/images/video.png");
+        background-size: cover;
+        background-position: center;
+        width: 80%;
+        height: 80%;
+
+        @media screen and (max-width: 799px) {
+          display: none;
+        }
+
+        &--mobile {
+          @media screen and (max-width: 799px) {
+            background: url("../../../../assets/images/video.png");
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }

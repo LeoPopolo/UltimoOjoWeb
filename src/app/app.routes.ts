@@ -6,6 +6,10 @@ import { ContactComponent } from './web/layouts/contact/contact.component';
 import { LoginComponent } from './admin/layouts/login/login.component';
 import { AdminComponent } from './admin/layouts/admin/admin.component';
 import { PostsComponent } from './admin/layouts/posts/posts.component';
+import { PackTemplateComponent } from './web/layouts/pack-template/pack-template.component';
+import { ContractTemplateComponent } from './web/layouts/contract-template/contract-template.component';
+import { QuestionnaireComponent } from './web/layouts/questionnaire/questionnaire.component';
+import { BudgetTemplateComponent } from './web/layouts/budget-template/budget-template.component';
 
 export const routes: Routes = [
   {
@@ -34,13 +38,29 @@ export const routes: Routes = [
     children: [
       {
         path: 'posts',
-        component: PostsComponent
-      }
-    ]
+        component: PostsComponent,
+      },
+    ],
+  },
+  {
+    path: 'pack',
+    component: PackTemplateComponent,
+  },
+  {
+    path: 'contract',
+    component: ContractTemplateComponent,
+  },
+  {
+    path: 'questionnaire',
+    component: QuestionnaireComponent,
+  },
+  {
+    path: 'budget',
+    component: BudgetTemplateComponent,
   },
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];

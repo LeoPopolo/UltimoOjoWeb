@@ -1,30 +1,51 @@
 <nav class="Navbar">
   <span class="Navbar__menu" (click)="toggleSidebar()">
-    <img class="Navbar__menu__image" src="../../../../assets/svg/menu.svg">
+    <img class="Navbar__menu__image" src="../../../../assets/svg/menu.svg" />
   </span>
   <div class="Navbar__logo">
-    <img class="Navbar__logo__image" src="../../../../assets/images/logo.png">
+    <img class="Navbar__logo__image" src="../../../../assets/images/logo.png" />
     <h1 class="Navbar__logo__title">ÚLTIMO OJO</h1>
   </div>
   <div class="Navbar__sections">
     <span routerLink="/home" class="Navbar__sections__link">Inicio</span>
     <span routerLink="/about" class="Navbar__sections__link">Nosotros</span>
-    <span routerLink="/home" class="Navbar__sections__link Navbar__sections__link--templates">
+    <span
+      routerLink="/pack"
+      class="Navbar__sections__link Navbar__sections__link--templates"
+    >
       Plantillas
 
       <div class="Navbar__sections__link__options">
-        <span class="Navbar__sections__link__options__item">Plantilla de contrato.</span>
-        <span class="Navbar__sections__link__options__item">Plantilla de cuestionario para cliente.</span>
-        <span class="Navbar__sections__link__options__item">Plantilla para presupuesto.</span>
-        <span class="Navbar__sections__link__options__item">Pack 20% de descuento.</span>
+        <span
+          routerLink="/contract"
+          class="Navbar__sections__link__options__item"
+          >Plantilla de contrato.</span
+        >
+        <span
+          routerLink="/questionnaire"
+          class="Navbar__sections__link__options__item"
+          >Plantilla de cuestionario para cliente.</span
+        >
+        <span routerLink="/budget" class="Navbar__sections__link__options__item"
+          >Plantilla para presupuesto.</span
+        >
+        <span routerLink="/pack" class="Navbar__sections__link__options__item"
+          >Pack 20% de descuento.</span
+        >
       </div>
     </span>
-    <span routerLink="/newsletter" class="Navbar__sections__link">Newsletter</span>
+    <span routerLink="/newsletter" class="Navbar__sections__link"
+      >Newsletter</span
+    >
     <span routerLink="/contact" class="Navbar__sections__link">Contacto</span>
   </div>
   <div class="Navbar__cart">
     <span class="Navbar__cart__total">{{ 0 | currency }} </span>
-    <img class="Navbar__cart__image" src="../../../../assets/svg/cart.svg" alt="Carrito">
+    <img
+      class="Navbar__cart__image"
+      src="../../../../assets/svg/cart.svg"
+      alt="Carrito"
+    />
   </div>
   <div class="Navbar__login">
     <button class="Navbar__login__button" routerLink="/login">Login</button>
@@ -32,5 +53,5 @@
 </nav>
 
 @if (sidebarOpen) {
-  <app-sidebar (closed)="toggleSidebar()"/>
+<app-sidebar (closed)="toggleSidebar()" />
 }
