@@ -44,7 +44,7 @@
       &__description {
         font-size: tools.fontSizes(s);
         font-family: "Poppins", sans-serif;
-        
+
         @media screen and (max-width: 799px) {
           margin: 3px;
         }
@@ -57,9 +57,17 @@
         font-size: 25px;
         font-family: "Poppins", sans-serif;
         font-weight: lighter;
+        display: inline-flex;
+        cursor: pointer;
+        align-items: center;
+        gap: 10px;
 
         @media screen and (max-width: 799px) {
           font-size: 15px;
+        }
+
+        &__icon {
+          height: 24px;
         }
       }
     }

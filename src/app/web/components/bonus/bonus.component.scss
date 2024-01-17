@@ -56,12 +56,20 @@
         border-radius: 100px;
         padding: 5px 70px;
         font-size: tools.fontSizes(s);
-        font-family: "Hatton";
+        font-family: "poppins";
         font-weight: lighter;
         margin: tools.spacing(l);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
 
         @media screen and (max-width: 799px) {
           margin-bottom: 1em;
+        }
+
+        &__icon {
+          height: 22px;
         }
       }
     }
