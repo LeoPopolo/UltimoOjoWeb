@@ -43,13 +43,13 @@ export class CartService {
   addTemplateToCart(template: ITemplate) {
     const templateExist = this.cart.find((item) => item.name === template.name);
     const existingPackIndex = this.cart.findIndex(
-      (product) => product.name === 'Pack 20% de descuento'
+      (product) => product.name === 'Pack x3 plantillas'
     );
     const isPackInCart = existingPackIndex !== -1;
 
     if (!templateExist && !isPackInCart) this.cart.push(template);
 
-    if (template.name === 'Pack 20% de descuento') {
+    if (template.name === 'Pack x3 plantillas') {
       this.cart = [];
       this.cart.push(template);
     }

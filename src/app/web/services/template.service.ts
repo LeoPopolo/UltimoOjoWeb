@@ -14,12 +14,12 @@ export class TemplateService {
   private readonly httpClient = inject(HttpClient);
 
   getTemplates() {
-    return this.httpClient.get<templatesResponse>(`${this.api_url}/templates/`);
+    return this.httpClient.get<templatesResponse>(`${this.api_url}/template/`);
   }
 
   getTemplate(template_id: number) {
     return this.httpClient.get<templateResponse>(
-      `${this.api_url}/templates/${template_id}`
+      `${this.api_url}/template/${template_id}`
     );
   }
 }
