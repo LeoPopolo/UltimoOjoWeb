@@ -4,16 +4,14 @@
 
   <section class="Checkout__cart">
     <h2 class="Checkout__cart__title">Tu carrito:</h2>
-    <div class="Checkout__cart__item">
-      <span>Plantilla de contrato</span>
-      <span>$50</span>
-    </div>
-    <div class="Checkout__cart__item">
-      <span>Plantilla de presupuesto</span>
-      <span>$50</span>
-    </div>
+    @for (item of cart(); track $index) {
+      <div class="Checkout__cart__item">
+        <span>{{item.name}}</span>
+        <span>${{item.price}}</span>
+      </div>
+    }
     <div class="Checkout__cart__total">
-      <span>Total: $100</span>
+      <span>Total: ${{total}}</span>
     </div>
   </section>
 
