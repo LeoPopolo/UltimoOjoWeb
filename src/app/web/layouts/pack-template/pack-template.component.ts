@@ -4,6 +4,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { BonusComponent } from '../../components/bonus/bonus.component';
 import { ITemplate } from '../../models/template';
 import { CartService } from '../../services/cart.service';
+import { TemplateService } from '../../services/template.service';
 
 @Component({
   selector: 'app-pack-template',
@@ -14,19 +15,34 @@ import { CartService } from '../../services/cart.service';
 })
 export class PackTemplateComponent implements OnInit {
   private readonly cartService = inject(CartService);
+  private readonly templateService = inject(TemplateService);
 
   template = signal<ITemplate>({
-    name: 'Pack 20% de descuento',
-    price: 76,
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    pdfPath: '',
   });
 
   ngOnInit(): void {
+    this.getTemplate();
+    this.getCart();
+  }
+
+  addTemplate() {
+    this.cartService.addTemplateToCart(this.template());
+  }
+
+  getCart() {
     this.cartService.getCart().subscribe((data) => {
       console.log(data);
     });
   }
 
-  addTemplate() {
-    this.cartService.addTemplateToCart(this.template());
+  getTemplate() {
+    this.templateService.getTemplate(4).subscribe((data) => {
+      this.template.set(data.data);
+    });
   }
 }
