@@ -1,0 +1,174 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Posts {
+  & {
+    padding: 5%;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__title {
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    margin-top: 1em;
+
+    &__card {
+      padding: 1em;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      background-color: tools.colors(beigeTwo);
+      position: relative;
+
+      &__image {
+        height: 250px;
+        width: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          height: 100%;
+          max-width: 300px;
+        }
+      }
+
+      &__link {
+        font-size: 1.1em;
+        max-width: 300px;
+        overflow: hidden;
+
+        a {
+          font-size: 15px;
+          text-wrap: nowrap;
+        }
+      }
+
+      &__delete {
+        background-color: #50505080;
+        color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        bottom: 0;
+        padding: 10px;
+        cursor: pointer;
+        transition: all 200ms;
+
+        &:hover {
+          background-color: #50505050;
+        }
+      }
+
+      &--new {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+        cursor: pointer;
+
+        span {
+          border-radius: 50%;
+          width: 100px;
+          height: 100px;
+          background-color: #50505080;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 40px;
+        }
+      }
+
+      &--create {
+        .NewPost {
+          position: relative;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          min-height: 500px;
+          gap: 50px;
+
+          &__file {
+            &__preview {
+              height: 150px;
+              justify-content: center;
+              display: flex;
+              position: relative;
+
+              &__delete {
+                position: absolute;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+              }
+
+              &__image {
+                height: 100%;
+              }
+            }
+
+            &--upload {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 10px;
+              gap: 5px;
+              width: 100%;
+              padding: 10px;
+              border-radius: 10px;
+              font-size: 1em;
+              background-color: tools.colors(blackOne);
+              color: #eee;
+              font-family: 'Poppins', sans-serif;
+            }
+          }
+
+          &__link {
+
+          }
+
+          &__actions {
+            width: 100%;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: 0;
+
+            button {
+              width: 100%;
+              padding: 10px;
+              border-radius: 10px;
+              font-size: 1em;
+              font-family: 'Poppins', sans-serif;
+              cursor: pointer;
+            }
+
+            &--create {
+              background-color: #50505080;
+              color: #eee;
+            }
+
+            &--cancel {
+              background-color: #eee;
+              color: #50505080;
+            }
+          }
+        }
+      }
+    }
+  }
+}

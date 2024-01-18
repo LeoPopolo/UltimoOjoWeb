@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { PostService } from '../../../admin/services/post.service';
+import { IPost } from '../../../admin/models/post';
 
 @Component({
   selector: 'app-gallery',
@@ -7,24 +9,23 @@ import { Component } from '@angular/core';
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })
-export class GalleryComponent {
-  galleryPosts: IGalleryPost[] = [
-    // { imageUrl: 'https://www.instagram.com/p/C01fpZWAKni/' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-    { imageUrl: 'https://picsum.photos/300/300' },
-  ];
+export class GalleryComponent implements OnInit {
+  private readonly postServices = inject(PostService);
+  public readonly downloadImageUrl = 'http://localhost:3000/api/file/download';
 
-  redirectTo(post: IGalleryPost) {
-    location.href = post.imageUrl;
+  galleryPosts = signal<IPost[]>([]);
+
+  ngOnInit(): void {
+    this.getPosts();
   }
-}
 
-interface IGalleryPost {
-  imageUrl: string
+  getPosts() {
+    this.postServices.getPosts().subscribe(data => {
+      this.galleryPosts.set(data.data);
+    })
+  }
+
+  redirectTo(post: IPost) {
+    location.href = post.url;
+  }
 }
