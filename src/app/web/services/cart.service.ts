@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ITemplate } from '../models/template';
+import { TemplateService } from './template.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,15 @@ export class CartService {
   private cart$: BehaviorSubject<ITemplate[]> = new BehaviorSubject<
     ITemplate[]
   >([]);
+  private readonly templateService = inject(TemplateService);
+
+  packTemplate: ITemplate = {
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    pdfPath: '',
+  };
 
   constructor() {
     const cartInfo = localStorage.getItem('cart');
@@ -17,10 +27,17 @@ export class CartService {
       this.cart = JSON.parse(cartInfo);
       this.cart$.next(this.cart);
     }
+    this.getTemplate();
   }
 
   getCart() {
     return this.cart$;
+  }
+
+  getTemplate() {
+    this.templateService.getTemplate(1).subscribe((data) => {
+      this.packTemplate = data.data;
+    });
   }
 
   addTemplateToCart(template: ITemplate) {
@@ -39,7 +56,7 @@ export class CartService {
 
     if (this.cart.length >= 3) {
       this.cart = [];
-      this.cart = [{ name: 'Pack 20% de descuento', price: 76 }];
+      this.cart = [this.packTemplate];
     }
 
     localStorage.setItem('cart', JSON.stringify(this.cart));
