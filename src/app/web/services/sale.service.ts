@@ -12,9 +12,9 @@ export class SaleService {
 
   constructor() {}
 
-  createTemplate() {
-    return this.httpClient.get<SaleRequest>(
-      `${this.api_url}/sale/`
+  createSale(bodySale: SaleRequest) {
+    return this.httpClient.post<SaleRequest>(
+      `${this.api_url}/sale/`, bodySale
     );
   }
 }

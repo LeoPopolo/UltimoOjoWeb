@@ -18,21 +18,21 @@
   <section class="Checkout__form">
     <h2 class="Checkout__form__title">Datos de facturación</h2>
 
-    <form class="Checkout__form__data">
+    <form class="Checkout__form__data" [formGroup]="form()">
       <div class="Checkout__form__data__wrapper">
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Nombre"/>
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Apellido"/>
+        <input class="Input" formControlName="name" placeholder="Nombre"  type="text" />
+        <input class="Input" formControlName="lastName" placeholder="Apellido" type="text"/>
       </div>
       <div class="Checkout__form__data__wrapper">
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="E-mail" type="email"/>
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Teléfono"/>
+        <input class="Input" formControlName="email" placeholder="E-mail" type="email"/>
+        <input class="Input" formControlName="phoneNumber" placeholder="Teléfono" type="text"/>
       </div>
       <div class="Checkout__form__data__wrapper">
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="CUIT/CUIL"/>
-        <app-input class="Checkout__form__data__wrapper__control" placeholderValue="Dirección"/>
+        <input class="Input" formControlName="cuit" placeholder="CUIT/CUIL" type="text"/>
+        <input class="Input" formControlName="address" placeholder="Dirección" type="text">
       </div>
       <div class="Checkout__form__data__actions">
-        <app-button class="Checkout__form__data__actions__button" type="Primary" text="Comprar"/>
+        <app-button class="Checkout__form__data__actions__button" type="Primary" text="Comprar" (click)="createSale()"/>
       </div>
     </form>
   </section>
