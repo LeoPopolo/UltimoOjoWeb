@@ -6,4 +6,5 @@ export interface SaleRequest {
   customerAddress: string;
   customerCuit: string;
   templatesIds: number[];
+  receiptPath: string
 }

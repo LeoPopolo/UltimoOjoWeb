@@ -1,18 +1,36 @@
-<app-navbar/>
+<app-navbar />
 
 <main class="Checkout">
-
   <section class="Checkout__cart">
     <h2 class="Checkout__cart__title">Tu carrito:</h2>
     @for (item of cart(); track $index) {
-      <div class="Checkout__cart__item">
-        <span>{{item.name}}</span>
-        <span>${{item.price}}</span>
-      </div>
+    <div class="Checkout__cart__item">
+      <span>{{ item.name }}</span>
+      <span>${{ item.price }}</span>
+    </div>
     }
     <div class="Checkout__cart__total">
-      <span>Total: ${{total}}</span>
+      <span>Total: ${{ total }}</span>
     </div>
+  </section>
+
+  <section class="Checkout__receipt">
+    <p class="Checkout__receipt__text">
+      Complete la transferencia de ${{ total }} a este CBU , cargue el
+      comprobante fácilmente con un click en el botón adjunto y cargue los datos
+      requeridos en el formulario para finalizar su compra.
+    </p>
+    @if (receipt()) {
+    <div class="Checkout__receipt__preview">{{ receipt()!.name }}</div>
+    }
+
+    <app-button text="cargar comprobante" (click)="file.click()" />
+    <input
+      type="file"
+      #file
+      style="display: none"
+      (change)="onFileLoaded($event)"
+    />
   </section>
 
   <section class="Checkout__form">
@@ -20,23 +38,57 @@
 
     <form class="Checkout__form__data" [formGroup]="form()">
       <div class="Checkout__form__data__wrapper">
-        <input class="Input" formControlName="name" placeholder="Nombre"  type="text" />
-        <input class="Input" formControlName="lastName" placeholder="Apellido" type="text"/>
+        <input
+          class="Input"
+          formControlName="name"
+          placeholder="Nombre"
+          type="text"
+        />
+        <input
+          class="Input"
+          formControlName="lastName"
+          placeholder="Apellido"
+          type="text"
+        />
       </div>
       <div class="Checkout__form__data__wrapper">
-        <input class="Input" formControlName="email" placeholder="E-mail" type="email"/>
-        <input class="Input" formControlName="phoneNumber" placeholder="Teléfono" type="text"/>
+        <input
+          class="Input"
+          formControlName="email"
+          placeholder="E-mail"
+          type="email"
+        />
+        <input
+          class="Input"
+          formControlName="phoneNumber"
+          placeholder="Teléfono"
+          type="text"
+        />
       </div>
       <div class="Checkout__form__data__wrapper">
-        <input class="Input" formControlName="cuit" placeholder="CUIT/CUIL" type="text"/>
-        <input class="Input" formControlName="address" placeholder="Dirección" type="text">
+        <input
+          class="Input"
+          formControlName="cuit"
+          placeholder="CUIT/CUIL"
+          type="text"
+        />
+        <input
+          class="Input"
+          formControlName="address"
+          placeholder="Dirección"
+          type="text"
+        />
       </div>
       <div class="Checkout__form__data__actions">
-        <app-button class="Checkout__form__data__actions__button" type="Primary" text="Comprar" (click)="createSale()"/>
+        <app-button
+          class="Checkout__form__data__actions__button"
+          type="Primary"
+          text="Comprar"
+          (click)="uploadFile()"
+        />
       </div>
     </form>
   </section>
-
 </main>
 
-<app-footer/>
+<app-footer />

@@ -34,6 +34,19 @@
     }
   }
 
+  &__receipt {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    width: 25%;
+    gap: 50px;
+
+    &__text {
+      font-size: 1.1em;
+      font-family: 'Poppins', sans-serif;
+    } 
+  }
+  
   &__form {
     width: 500px;
     margin-top: 5%;

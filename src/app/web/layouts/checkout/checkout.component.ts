@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { SaleRequest } from '../../models/sale';
 import { SaleService } from '../../services/sale.service';
+import { FileService } from '../../../services/file.service';
 
 @Component({
   selector: 'app-checkout',
@@ -30,19 +31,20 @@ import { SaleService } from '../../services/sale.service';
 export class CheckoutComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly cartService = inject(CartService);
-  private readonly saleService = inject(SaleService)
+  private readonly saleService = inject(SaleService);
+  private readonly fileService = inject(FileService);
 
   form = signal<FormGroup>(this.createForm());
   cart = signal<ITemplate[]>([]);
+  receipt = signal<File | null>(null);
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe((data) => {
       this.cart.set(data);
     });
-   
   }
 
-  createSale() {
+  createSale(receiptPath: string) {
     const body: SaleRequest = {
       customerName: this.form().get('name')?.value,
       customerLastName: this.form().get('lastName')?.value,
@@ -51,10 +53,11 @@ export class CheckoutComponent implements OnInit {
       customerAddress: this.form().get('address')?.value,
       customerCuit: this.form().get('cuit')?.value,
       templatesIds: this.cart().map((item) => item.id),
+      receiptPath
     };
 
     this.saleService.createSale(body).subscribe((data) => {
-      console.log(data)
+      console.log(data);
     });
   }
 
@@ -67,6 +70,16 @@ export class CheckoutComponent implements OnInit {
       address: ['', Validators.required],
       cuit: ['', Validators.required],
     });
+  }
+
+  uploadFile() {
+    this.fileService.uploadFile(this.receipt()!).subscribe((data)=>{
+      this.createSale(data.image_url)
+    })
+  }
+
+  onFileLoaded(event: any) {
+    this.receipt.set(event.target.files[0]);
   }
 
   get total() {
