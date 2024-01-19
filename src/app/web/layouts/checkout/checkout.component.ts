@@ -45,6 +45,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   createSale(receiptPath: string) {
+
     const body: SaleRequest = {
       customerName: this.form().get('name')?.value,
       customerLastName: this.form().get('lastName')?.value,
@@ -74,7 +75,7 @@ export class CheckoutComponent implements OnInit {
 
   uploadFile() {
     this.fileService.uploadFile(this.receipt()!).subscribe((data)=>{
-      this.createSale(data.image_url)
+      this.createSale(data.image_path)
     })
   }
 
