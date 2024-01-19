@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FileService {
     return this.http.post<any>(`${this.url}/api/file/upload`, formData);
   }
 
-  downloadFile(fileName: string) {
-    return this.http.get<any>(`${this.url}/api/file/download/${fileName}`);
+  downloadFile(fileName: string): Observable<Blob> {
+    return this.http.get(`${this.url}/api/file/download/${fileName}`, { responseType: 'blob' });
   }
 }

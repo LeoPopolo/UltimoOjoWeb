@@ -1,0 +1,38 @@
+<main class="Sales">
+  <h1 class="Sales__title">Mis ventas</h1>
+
+  <section class="Sales__table">
+
+    <div class="Sales__table__header">
+      <span class="Sales__table__header__item">Cliente</span>
+      <span class="Sales__table__header__item">CUIT/CUIL</span>
+      <span class="Sales__table__header__item">Teléfono</span>
+      <span class="Sales__table__header__item">Dirección</span>
+      <span class="Sales__table__header__item">E-mail</span>
+      <span class="Sales__table__header__item">Plantillas</span>
+      <span class="Sales__table__header__item">Total</span>
+      <span class="Sales__table__header__item">Enviado</span>
+    </div>
+    <div class="Sales__table__body">
+      @for (sale of sales(); track $index) {
+        <div class="Sales__table__body__row">
+          <span class="Sales__table__body__row__column">{{sale.customerName + ' ' + sale.customerLastName}}</span>
+          <span class="Sales__table__body__row__column">{{sale.customerCuit}}</span>
+          <span class="Sales__table__body__row__column">{{sale.customerPhoneNumber}}</span>
+          <span class="Sales__table__body__row__column">{{sale.customerAddress}}</span>
+          <span class="Sales__table__body__row__column">{{sale.customerEmail}}</span>
+          <span class="Sales__table__body__row__column Sales__table__body__row__column--templates">
+            @for (template of sale.templates; track $index) {
+              <span>{{template.name}}</span>
+            }
+          </span>
+          <span class="Sales__table__body__row__column">${{sale.total}}</span>
+          <span class="Sales__table__body__row__column">{{sale.isPaid ? 'Sí' : 'No'}}</span>
+          <span class="Sales__table__body__row__column">
+            <img src="../../../../assets/svg/eye.svg" alt="Ver" (click)="openDialogSeeSale(sale)">
+          </span>
+        </div>
+      }
+    </div>
+  </section>
+</main>

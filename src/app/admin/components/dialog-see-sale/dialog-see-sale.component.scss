@@ -1,0 +1,59 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Dialog {
+  & {
+    padding: 5%;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__title {
+    font-size: 2em;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    font-weight: 200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+
+    &__item {
+      padding-block: 10px;
+      font-family: "Poppins", sans-serif;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #bbb;
+      }
+
+      &__template {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    &__download {
+      margin-top: 25px;
+      padding: 1em;
+      background-color: tools.colors(blackOne);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 100px;
+      font-size: 15px;
+      width: 250px;
+      cursor: pointer;
+    }
+  }
+
+  &__actions {
+    margin-top: 50px;
+  }
+}

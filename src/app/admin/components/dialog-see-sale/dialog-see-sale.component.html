@@ -1,0 +1,27 @@
+<main class="Dialog">
+  <h1 class="Dialog__title">Venta #{{sale().id}} <img src="../../../../assets/svg/close-black.svg" alt="close" (click)="closeDialog()"> </h1>
+  <section class="Dialog__body">
+    <span class="Dialog__body__item">Cliente: {{sale().customerName + ' ' + sale().customerLastName}}</span>
+    <span class="Dialog__body__item">CUIT/CUIL: {{sale().customerCuit}}</span>
+    <span class="Dialog__body__item">Teléfono: {{sale().customerPhoneNumber}}</span>
+    <span class="Dialog__body__item">Dirección: {{sale().customerAddress}}</span>
+    <span class="Dialog__body__item">E-mail: {{sale().customerEmail}}</span>
+    <span class="Dialog__body__item">
+      Plantillas compradas: <br>
+      @for (template of sale().templates; track $index) {
+        <span class="Dialog__body__item__template">{{template.name}}</span>
+      }
+    </span>
+    <span class="Dialog__body__item">Total: ${{sale().total}}</span>
+    <span class="Dialog__body__item">Enviado: {{sale().isPaid ? 'Sí' : 'No'}}</span>
+    <span class="Dialog__body__download" (click)="downloadReceipt()">
+      <img src="../../../../assets/svg/download.svg" alt="Descargar">
+      Descargar comprobante
+    </span>
+  </section>
+  <footer class="Dialog__actions">
+    @if (!sale().isPaid) {
+      <app-button text="Confirmar y enviar plantillas" (click)="confirmSale()"/>
+    }
+  </footer>
+</main>

@@ -12,6 +12,7 @@ import { QuestionnaireComponent } from './web/layouts/questionnaire/questionnair
 import { BudgetTemplateComponent } from './web/layouts/budget-template/budget-template.component';
 import { CheckoutComponent } from './web/layouts/checkout/checkout.component';
 import { TemplatesComponent } from './admin/layouts/templates/templates.component';
+import { SalesComponent } from './admin/layouts/sales/sales.component';
 
 export const routes: Routes = [
   {
@@ -46,6 +47,10 @@ export const routes: Routes = [
         path: 'templates',
         component: TemplatesComponent,
       },
+      {
+        path: 'sales',
+        component: SalesComponent,
+      }
     ],
   },
   {
