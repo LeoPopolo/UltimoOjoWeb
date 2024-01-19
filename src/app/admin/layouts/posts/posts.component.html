@@ -9,9 +9,9 @@
         </div>
         <span class="Posts__body__card__link">
           Link a la publicación:
-          <a [href]="post.url">{{post.url}}</a>
+          <a [href]="post.url">{{'https://www.instagram.com/p/' + post.url}}</a>
         </span>
-        <span class="Posts__body__card__delete">
+        <span class="Posts__body__card__delete" (click)="deletePost(post.id)">
           <img src="../../../../assets/svg/delete.svg" alt="delete">
         </span>
       </div>
@@ -33,10 +33,10 @@
               <img src="../../../../assets/svg/upload.svg" alt="upload">
               Cargar imagen
             </button>
-            <input [(ngModel)]="link" #image type="file" style="display: none;" (change)="onLoadedImage($event)">
+            <input #image type="file" style="display: none;" (change)="onLoadedImage($event)">
           </div>
           <div class="NewPost__link">
-            <app-input type="text" placeholderValue="Link a la publicación"/>
+            <input class="NewPost__link__control" type="text" [(ngModel)]="link" placeholder="Link a la publicación">
           </div>
           <div class="NewPost__actions">
             <button class="NewPost__actions--create" (click)="startPostUpload()">Crear</button>

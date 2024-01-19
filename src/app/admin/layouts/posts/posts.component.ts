@@ -88,9 +88,11 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(imagePath: string) {
+    const link = this.link.replace('https://www.instagram.com/p/', '')
+
     const body = {
       image_path: imagePath,
-      url: this.link
+      url: link
     }
 
     this.postServices.createPost(body).subscribe(data => {
@@ -100,5 +102,20 @@ export class PostsComponent implements OnInit {
       this.imageToShow.set(null);
       this.link = '';
     });
+  }
+
+  deletePost(postId: number) {
+    if (confirm('Seguro desea eliminar esta publicación?')) {
+      this.postServices.deletePost(postId).subscribe(
+        () => {
+          alert('Publicación eliminada con éxito');
+          this.getPosts();
+        },
+        err => {
+          alert('Error al intentar eliminar la publicación')
+          console.log(err);
+        }
+      );
+    }
   }
 }

@@ -1,0 +1,15 @@
+<main class="Templates">
+  <h1 class="Templates__title">Plantillas</h1>
+
+  <section class="Templates__body">
+    @for (template of templates(); track $index) {
+      <div class="Templates__body__item">
+        <span class="Templates__body__item__name">{{template.name}}</span>
+        <div class="Templates__body__item__actions">
+          <span>{{template.price | currency}}</span>
+          <img src="../../../../assets/svg/edit.svg" alt="edit price" (click)="openDialogEditTemplate(template)">
+        </div>
+      </div>
+    }
+  </section>
+</main>

@@ -22,4 +22,10 @@ export class TemplateService {
       `${this.api_url}/template/${template_id}`
     );
   }
+
+  updateTemplate(template: ITemplate) {
+    return this.httpClient.put<templateResponse>(
+      `${this.api_url}/template/${template.id}`, template
+    );
+  }
 }

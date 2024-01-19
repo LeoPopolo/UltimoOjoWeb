@@ -27,17 +27,10 @@ export class PackTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTemplate();
-    this.getCart();
   }
 
   addTemplate() {
     this.cartService.addTemplateToCart(this.template());
-  }
-
-  getCart() {
-    this.cartService.getCart().subscribe((data) => {
-      console.log(data);
-    });
   }
 
   getTemplate() {

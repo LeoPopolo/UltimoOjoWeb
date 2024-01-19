@@ -42,6 +42,7 @@ export class CartService {
 
   addTemplateToCart(template: ITemplate) {
     const templateExist = this.cart.find((item) => item.name === template.name);
+
     const existingPackIndex = this.cart.findIndex(
       (product) => product.name === 'Pack x3 plantillas'
     );

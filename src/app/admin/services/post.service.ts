@@ -19,4 +19,8 @@ export class PostService {
   createPost(body: { image_path: string, url: string }) {
     return this.http.post<postResponseType>(`${this.url}/api/post`, body);
   }
+
+  deletePost(postId: number) {
+    return this.http.delete<void>(`${this.url}/api/post/${postId}`);
+  }
 }

@@ -1,0 +1,64 @@
+@use '@angular/material' as mat;
+@use './tools.scss' as tools;
+@include mat.core();
+
+$primary-theme: (
+  50: darken(tools.colors(beigeOne), 70%),
+  100: darken(tools.colors(beigeOne), 60%),
+  200: darken(tools.colors(beigeOne), 50%),
+  300: darken(tools.colors(beigeOne), 40%),
+  400: darken(tools.colors(beigeOne), 30%),
+  500: darken(tools.colors(beigeOne), 20%),
+  600: darken(tools.colors(beigeOne), 10%),
+  700: tools.colors(beigeOne),
+  800: lighten(tools.colors(beigeOne), 10%),
+  900: lighten(tools.colors(beigeOne), 20%),
+  contrast: (
+    50: darken(tools.colors(beigeOne), 50%),
+    100: darken(tools.colors(beigeOne), 50%),
+    200: darken(tools.colors(beigeOne), 50%),
+    300: darken(tools.colors(beigeOne), 50%),
+    400: darken(tools.colors(beigeOne), 50%),
+    500: lighten(tools.colors(beigeOne), 50%),
+    600: lighten(tools.colors(beigeOne), 50%),
+    700: lighten(tools.colors(beigeOne), 50%),
+    800: lighten(tools.colors(beigeOne), 50%),
+    900: lighten(tools.colors(beigeOne), 50%),
+  )
+);
+
+$accent-theme: (
+  50: darken(tools.colors(beigeThree), 70%),
+  100: darken(tools.colors(beigeThree), 60%),
+  200: darken(tools.colors(beigeThree), 50%),
+  300: darken(tools.colors(beigeThree), 40%),
+  400: darken(tools.colors(beigeThree), 30%),
+  500: darken(tools.colors(beigeThree), 20%),
+  600: darken(tools.colors(beigeThree), 10%),
+  700: tools.colors(beigeThree),
+  800: lighten(tools.colors(beigeThree), 10%),
+  900: lighten(tools.colors(beigeThree), 20%),
+  contrast: (
+    50: darken(tools.colors(beigeThree), 50%),
+    100: darken(tools.colors(beigeThree), 50%),
+    200: darken(tools.colors(beigeThree), 50%),
+    300: darken(tools.colors(beigeThree), 50%),
+    400: darken(tools.colors(beigeThree), 50%),
+    500: lighten(tools.colors(beigeThree), 50%),
+    600: lighten(tools.colors(beigeThree), 50%),
+    700: lighten(tools.colors(beigeThree), 50%),
+    800: lighten(tools.colors(beigeThree), 50%),
+    900: lighten(tools.colors(beigeThree), 50%),
+  )
+);
+
+$erp-primary: mat.define-palette($primary-theme);
+$erp-accent: mat.define-palette($accent-theme);
+
+$erp-theme: mat.define-light-theme((
+  color: (
+    primary: $erp-primary,
+    accent: $erp-accent
+  )
+));
+@include mat.all-component-themes($erp-theme);

@@ -27,21 +27,14 @@ export class QuestionnaireComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTemplate();
-    this.getCart();
   }
 
   addTemplate() {
     this.cartService.addTemplateToCart(this.template());
   }
 
-  getCart() {
-    this.cartService.getCart().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
   getTemplate() {
-    this.templateService.getTemplate(1).subscribe((data) => {
+    this.templateService.getTemplate(2).subscribe((data) => {
       this.template.set(data.data);
     });
   }

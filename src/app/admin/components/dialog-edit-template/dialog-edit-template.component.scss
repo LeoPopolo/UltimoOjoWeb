@@ -1,0 +1,22 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Dialog {
+  & {
+    padding: 5%;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__title {
+    font-size: 2em;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+  }
+
+  &__body {
+
+    &__control {
+      padding-block: 25px;
+    }
+  }
+}

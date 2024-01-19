@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Posts {
   & {
@@ -9,7 +9,7 @@
 
   &__title {
     font-size: 2em;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 200;
   }
 
@@ -132,12 +132,22 @@
               font-size: 1em;
               background-color: tools.colors(blackOne);
               color: #eee;
-              font-family: 'Poppins', sans-serif;
+              font-family: "Poppins", sans-serif;
             }
           }
 
           &__link {
-
+            &__control {
+              width: 100%;
+              border-radius: 5px;
+              border-bottom: 1px solid tools.colors(blackOne);
+              outline: none;
+              font-size: tools.fontSizes(s);
+              font-family: "Poppins", sans-serif;
+              color: tools.colors(blackOne);
+              padding: tools.spacing(xxs);
+              background-color: transparent;
+            }
           }
 
           &__actions {
@@ -153,7 +163,7 @@
               padding: 10px;
               border-radius: 10px;
               font-size: 1em;
-              font-family: 'Poppins', sans-serif;
+              font-family: "Poppins", sans-serif;
               cursor: pointer;
             }
 

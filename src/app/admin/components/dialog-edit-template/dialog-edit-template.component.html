@@ -1,0 +1,11 @@
+<main class="Dialog">
+  <h1 class="Dialog__title">Cambiar precio</h1>
+  <section class="Dialog__body">
+    <div class="Dialog__body__control">
+      <input [(ngModel)]="price" class="Input" type="number" placeholder="Nuevo precio">
+    </div>
+    <div class="Dialog__body__actions">
+      <app-button text="Aceptar" type="Primary" (click)="changePrice()"/>
+    </div>
+  </section>
+</main>
