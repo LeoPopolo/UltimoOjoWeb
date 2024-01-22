@@ -3,6 +3,7 @@ import { SaleService } from '../../../web/services/sale.service';
 import { SaleResponse } from '../../../web/models/sale';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSeeSaleComponent } from '../../components/dialog-see-sale/dialog-see-sale.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sales',
@@ -14,6 +15,7 @@ import { DialogSeeSaleComponent } from '../../components/dialog-see-sale/dialog-
 export class SalesComponent implements OnInit {
   private readonly saleServices = inject(SaleService);
   private readonly dialog = inject(MatDialog);
+  private readonly snackbarServices = inject(MatSnackBar);
 
   sales = signal<SaleResponse[]>([])
 
@@ -32,7 +34,7 @@ export class SalesComponent implements OnInit {
   markSaleAsPaid(saleId: number) {
     this.saleServices.markSaleAsPaid(saleId).subscribe(
       () => {
-        alert('La venta fue confirmada y las plantillas fueron enviadas al cliente!');
+        this.openSnackbar('La venta fue confirmada y las plantillas fueron enviadas al cliente!');
         this.getSales();
       },
       err => {
@@ -52,6 +54,13 @@ export class SalesComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       if (data)
         this.markSaleAsPaid(sale.id)
+    });
+  }
+
+  openSnackbar(message: string) {
+    this.snackbarServices.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['Snackbar']
     });
   }
 }

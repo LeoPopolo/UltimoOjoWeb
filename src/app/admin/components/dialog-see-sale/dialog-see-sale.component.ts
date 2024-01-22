@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { SaleResponse } from '../../../web/models/sale';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ButtonComponent } from "../../../web/components/button/button.component";
-import { FileService } from '../../../services/file.service';
+import { FileService } from '../../../../shared/services/file.service';
 
 @Component({
     selector: 'app-dialog-see-sale',

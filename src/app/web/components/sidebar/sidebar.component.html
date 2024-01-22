@@ -3,7 +3,30 @@
     <div class="Sidebar__content">
       <span routerLink="/home" class="Sidebar__content__option">Inicio</span>
       <span routerLink="/about" class="Sidebar__content__option">Nosotros</span>
-      <span routerLink="/home" class="Sidebar__content__option">Plantillas</span>
+      <span class="Sidebar__content__option Sidebar__content__option--templates" (click)="toggleShowTemplates()">
+        Plantillas
+
+        <div class="Sidebar__content__option__menu"
+          [class.Sidebar__content__option__menu--show]="showTemplates()"
+        >
+          <span
+            routerLink="/contract"
+            class="Sidebar__content__option__menu__item"
+            >Plantilla de contrato.</span
+          >
+          <span
+            routerLink="/questionnaire"
+            class="Sidebar__content__option__menu__item"
+            >Plantilla de cuestionario para cliente.</span
+          >
+          <span routerLink="/budget" class="Sidebar__content__option__menu__item"
+            >Plantilla para presupuesto.</span
+          >
+          <span routerLink="/pack" class="Sidebar__content__option__menu__item"
+            >Pack 20% de descuento.</span
+          >
+        </div>
+      </span>
       <span routerLink="/newsletter" class="Sidebar__content__option">Newsletter</span>
       <span routerLink="/contact" class="Sidebar__content__option">Contacto</span>
 

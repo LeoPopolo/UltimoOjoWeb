@@ -1,0 +1,33 @@
+@use '../../../styles/tools.scss' as tools;
+
+.Page {
+  & {
+    margin: 10% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    width: 800px;
+  }
+
+  &__follow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    a {
+      color: tools.colors(blackOne);
+      text-decoration: none;
+    }
+  }
+
+  &__text {
+    font-size: 20px;
+  }
+
+  &__button {
+    width: 300px;
+  }
+}

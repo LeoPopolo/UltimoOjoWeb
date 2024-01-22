@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -11,7 +11,13 @@ import { RouterModule } from '@angular/router';
 export class SidebarComponent {
   @Output() closed = new EventEmitter<void>();
 
+  showTemplates = signal<boolean>(false);
+
   close() {
     this.closed.emit();
+  }
+
+  toggleShowTemplates() {
+    this.showTemplates.set(!this.showTemplates())
   }
 }

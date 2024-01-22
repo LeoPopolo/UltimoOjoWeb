@@ -4,14 +4,15 @@ import { InputComponent } from "../../../web/components/input/input.component";
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserLoginRequest } from '../../models/user';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
-    imports: [ButtonComponent, InputComponent, ReactiveFormsModule]
+    imports: [ButtonComponent, InputComponent, ReactiveFormsModule, RouterModule]
 })
 export class LoginComponent {
 
@@ -20,6 +21,7 @@ export class LoginComponent {
   private readonly authServices = inject(AuthService);
   private readonly fb = inject(FormBuilder);
   private readonly router = inject(Router);
+  private readonly snackbarServices = inject(MatSnackBar);
 
   constructor() {
     this.createForm();
@@ -42,7 +44,7 @@ export class LoginComponent {
         this.router.navigate(['/admin']);
       },
       err => {
-        alert('error al hacer login')
+        this.openSnackbar('error al hacer login')
       }
     );
   }
@@ -51,6 +53,13 @@ export class LoginComponent {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
+    });
+  }
+
+  openSnackbar(message: string) {
+    this.snackbarServices.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['Snackbar']
     });
   }
 }

@@ -13,6 +13,7 @@ import { BudgetTemplateComponent } from './web/layouts/budget-template/budget-te
 import { CheckoutComponent } from './web/layouts/checkout/checkout.component';
 import { TemplatesComponent } from './admin/layouts/templates/templates.component';
 import { SalesComponent } from './admin/layouts/sales/sales.component';
+import { ThankyouPageComponent } from './web/layouts/thankyou-page/thankyou-page.component';
 
 export const routes: Routes = [
   {
@@ -72,6 +73,10 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'thankyou',
+    component: ThankyouPageComponent,
   },
   {
     path: '',

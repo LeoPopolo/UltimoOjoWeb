@@ -31,6 +31,23 @@
         color: #fff;
         font-size: 20px;
         z-index: 102;
+
+        &__menu {
+          display: none;
+          flex-direction: column;
+          margin-top: 10px;
+
+          &--show {
+            display: flex;
+          }
+
+          &__item {
+            color: #eee;
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            padding-block: 10px;
+          }
+        }
       }
 
       &__login {

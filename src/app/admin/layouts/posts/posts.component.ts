@@ -3,8 +3,9 @@ import { PostService } from '../../services/post.service';
 import { IPost } from '../../models/post';
 import { InputComponent } from "../../../web/components/input/input.component";
 import { AsyncPipe } from '@angular/common';
-import { FileService } from '../../../services/file.service';
+import { FileService } from '../../../../shared/services/file.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-posts',
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 export class PostsComponent implements OnInit {
   private readonly postServices = inject(PostService);
   private readonly fileServices = inject(FileService);
+  private readonly snackbarServices = inject(MatSnackBar);
   public readonly downloadImageUrl = 'http://localhost:3000/api/file/download';
 
   posts = signal<IPost[]>([]);
@@ -78,11 +80,11 @@ export class PostsComponent implements OnInit {
         if (data)
           this.createPost(data.image_path);
         else
-          alert('error al crear el post');
+          this.openSnackbar('error al crear el post');
       },
       err => {
         console.log(err);
-        alert('error al crear el post');
+        this.openSnackbar('error al crear el post');
       }
     );
   }
@@ -108,14 +110,21 @@ export class PostsComponent implements OnInit {
     if (confirm('Seguro desea eliminar esta publicación?')) {
       this.postServices.deletePost(postId).subscribe(
         () => {
-          alert('Publicación eliminada con éxito');
+          this.openSnackbar('Publicación eliminada con éxito');
           this.getPosts();
         },
         err => {
-          alert('Error al intentar eliminar la publicación')
+          this.openSnackbar('Error al intentar eliminar la publicación')
           console.log(err);
         }
       );
     }
+  }
+
+  openSnackbar(message: string) {
+    this.snackbarServices.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['Snackbar']
+    });
   }
 }

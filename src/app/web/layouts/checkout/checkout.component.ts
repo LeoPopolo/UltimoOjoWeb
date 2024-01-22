@@ -13,7 +13,10 @@ import {
 } from '@angular/forms';
 import { SaleRequest } from '../../models/sale';
 import { SaleService } from '../../services/sale.service';
-import { FileService } from '../../../services/file.service';
+import { FileService } from '../../../../shared/services/file.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAlertComponent } from '../../../../shared/components/dialog-alert/dialog-alert.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -30,6 +33,8 @@ import { FileService } from '../../../services/file.service';
 })
 export class CheckoutComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
+  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
   private readonly cartService = inject(CartService);
   private readonly saleService = inject(SaleService);
   private readonly fileService = inject(FileService);
@@ -57,8 +62,9 @@ export class CheckoutComponent implements OnInit {
       receiptPath
     };
 
-    this.saleService.createSale(body).subscribe((data) => {
-      console.log(data);
+    this.saleService.createSale(body).subscribe(() => {
+      this.cartService.emptyCart();
+      this.router.navigate(['/thankyou']);
     });
   }
 
@@ -73,6 +79,29 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  startSale() {
+    if (!this.form().valid) {
+      this.showAlert('Error', 'Complete todos los campos');
+      return;
+    }
+
+    if (!this.receipt()) {
+      this.showAlert('Error', 'Cargue el comprobante de la transferencia');
+      return;
+    }
+
+    this.uploadFile();
+  }
+
+  showAlert(title: string, message: string) {
+    this.dialog.open(DialogAlertComponent, {
+      data: {
+        title,
+        message
+      }
+    })
+  }
+
   uploadFile() {
     this.fileService.uploadFile(this.receipt()!).subscribe((data)=>{
       this.createSale(data.image_path)
@@ -81,6 +110,10 @@ export class CheckoutComponent implements OnInit {
 
   onFileLoaded(event: any) {
     this.receipt.set(event.target.files[0]);
+  }
+
+  emptyCart() {
+    this.cartService.emptyCart();
   }
 
   get total() {

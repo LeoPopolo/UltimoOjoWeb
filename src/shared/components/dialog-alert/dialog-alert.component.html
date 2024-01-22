@@ -1,0 +1,16 @@
+<main class="Dialog">
+  @if (data.title) {
+    <h1 class="Dialog__title">{{data.title}}</h1>
+  }
+  @if (data.message) {
+    <section class="Dialog__body">
+      <p class="Dialog__body__message">{{data.message}}</p>
+    </section>
+  }
+  <footer class="Dialog__actions">
+    <button class="Dialog__actions__confirm" (click)="close(true)">Aceptar</button>
+    @if (data.hasCancelButton) {
+      <button class="Dialog__actions__cancel" (click)="close(false)">Cancelar</button>
+    }
+  </footer>
+</main>

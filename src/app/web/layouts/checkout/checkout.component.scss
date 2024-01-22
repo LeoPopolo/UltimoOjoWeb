@@ -31,6 +31,13 @@
       padding: 1em;
       font-weight: bold;
       border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__button {
+        width: 200px;
+      }
     }
   }
 
@@ -44,9 +51,9 @@
     &__text {
       font-size: 1.1em;
       font-family: 'Poppins', sans-serif;
-    } 
+    }
   }
-  
+
   &__form {
     width: 500px;
     margin-top: 5%;
@@ -67,13 +74,13 @@
         width: 100%;
         gap: tools.spacing(m);
 
-        &__control {
+        // &__control {
 
-        }
+        // }
 
-        &__button {
+        // &__button {
 
-        }
+        // }
       }
 
       &__actions {
@@ -86,5 +93,11 @@
         }
       }
     }
+  }
+
+  &__empty-cart {
+    margin-top: 50px;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
   }
 }

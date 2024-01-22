@@ -1,0 +1,11 @@
+@use './tools.scss' as tools;
+
+.Snackbar {
+  .mdc-snackbar__surface {
+    background-color: tools.colors(beigeOne) !important;
+  }
+
+  button {
+    color: tools.colors(blackOne) !important;
+  }
+}

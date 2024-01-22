@@ -4,6 +4,7 @@ import { ITemplate } from '../../../web/models/template';
 import { CurrencyPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditTemplateComponent } from '../../components/dialog-edit-template/dialog-edit-template.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-templates',
@@ -16,6 +17,7 @@ export class TemplatesComponent implements OnInit {
 
   private readonly templateServices = inject(TemplateService)
   private readonly dialog = inject(MatDialog)
+  private readonly snackbarServices = inject(MatSnackBar)
 
   templates = signal<ITemplate[]>([]);
 
@@ -36,7 +38,7 @@ export class TemplatesComponent implements OnInit {
 
   updateTemplate(template: ITemplate) {
     this.templateServices.updateTemplate(template).subscribe(() => {
-      alert('Precio modificado con éxito');
+      this.openSnackbar('Precio modificado con éxito');
       this.getTemplates();
     });
   }
@@ -56,6 +58,13 @@ export class TemplatesComponent implements OnInit {
       }
 
       this.updateTemplate(updatedTemplate);
+    });
+  }
+
+  openSnackbar(message: string) {
+    this.snackbarServices.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['Snackbar']
     });
   }
 }

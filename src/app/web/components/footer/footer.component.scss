@@ -32,6 +32,17 @@
           transition: all 200ms;
           cursor: pointer;
 
+          &--instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+
+            a {
+              color: #eee;
+              text-decoration: none;
+            }
+          }
+
           &:hover {
             color: #fff;
             transform: translateX(3px);

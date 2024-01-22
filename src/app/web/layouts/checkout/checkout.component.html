@@ -8,12 +8,18 @@
       <span>{{ item.name }}</span>
       <span>${{ item.price }}</span>
     </div>
-    }
+    } @if (cart().length > 0) {
     <div class="Checkout__cart__total">
       <span>Total: ${{ total }}</span>
+      <app-button
+        (click)="emptyCart()"
+        class="Checkout__cart__total__button"
+        text="Vaciar carrito"
+      />
     </div>
+    }
   </section>
-
+  @if (cart().length > 0) {
   <section class="Checkout__receipt">
     <p class="Checkout__receipt__text">
       Complete la transferencia de ${{ total }} a este CBU , cargue el
@@ -84,11 +90,14 @@
           class="Checkout__form__data__actions__button"
           type="Primary"
           text="Comprar"
-          (click)="uploadFile()"
+          (click)="startSale()"
         />
       </div>
     </form>
   </section>
+  } @else {
+    <h3 class="Checkout__empty-cart">Agregue un producto desde la sección de plantillas para comenzar a llenar el carrito</h3>
+  }
 </main>
 
 <app-footer />

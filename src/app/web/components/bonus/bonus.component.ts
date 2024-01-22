@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-bonus',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './bonus.component.scss'
 })
 export class BonusComponent {
+  @Output() add = new EventEmitter<void>();
 
+  addToCart() {
+    this.add.emit();
+  }
 }
