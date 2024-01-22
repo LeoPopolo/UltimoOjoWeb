@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Navbar {
   display: flex;
@@ -45,6 +45,7 @@
       font-weight: 300;
       font-size: tools.fontSizes(l);
       margin-left: 20px;
+      font-family: 'Poppins', sans-serif;
 
       @media screen and (max-width: 799px) {
         font-size: tools.fontSizes(s);
@@ -64,20 +65,45 @@
     }
 
     &__link {
-      font-weight: 500;
-      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-family: "Poppins", sans-serif;
       cursor: pointer;
       color: tools.colors(blackOne);
       position: relative;
       height: 100%;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+
+      &::after {
+        content: "";
+        height: 1px;
+        background-color: #eee;
+        width: 0;
+        position: absolute;
+        bottom: 25px;
+        transition: width 150ms;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &:hover &__arrow {
+        transform: rotate(-180deg);
+      }
 
       &--templates {
-
         &:hover .Navbar__sections__link__options {
           display: flex;
         }
+      }
+
+      &__arrow {
+        margin-left: 5px;
+        transition: transform 300ms;
       }
 
       &__options {

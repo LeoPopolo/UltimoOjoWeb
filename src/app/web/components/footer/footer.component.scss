@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Footer {
   width: 100%;
@@ -10,17 +10,22 @@
 
   &__sections {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 2fr;
     padding: 50px 20%;
 
     @media screen and (max-width: 799px) {
       display: flex;
       flex-direction: column;
       gap: 50px;
+      padding: 50px;
+    }
+
+    &__location {
+      display: flex;
+      justify-content: flex-end;
     }
 
     &__contact {
-
       &__list {
         display: flex;
         flex-direction: column;
@@ -52,10 +57,6 @@
     }
 
     &__legal {
-      &__title {
-
-      }
-
       &__list {
         display: flex;
         flex-direction: column;

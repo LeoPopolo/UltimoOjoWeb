@@ -9,6 +9,18 @@
     flex-direction: column;
     gap: 50px;
     width: 800px;
+
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      padding-inline: 25px;
+    }
+
+  }
+
+  &__title {
+    @media screen and (max-width: 799px) {
+      text-align: center;
+    }
   }
 
   &__follow {

@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Checkout {
   display: flex;
@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   padding-block: 5%;
+  width: 100%;
 
   &__cart {
     width: 500px;
@@ -13,6 +14,11 @@
     color: tools.colors(blackOne);
     flex-direction: column;
     gap: tools.spacing(m);
+
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      padding-inline: 25px;
+    }
 
     &__title {
       font-size: tools.fontSizes(xl);
@@ -48,9 +54,14 @@
     width: 25%;
     gap: 50px;
 
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      padding-inline: 25px;
+    }
+
     &__text {
       font-size: 1.1em;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
     }
   }
 
@@ -58,9 +69,18 @@
     width: 500px;
     margin-top: 5%;
 
+    @media screen and (max-width: 799px) {
+      width: 100%;
+      margin-top: 10%;
+    }
+
     &__title {
       text-align: center;
       font-size: tools.fontSizes(xl);
+
+      @media screen and (max-width: 799px) {
+        font-size: tools.fontSizes(l);
+      }
     }
 
     &__data {
@@ -69,10 +89,19 @@
       gap: tools.spacing(m);
       flex-direction: column;
 
+      @media screen and (max-width: 799px) {
+        width: 100%;
+        padding-inline: 25px;
+      }
+
       &__wrapper {
         display: flex;
         width: 100%;
         gap: tools.spacing(m);
+
+        @media screen and (max-width: 799px) {
+          flex-direction: column;
+        }
 
         // &__control {
 
@@ -88,7 +117,6 @@
         display: flex;
 
         &__button {
-
           width: 100%;
         }
       }
@@ -98,6 +126,6 @@
   &__empty-cart {
     margin-top: 50px;
     font-weight: 300;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 }

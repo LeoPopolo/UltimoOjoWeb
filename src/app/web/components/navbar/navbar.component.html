@@ -11,11 +11,11 @@
     <span routerLink="/about" class="Navbar__sections__link">Nosotros</span>
     <span
       class="Navbar__sections__link Navbar__sections__link--templates"
-      [ngStyle]="{'display': ''}"
+      [ngStyle]="{ display: '' }"
       (click)="toggleOptionsMobile()"
     >
       Plantillas
-
+      <img class="Navbar__sections__link__arrow" src="../../../../assets/svg/arrowdown.svg" >
       <div class="Navbar__sections__link__options">
         <span
           routerLink="/contract"
