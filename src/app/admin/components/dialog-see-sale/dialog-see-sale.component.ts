@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { SaleResponse } from '../../../web/models/sale';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonComponent } from "../../../web/components/button/button.component";
 import { FileService } from '../../../../shared/services/file.service';
+import { DialogAlertComponent } from '../../../../shared/components/dialog-alert/dialog-alert.component';
 
 @Component({
     selector: 'app-dialog-see-sale',
@@ -13,6 +14,7 @@ import { FileService } from '../../../../shared/services/file.service';
 })
 export class DialogSeeSaleComponent {
   private readonly dialogData = inject<IDialogData>(MAT_DIALOG_DATA);
+  private readonly dialog = inject(MatDialog);
   private readonly dialogRef = inject(MatDialogRef<DialogSeeSaleComponent>);
   private readonly fileServices = inject(FileService);
 
@@ -35,12 +37,11 @@ export class DialogSeeSaleComponent {
   }
 
   closeDialog() {
-    this.dialogRef.close(null);
+    this.dialogRef.close(null)
   }
 
   confirmSale() {
-    if (confirm('Desea confirmar la venta y enviar las plantillas por mail al cliente?'))
-      this.dialogRef.close(true);
+    this.confirmDialog();
   }
 
   downloadReceipt() {
@@ -54,6 +55,22 @@ export class DialogSeeSaleComponent {
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     });
+  }
+
+  confirmDialog() {
+    const dialog = this.dialog.open(DialogAlertComponent, {
+      data: {
+        title: 'Confirmar compra',
+        message: '¿Desea confirmar la compra y enviar las plantillas por mail al cliente?',
+        hasCancelButton: true
+      }
+    });
+
+    dialog.afterClosed().subscribe(data => {
+      if (data) {
+        this.dialogRef.close(true);
+      }
+    })
   }
 }
 

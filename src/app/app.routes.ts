@@ -51,6 +51,11 @@ export const routes: Routes = [
       {
         path: 'sales',
         component: SalesComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'sales',
+        pathMatch: 'full'
       }
     ],
   },
