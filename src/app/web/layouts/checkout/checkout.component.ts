@@ -116,6 +116,10 @@ export class CheckoutComponent implements OnInit {
     this.cartService.emptyCart();
   }
 
+  deleteItem(id: number){
+    this.cartService.deleteItem(id)
+  }
+
   get total() {
     return this.cart().reduce((acc, item) => acc + item.price, 0);
   }

@@ -31,6 +31,10 @@
       align-items: center;
       justify-content: space-between;
       box-shadow: 1px 1px 5px 1px #50505050;
+
+      img {
+        cursor: pointer;
+      }
     }
 
     &__total {

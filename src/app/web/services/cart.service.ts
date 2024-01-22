@@ -81,7 +81,17 @@ export class CartService {
   openSnackbar(message: string) {
     this.snackbarServices.open(message, 'OK', {
       duration: 3000,
-      panelClass: ['Snackbar']
+      panelClass: ['Snackbar'],
     });
+  }
+
+  deleteItem(id: number) {
+    const indexToDelete = this.cart.findIndex((item) => item.id === id);
+
+    if (indexToDelete !== -1) {
+      this.cart.splice(indexToDelete, 1);
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      this.cart$.next(this.cart);
+    }
   }
 }
