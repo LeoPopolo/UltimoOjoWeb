@@ -9,6 +9,7 @@
     display: grid;
     height: 100%;
     background-color: tools.colors(beigeThree);
+    padding-top: 5%;
 
     @media screen and (max-width: 799px) {
       display: flex;

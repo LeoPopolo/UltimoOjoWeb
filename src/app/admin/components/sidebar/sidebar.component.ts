@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,5 +9,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  private readonly router = inject(Router);
 
+  logout() {
+    this.router.navigate(['/home']);
+    localStorage.clear();
+  }
 }
