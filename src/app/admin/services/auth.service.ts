@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { UserLoginRequest, UserLoginResponse } from '../models/user';
+import { environment } from '../../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ import { UserLoginRequest, UserLoginResponse } from '../models/user';
 export class AuthService {
 
   private readonly http = inject(HttpClient);
-  private readonly url = 'http://localhost:3000';
+  private readonly url = environment.api_url;
 
   login(body: UserLoginRequest) {
-    return this.http.post<UserLoginResponse>(`${this.url}/api/user/login`, body);
+    return this.http.post<UserLoginResponse>(`${this.url}/user/login`, body);
   }
 }

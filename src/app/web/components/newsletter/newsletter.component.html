@@ -1,8 +1,8 @@
-<form class="Inputs">
+<form class="Inputs" [formGroup]="form()">
   <section class="Inputs__name">
-    <app-input placeholderValue="Nombre"></app-input>
-    <app-input placeholderValue="Apellido"></app-input>
+    <input class="Input" formControlName="name" type="text" placeholder="Nombre"/>
+    <input class="Input" formControlName="lastName" type="text" placeholder="Apellido"/>
   </section>
-  <app-input [placeholderValue]="'Email'"></app-input>
-  <app-button [text]="'Suscribirme'"></app-button>
+  <input class="Input" formControlName="email" type="email" placeholder="Email"/>
+  <app-button [text]="'Suscribirme'" (click)="sendSubscription()"></app-button>
 </form>

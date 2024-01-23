@@ -1,0 +1,15 @@
+<main class="Subscriptors">
+  <h1 class="Subscriptors__title">Subscriptores del newsletter</h1>
+
+  <section class="Subscriptors__body">
+    @for (subscriptor of subscriptors(); track $index) {
+      <div class="Subscriptors__body__item">
+        <span class="Subscriptors__body__item__name">{{subscriptor.name}} {{subscriptor.lastName}}</span>
+        <span class="Subscriptors__body__item__email">{{subscriptor.email}}</span>
+      </div>
+    }
+  </section>
+  <div class="Subscriptors__copy">
+    <app-button text="Copiar mails de subscriptores" (click)="copyMails()"/>
+  </div>
+</main>

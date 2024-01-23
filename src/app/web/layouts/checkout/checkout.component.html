@@ -5,7 +5,11 @@
     <h2 class="Checkout__cart__title">Tu carrito:</h2>
     @for (item of cart(); track $index) {
     <div class="Checkout__cart__item">
-      <img src="../../../../assets/svg/trash.svg" alt="trash" (click)="deleteItem(item.id)">
+      <img
+        src="../../../../assets/svg/trash.svg"
+        alt="trash"
+        (click)="deleteItem(item.id)"
+      />
       <span> {{ item.name }}</span>
       <span>${{ item.price }}</span>
     </div>
@@ -26,6 +30,10 @@
       Complete la transferencia de ${{ total }} a este CBU , cargue el
       comprobante fácilmente con un click en el botón adjunto y cargue los datos
       requeridos en el formulario para finalizar su compra.
+    </p>
+    <p class="Checkout__receipt__cbu">
+      CBU: 00140027401508706212295 <br>
+      ALIAS: ULTIMOOJO.ARQ
     </p>
     @if (receipt()) {
     <div class="Checkout__receipt__preview">{{ receipt()!.name }}</div>
@@ -97,7 +105,10 @@
     </form>
   </section>
   } @else {
-    <h3 class="Checkout__empty-cart">Agregue un producto desde la sección de plantillas para comenzar a llenar el carrito</h3>
+  <h3 class="Checkout__empty-cart">
+    Agregue un producto desde la sección de plantillas para comenzar a llenar el
+    carrito
+  </h3>
   }
 </main>
 

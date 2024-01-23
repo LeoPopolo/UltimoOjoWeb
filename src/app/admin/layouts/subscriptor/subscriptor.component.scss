@@ -1,0 +1,49 @@
+@use "../../../styles/tools.scss" as tools;
+
+.Subscriptors {
+  & {
+    padding: 5%;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__title {
+    font-size: 2em;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 50px;
+
+    &__item {
+      width: 100%;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 1px 1px 5px 1px #50505050;
+      background-color: #eee;
+
+      span {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      &__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &__copy {
+    width: 300px;
+    margin-top: 25px;
+  }
+}
