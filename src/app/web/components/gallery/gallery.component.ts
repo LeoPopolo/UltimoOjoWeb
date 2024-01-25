@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { PostService } from '../../../admin/services/post.service';
 import { IPost } from '../../../admin/models/post';
+import { environment } from '../../../../environments/environments';
 
 @Component({
   selector: 'app-gallery',
@@ -11,7 +12,7 @@ import { IPost } from '../../../admin/models/post';
 })
 export class GalleryComponent implements OnInit {
   private readonly postServices = inject(PostService);
-  public readonly downloadImageUrl = 'http://localhost:3000/api/file/download';
+  public readonly downloadImageUrl = `${environment.api_url}/file/download`;
 
   galleryPosts = signal<IPost[]>([]);
 
@@ -26,6 +27,6 @@ export class GalleryComponent implements OnInit {
   }
 
   redirectTo(post: IPost) {
-    location.href = post.url;
+    location.href = `https://www.instagram.com/p/${post.url}`;
   }
 }

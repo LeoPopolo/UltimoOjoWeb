@@ -6,6 +6,7 @@ import { AsyncPipe } from '@angular/common';
 import { FileService } from '../../../../shared/services/file.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../../environments/environments';
 
 @Component({
   selector: 'app-posts',
@@ -16,10 +17,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   imports: [InputComponent, AsyncPipe, FormsModule]
 })
 export class PostsComponent implements OnInit {
+
   private readonly postServices = inject(PostService);
   private readonly fileServices = inject(FileService);
   private readonly snackbarServices = inject(MatSnackBar);
-  public readonly downloadImageUrl = 'http://localhost:3000/api/file/download';
+  public readonly downloadImageUrl = `${environment.api_url}/file/download`;
 
   posts = signal<IPost[]>([]);
 
