@@ -58,6 +58,7 @@
         cursor: pointer;
         align-items: center;
         gap: 10px;
+        color: tools.colors(blackOne);
 
         @media screen and (max-width: 799px) {
           font-size: 15px;

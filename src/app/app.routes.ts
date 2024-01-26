@@ -1,61 +1,45 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './web/layouts/home/home.component';
-import { AboutComponent } from './web/layouts/about/about.component';
-import { SubscriptionComponent } from './web/layouts/subscription/subscription.component';
-import { ContactComponent } from './web/layouts/contact/contact.component';
-import { LoginComponent } from './admin/layouts/login/login.component';
-import { AdminComponent } from './admin/layouts/admin/admin.component';
-import { PostsComponent } from './admin/layouts/posts/posts.component';
-import { PackTemplateComponent } from './web/layouts/pack-template/pack-template.component';
-import { ContractTemplateComponent } from './web/layouts/contract-template/contract-template.component';
-import { QuestionnaireComponent } from './web/layouts/questionnaire/questionnaire.component';
-import { BudgetTemplateComponent } from './web/layouts/budget-template/budget-template.component';
-import { CheckoutComponent } from './web/layouts/checkout/checkout.component';
-import { TemplatesComponent } from './admin/layouts/templates/templates.component';
-import { SalesComponent } from './admin/layouts/sales/sales.component';
-import { ThankyouPageComponent } from './web/layouts/thankyou-page/thankyou-page.component';
-import { SubscriptorsComponent } from './admin/layouts/subscriptor/subscriptor.component';
 
 export const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    loadComponent: () => import('./web/layouts/home/home.component').then(c => c.HomeComponent)
   },
   {
     path: 'about',
-    component: AboutComponent,
+    loadComponent: () => import('./web/layouts/about/about.component').then(c => c.AboutComponent)
   },
   {
     path: 'newsletter',
-    component: SubscriptionComponent,
+    loadComponent: () => import('./web/layouts/subscription/subscription.component').then(c => c.SubscriptionComponent),
   },
   {
     path: 'contact',
-    component: ContactComponent,
+    loadComponent: () => import('./web/layouts/contact/contact.component').then(c => c.ContactComponent),
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadComponent: () => import('./admin/layouts/login/login.component').then(c => c.LoginComponent),
   },
   {
     path: 'admin',
-    component: AdminComponent,
+    loadComponent: () => import('./admin/layouts/admin/admin.component').then(c => c.AdminComponent),
     children: [
       {
         path: 'posts',
-        component: PostsComponent,
+        loadComponent: () => import('./admin/layouts/posts/posts.component').then(c => c.PostsComponent),
       },
       {
         path: 'templates',
-        component: TemplatesComponent,
+        loadComponent: () => import('./admin/layouts/templates/templates.component').then(c => c.TemplatesComponent),
       },
       {
         path: 'sales',
-        component: SalesComponent,
+        loadComponent: () => import('./admin/layouts/sales/sales.component').then(c => c.SalesComponent),
       },
       {
         path: 'subscriptors',
-        component: SubscriptorsComponent,
+        loadComponent: () => import('./admin/layouts/subscriptor/subscriptor.component').then(c => c.SubscriptorsComponent),
       },
       {
         path: '',
@@ -66,27 +50,27 @@ export const routes: Routes = [
   },
   {
     path: 'pack',
-    component: PackTemplateComponent,
+    loadComponent: () => import('./web/layouts/pack-template/pack-template.component').then(c => c.PackTemplateComponent),
   },
   {
     path: 'contract',
-    component: ContractTemplateComponent,
+    loadComponent: () => import('./web/layouts/contract-template/contract-template.component').then(c => c.ContractTemplateComponent),
   },
   {
     path: 'questionnaire',
-    component: QuestionnaireComponent,
+    loadComponent: () => import('./web/layouts/questionnaire/questionnaire.component').then(c => c.QuestionnaireComponent),
   },
   {
     path: 'budget',
-    component: BudgetTemplateComponent,
+    loadComponent: () => import('./web/layouts/budget-template/budget-template.component').then(c => c.BudgetTemplateComponent),
   },
   {
     path: 'checkout',
-    component: CheckoutComponent,
+    loadComponent: () => import('./web/layouts/checkout/checkout.component').then(c => c.CheckoutComponent),
   },
   {
     path: 'thankyou',
-    component: ThankyouPageComponent,
+    loadComponent: () => import('./web/layouts/thankyou-page/thankyou-page.component').then(c => c.ThankyouPageComponent),
   },
   {
     path: '',

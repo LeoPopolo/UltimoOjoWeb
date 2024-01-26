@@ -48,6 +48,7 @@
         font-size: 25px;
         font-family: "Poppins", sans-serif;
         font-weight: lighter;
+        color: tools.colors(blackOne);
 
         @media screen and (max-width: 799px) {
           font-size: 15px;
