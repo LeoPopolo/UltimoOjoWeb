@@ -21,15 +21,19 @@ export class NewsletterComponent {
 
   sendSubscription() {
     const body = {
-      name: this.form().get('name')?.value,
-      lastName: this.form().get('lastName')?.value,
-      email: this.form().get('email')?.value,
+      name: this.getFormValue('name'),
+      lastName: this.getFormValue('lastName'),
+      email: this.getFormValue('email'),
     }
 
     this.subscriptionServices.createSubscriptor(body).subscribe(() => {
       this.openSnackbar('Suscripción enviada con éxito');
       this.form().reset();
     });
+  }
+
+  getFormValue(control: string) {
+    return this.form().get(control)?.value;
   }
 
   openSnackbar(message: string) {

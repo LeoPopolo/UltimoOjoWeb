@@ -1,3 +1,3 @@
 export const environment = {
-    api_url: 'http://149.50.136.73/service/api'
+    api_url: 'http://ultimoojo.com/service/api'
   }
