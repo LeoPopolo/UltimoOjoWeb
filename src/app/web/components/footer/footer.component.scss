@@ -11,7 +11,7 @@
   &__sections {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;
-    padding: 50px 20%;
+    padding: 50px 200px;
 
     @media screen and (max-width: 799px) {
       display: flex;
