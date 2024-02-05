@@ -9,7 +9,7 @@
         </div>
         <span class="Posts__body__card__link">
           Link a la publicación:
-          <a [href]="post.url">{{'https://www.instagram.com/p/' + post.url}}</a>
+          <a [href]="post.url">{{'https://www.instagram.com/' + post.url}}</a>
         </span>
         <span class="Posts__body__card__delete" (click)="deletePost(post.id)">
           <img src="../../../../assets/svg/delete.svg" alt="delete">

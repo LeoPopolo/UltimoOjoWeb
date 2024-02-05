@@ -92,7 +92,7 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(imagePath: string) {
-    const link = this.link.replace('https://www.instagram.com/p/', '')
+    const link = this.link.replace('https://www.instagram.com/', '')
 
     const body = {
       image_path: imagePath,

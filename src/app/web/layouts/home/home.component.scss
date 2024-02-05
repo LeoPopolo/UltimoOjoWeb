@@ -69,15 +69,23 @@
     }
 
     &__banner {
-      background: url("../../../../assets/images/banner.jpg");
-      background-size: cover;
-      background-position-y: -15vh;
+      // background: url("../../../../assets/images/banner.jpg");
+      // background-size: cover;
+      // background-position-y: -15vh;
+      height: 65vh;
       width: 100%;
-      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      object-fit: cover;
+      overflow: hidden;
 
       @media screen and (max-width: 799px) {
-        background-position-y:-10vh;
-        height: 400px;
+        height: 55vh;
+      }
+
+      &__image {
+        width: 100%;
       }
     }
   }

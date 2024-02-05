@@ -27,6 +27,6 @@ export class GalleryComponent implements OnInit {
   }
 
   redirectTo(post: IPost) {
-    location.href = `https://www.instagram.com/p/${post.url}`;
+    location.href = `https://www.instagram.com/${post.url}`;
   }
 }
