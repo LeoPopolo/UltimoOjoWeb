@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.meta.updateTag({ 'http-equiv': 'content-language', content: 'es' });
     this.meta.updateTag({ property: 'og:title', content: 'Último ojo - Diseño y arquitectura' });
     this.meta.updateTag({ property: 'og:description', content: 'Plantillas de diseño en canva' });
-    this.meta.updateTag({ property: 'og:image', content: './assets/images/logo.png' });
+    this.meta.updateTag({ property: 'og:image', content: '../assets/images/logo.png' });
     this.meta.updateTag({ property: 'og:url', content: 'http://ultimoojo.com' });
   }
 
