@@ -11,7 +11,7 @@ import { Meta } from '@angular/platform-browser';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  private readonly meta = inject(Meta):
+  private readonly meta = inject(Meta);
 
   ngOnInit(): void {
     this.meta.updateTag({ name: 'description', content: 'Diseño. arquitectura, plantillas de contrato, decoración' });
