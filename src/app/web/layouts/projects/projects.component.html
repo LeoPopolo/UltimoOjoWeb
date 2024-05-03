@@ -1,4 +1,20 @@
 <main class="Main">
     <app-navbar class="Main__navbar" />
+
+    <section class="Main__body">
+      <h1 class="Main__body__title">Nuestros proyectos</h1>
+
+      <section class="Main__body__grid">
+        @for (item of projects(); track $index) {
+          <div class="Main__body__grid__card">
+            <div class="Main__body__grid__card__capture">
+              <img class="Main__body__grid__card__capture__image" [src]="item.portrait">
+            </div>
+            <h3 class="Main__body__grid__card__title">{{item.title}}</h3>
+          </div>
+        }
+      </section>
+    </section>
+
     <app-footer class="Main__footer" />
 </main>
