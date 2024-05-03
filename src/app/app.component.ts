@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
+import { GeolocationService } from './web/services/geolocation.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,14 @@ import { Meta } from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
   private readonly meta = inject(Meta);
+  private readonly geolocationServices = inject(GeolocationService);
 
   ngOnInit(): void {
+    this.setMetaInfo();
+    this.getCurrentCountry();
+  }
+
+  setMetaInfo() {
     this.meta.updateTag({ name: 'description', content: 'Diseño. arquitectura, plantillas de contrato, decoración' });
     this.meta.updateTag({ name: 'keywords', content: 'diseño, arquitectura, plantilla, contrato, cuestionario de cliente, presupuesto, decoración, templates, newsletter, design' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
@@ -22,6 +29,12 @@ export class AppComponent implements OnInit {
     this.meta.updateTag({ property: 'og:description', content: 'Plantillas de diseño en canva' });
     this.meta.updateTag({ property: 'og:image', content: '../assets/images/logo.png' });
     this.meta.updateTag({ property: 'og:url', content: 'http://ultimoojo.com' });
+  }
+
+  getCurrentCountry() {
+    this.geolocationServices.getCurrentCountry().subscribe(data => {
+      localStorage.setItem('country', data.country_name);
+    });
   }
 
 }
