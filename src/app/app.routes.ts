@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./web/layouts/subscription/subscription.component').then(c => c.SubscriptionComponent),
   },
   {
+    path: 'projects',
+    loadComponent: () => import('./web/layouts/projects/projects.component').then(c => c.ProjectsComponent),
+  },
+  {
     path: 'contact',
     loadComponent: () => import('./web/layouts/contact/contact.component').then(c => c.ContactComponent),
   },
