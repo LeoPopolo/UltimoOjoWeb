@@ -30,7 +30,11 @@
       <span routerLink="/newsletter" class="Sidebar__content__option">Newsletter</span>
       <span routerLink="/contact" class="Sidebar__content__option">Contacto</span>
 
-      <span routerLink="/login" class="Sidebar__content__login">Login</span>
+
+      <span class="Sidebar__content__language">
+        <img [src]="getFlagPath()" alt="language" (click)="changeLanguage()">
+      </span>
+      <!-- <span routerLink="/login" class="Sidebar__content__login">Login</span> -->
     </div>
 
   </aside>

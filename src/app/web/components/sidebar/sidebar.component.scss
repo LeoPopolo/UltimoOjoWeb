@@ -61,6 +61,15 @@
         border-radius: 100px;
         font-size: tools.fontSizes(s);
       }
+
+      &__language {
+        position: absolute;
+        bottom: 50px;
+
+        img {
+          height: 100%;
+        }
+      }
     }
 
     &__close {

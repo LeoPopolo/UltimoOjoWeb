@@ -159,19 +159,33 @@
     }
   }
 
+  &__language {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 200ms;
+
+    &:active {
+      transform: scale(0.8);
+    }
+
+    @media screen and (max-width: 799px) {
+      display: none;
+    }
+  }
+
   &__login {
     margin-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media screen and (max-width: 799px) {
       display: none;
     }
 
-    &__button {
-      padding: 10px 20px;
-      background-color: tools.colors(beigeOne);
-      color: #fff;
-      border-radius: 100px;
-      font-size: tools.fontSizes(s);
+    img {
       cursor: pointer;
     }
   }

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { GeolocationService } from './web/services/geolocation.service';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslatorService } from './shared/translate/translator.service';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,18 @@ import { GeolocationService } from './web/services/geolocation.service';
 export class AppComponent implements OnInit {
   private readonly meta = inject(Meta);
   private readonly geolocationServices = inject(GeolocationService);
+  private readonly translate = inject(TranslateService);
+  private readonly translator = inject(TranslatorService);
 
   ngOnInit(): void {
     this.setMetaInfo();
     this.getCurrentCountry();
+    this.setDefaultLanguage();
+  }
+
+  setDefaultLanguage() {
+    this.translate.setDefaultLang('es');
+    this.translator.setCurrentLanguage('es');
   }
 
   setMetaInfo() {

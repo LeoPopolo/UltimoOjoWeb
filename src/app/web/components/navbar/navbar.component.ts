@@ -5,6 +5,8 @@ import { ButtonComponent } from '../button/button.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CartService } from '../../services/cart.service';
 import { ITemplate } from '../../models/template';
+import { TranslatorService } from '../../../shared/translate/translator.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-navbar',
@@ -14,19 +16,34 @@ import { ITemplate } from '../../models/template';
     imports: [RouterModule, CurrencyPipe, ButtonComponent, SidebarComponent, NgStyle]
 })
 export class NavbarComponent implements OnInit {
-  sidebarOpen = false;
   private readonly cartService = inject(CartService);
+  private readonly translatorService = inject(TranslatorService);
 
+  sidebarOpen = false;
   cart = signal<ITemplate[]>([]);
-
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-  }
+  lang: string = localStorage.getItem('lang')!;
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe((data) => {
       this.cart.set(data);
     });
+  }
+
+  changeLanguage() {
+    this.translatorService.toggleLanguage();
+    this.lang = this.translatorService.getCurrentLanguage();
+  }
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  getFlagPath() {
+    if (this.lang === 'es') {
+      return "../../../../assets/svg/spain.svg";
+    } else {
+      return "../../../../assets/svg/england.svg";
+    }
   }
 
   get total() {

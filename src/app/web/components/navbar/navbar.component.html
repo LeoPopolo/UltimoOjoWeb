@@ -51,8 +51,17 @@
       alt="Carrito"
     />
   </div>
+
+  <div class="Navbar__language">
+    <img [src]="getFlagPath()" alt="language" (click)="changeLanguage()">
+  </div>
+
   <div class="Navbar__login">
-    <button class="Navbar__login__button" routerLink="/login">Login</button>
+    <img
+      src="../../../../assets/svg/login.svg"
+      alt="login"
+      routerLink="/login"
+    >
   </div>
 </nav>
 
