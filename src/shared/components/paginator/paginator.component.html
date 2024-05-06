@@ -1,0 +1,17 @@
+<div class="Wrapper">
+    <section class="Paginator">
+      <span class="Paginator__info"> {{ totalItems }} Elementos</span>
+      <div class="Paginator__control">
+          <div class="Paginator__control__button" (click)="previous()">
+              <mat-icon class="Paginator__control__button__icon">remove</mat-icon>
+            </div>
+      </div>
+      <span class="Paginator__info"> {{ currentPage }} / {{ maxPages }} </span>
+      <div class="Paginator__control">
+          <div class="Paginator__control__button" (click)="next()">
+              <mat-icon class="Paginator__control__button__icon">add</mat-icon>
+            </div>
+      </div>
+    </section>
+  </div>
+  

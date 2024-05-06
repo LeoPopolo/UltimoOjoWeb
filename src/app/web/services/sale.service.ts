@@ -1,9 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environments';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SaleRequest, SaleResponse } from '../models/sale';
 
-type salesResponseType = { data: SaleResponse[] };
+type salesResponseType = {
+  data: SaleResponse[];
+  maxPages: number;
+  totalItems: number;
+};
 type saleResponseType = { data: SaleResponse };
 
 @Injectable({
@@ -19,8 +23,18 @@ export class SaleService {
     return this.httpClient.post<SaleRequest>(`${this.api_url}/sale/`, bodySale);
   }
 
-  getSales() {
-    return this.httpClient.get<salesResponseType>(`${this.api_url}/sale/`);
+  getSales(filter?: string, page?: number, pageSize?: number) {
+    let params = new HttpParams();
+
+    if (filter) params = params.set('filter', filter);
+
+    if (page) params = params.set('page', page);
+
+    if (pageSize) params = params.set('pageSize', pageSize);
+
+    return this.httpClient.get<salesResponseType>(`${this.api_url}/sale/`, {
+      params,
+    });
   }
 
   getSale(id: number) {

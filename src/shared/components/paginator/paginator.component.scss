@@ -1,0 +1,50 @@
+@use "../../../app/styles/tools.scss" as tools;
+
+.Wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.Paginator {
+  width: 430px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  margin-top: tools.spacing(m);
+  margin-bottom: tools.spacing(l);
+
+  &__info {
+    margin: auto;
+  }
+  &__control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &__button {
+      display: flex;
+      background-color: tools.colors(blackOne);
+      color: tools;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      border-radius: 100px;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 30px;
+
+      &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: tools.spacing(s);
+      }
+    }
+  }
+}

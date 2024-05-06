@@ -10,34 +10,43 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   standalone: true,
   imports: [],
   templateUrl: './sales.component.html',
-  styleUrl: './sales.component.scss'
+  styleUrl: './sales.component.scss',
 })
 export class SalesComponent implements OnInit {
   private readonly saleServices = inject(SaleService);
   private readonly dialog = inject(MatDialog);
   private readonly snackbarServices = inject(MatSnackBar);
 
-  sales = signal<SaleResponse[]>([])
+  totalItems = signal<number>(1);
+  maxPages = signal<number>(1);
+  sales = signal<SaleResponse[]>([]);
+
+  currentPage: number = 1;
+  readonly pageSize = 2;
 
   ngOnInit(): void {
-      this.getSales();
+    this.getSales();
   }
 
-  getSales() {
-    this.saleServices.getSales().subscribe(
-      data => {
+  getSales(filter?: string) {
+    this.saleServices
+      .getSales(filter, this.currentPage, this.pageSize)
+      .subscribe((data) => {
         this.sales.set(data.data);
-      }
-    );
+        this.maxPages.set(data.maxPages);
+        this.totalItems.set(data.totalItems);
+      });
   }
 
   markSaleAsPaid(saleId: number) {
     this.saleServices.markSaleAsPaid(saleId).subscribe(
       () => {
-        this.openSnackbar('La venta fue confirmada y las plantillas fueron enviadas al cliente!');
+        this.openSnackbar(
+          'La venta fue confirmada y las plantillas fueron enviadas al cliente!'
+        );
         this.getSales();
       },
-      err => {
+      (err) => {
         console.log(err);
       }
     );
@@ -47,20 +56,19 @@ export class SalesComponent implements OnInit {
     const dialog = this.dialog.open(DialogSeeSaleComponent, {
       width: '500px',
       data: {
-        sale
-      }
+        sale,
+      },
     });
 
-    dialog.afterClosed().subscribe(data => {
-      if (data)
-        this.markSaleAsPaid(sale.id)
+    dialog.afterClosed().subscribe((data) => {
+      if (data) this.markSaleAsPaid(sale.id);
     });
   }
 
   openSnackbar(message: string) {
     this.snackbarServices.open(message, 'OK', {
       duration: 3000,
-      panelClass: ['Snackbar']
+      panelClass: ['Snackbar'],
     });
   }
 }
