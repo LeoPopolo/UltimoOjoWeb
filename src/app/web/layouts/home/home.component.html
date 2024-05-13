@@ -6,7 +6,7 @@
       <!-- <h1 class="Main__body__welcome__title">BIENVENID&commat;</h1> -->
       <h1 class="Main__body__welcome__title"> {{ 'welcome' | translate }} </h1>
       <button class="Main__body__welcome__button">
-        TRABAJEMOS JUNT&commat;S
+        {{ 'work' | translate }}
       </button>
 
       <img
@@ -21,11 +21,7 @@
 
   <section class="Main__about">
     <p class="Main__about__text">
-      Nos emociona materializar las ideas de nuestros clientes mediante un
-      diseño vanguardista y funcional, prestando atención meticulosa a cada
-      detalle para lograr un resultado completo. No simplemente creamos
-      espacios; nuestra misión se extiende a asesorar e inspirar a profesionales
-      tanto presentes como futuros.
+      {{ 'homeText' | translate }}
     </p>
   </section>
 
@@ -36,27 +32,25 @@
 
     <section class="Main__templates__info">
       <h1 class="Main__templates__info__title">
-        Comprendemos el punto en el que te encuentras
-        ¡Nosotras estuvimos ahí!
+        {{ 'homeCardTitle' | translate }}
       </h1>
       <p class="Main__templates__info__body">
-        Ante la falta de orientación al inicio de nuestro camino, creamos una plataforma para ofrecer ayuda y claridad,
-        proporcionando acceso a plantillas que faciliten tu trayectoria.
+        {{ 'homeCardInfo' | translate }}
       </p>
 
       <div class="Main__templates__wrapper--mobile">
         <section class="Main__templates__wrapper__banner--mobile"></section>
       </div>
 
-      <button class="Main__templates__info__button">Plantillas</button>
+      <button class="Main__templates__info__button"> {{ 'templates' | translate }}</button>
     </section>
   </section>
 
   <section class="Main__news">
     <section class="Main__news__form">
-      <h1 class="Main__news__form__title">SUSCRIBETE AL NEWSLETTER</h1>
+      <h1 class="Main__news__form__title"> {{ 'suscribe' | translate }}</h1>
       <p class="Artcile__news__form__subtitle">
-        Recibe a Último ojo en tu bandeja de entrada!
+        {{ 'receive' | translate }}
       </p>
 
       <app-newsletter></app-newsletter>

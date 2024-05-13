@@ -4,13 +4,14 @@ import { ButtonComponent } from "../button/button.component";
 import { SubscriptorService } from '../../../admin/services/subscriptor.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-newsletter',
     standalone: true,
     templateUrl: './newsletter.component.html',
     styleUrl: './newsletter.component.scss',
-    imports: [InputComponent, ButtonComponent, ReactiveFormsModule]
+    imports: [InputComponent, ButtonComponent, ReactiveFormsModule, TranslateModule]
 })
 export class NewsletterComponent {
   private readonly subscriptionServices = inject(SubscriptorService);
@@ -49,6 +50,10 @@ export class NewsletterComponent {
       lastName: [''],
       email: [''],
     });
+  }
+
+  getTranslate(clue:string){
+    
   }
 
 }

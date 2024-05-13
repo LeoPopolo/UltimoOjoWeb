@@ -3,13 +3,14 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-projects',
     standalone: true,
     templateUrl: './projects.component.html',
     styleUrl: './projects.component.scss',
-    imports: [NavbarComponent, FooterComponent]
+    imports: [NavbarComponent, FooterComponent, TranslateModule]
 })
 export class ProjectsComponent implements OnInit {
   private readonly projectServices = inject(ProjectService);

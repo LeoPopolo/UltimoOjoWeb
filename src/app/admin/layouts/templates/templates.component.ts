@@ -5,11 +5,12 @@ import { CurrencyPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditTemplateComponent } from '../../components/dialog-edit-template/dialog-edit-template.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-templates',
   standalone: true,
-  imports: [ CurrencyPipe ],
+  imports: [ CurrencyPipe , TranslateModule],
   templateUrl: './templates.component.html',
   styleUrl: './templates.component.scss'
 })

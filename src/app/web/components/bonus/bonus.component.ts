@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-bonus',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './bonus.component.html',
   styleUrl: './bonus.component.scss'
 })

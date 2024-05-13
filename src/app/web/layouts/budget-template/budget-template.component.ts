@@ -5,13 +5,14 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ITemplate } from '../../models/template';
 import { CartService } from '../../services/cart.service';
 import { TemplateService } from '../../services/template.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-budget-template',
   standalone: true,
   templateUrl: './budget-template.component.html',
   styleUrl: './budget-template.component.scss',
-  imports: [NavbarComponent, BonusComponent, FooterComponent],
+  imports: [NavbarComponent, BonusComponent, FooterComponent, TranslateModule],
 })
 export class BudgetTemplateComponent implements OnInit {
   private readonly cartService = inject(CartService);

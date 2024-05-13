@@ -2,11 +2,12 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { PostService } from '../../../admin/services/post.service';
 import { IPost } from '../../../admin/models/post';
 import { environment } from '../../../../environments/environments';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

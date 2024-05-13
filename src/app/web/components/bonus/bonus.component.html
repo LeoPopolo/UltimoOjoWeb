@@ -5,16 +5,16 @@
 
     <section class="Bonus__info">
       <h1 class="Bonus__info__title">
-        ¡BONUS EXCLUSIVO!
+        {{ 'bonus' | translate }}
       </h1>
       <p class="Bonus__info__body">
-        Cada plantilla incluye un video tutorial donde te mostraré como sacar el mejor provecho de estas herramienta y recibirás mi recomendaciones personales para utilizarlas.
+        {{ 'bonusInfo' | translate }}
       </p>
 
       <div class="Bonus__wrapper--mobile">
         <section class="Bonus__wrapper__banner--mobile"></section>
       </div>
 
-      <button class="Bonus__info__button" (click)="addToCart()"> <img class="Bonus__info__button__icon" src="../../../../assets/svg/cart.svg"> Agregar al carrito</button>
+      <button class="Bonus__info__button" (click)="addToCart()"> <img class="Bonus__info__button__icon" src="../../../../assets/svg/cart.svg"> {{ 'cart' | translate }}</button>
     </section>
   </section>

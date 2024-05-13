@@ -1,8 +1,8 @@
 <form class="Inputs" [formGroup]="form()">
   <section class="Inputs__name">
-    <input class="Input" formControlName="name" type="text" placeholder="Nombre"/>
+    <input class="Input" formControlName="name" type="text" [placeholder]="getTranslate('placeholderName')"/>
     <input class="Input" formControlName="lastName" type="text" placeholder="Apellido"/>
   </section>
   <input class="Input" formControlName="email" type="email" placeholder="Email"/>
-  <app-button [text]="'Suscribirme'" (click)="sendSubscription()"></app-button>
+  <app-button [text]="'suscribeB' | translate" (click)="sendSubscription()"></app-button>
 </form>

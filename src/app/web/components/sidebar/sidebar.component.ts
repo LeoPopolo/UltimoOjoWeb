@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslatorService } from '../../../shared/translate/translator.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,TranslateModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

@@ -2,7 +2,7 @@
     <app-navbar class="Main__navbar" />
 
     <section class="Main__body">
-      <h1 class="Main__body__title">Nuestros proyectos</h1>
+      <h1 class="Main__body__title">{{ 'projectTitle' | translate }}</h1>
 
       <section class="Main__body__grid">
         @for (item of projects(); track $index) {

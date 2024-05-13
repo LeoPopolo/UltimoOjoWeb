@@ -1,10 +1,10 @@
 <main class="Wrapper">
   <aside class="Sidebar">
     <div class="Sidebar__content">
-      <span routerLink="/home" class="Sidebar__content__option">Inicio</span>
-      <span routerLink="/about" class="Sidebar__content__option">Nosotros</span>
+      <span routerLink="/home" class="Sidebar__content__option">{{ 'home' | translate }}</span>
+      <span routerLink="/about" class="Sidebar__content__option">{{ 'about' | translate }}</span>
       <span class="Sidebar__content__option Sidebar__content__option--templates" (click)="toggleShowTemplates()">
-        Plantillas
+        {{ 'templates' | translate }}
 
         <div class="Sidebar__content__option__menu"
           [class.Sidebar__content__option__menu--show]="showTemplates()"
@@ -12,23 +12,23 @@
           <span
             routerLink="/contract"
             class="Sidebar__content__option__menu__item"
-            >Plantilla de contrato.</span
+            >{{ 'contractTemplate' | translate }}</span
           >
           <span
             routerLink="/questionnaire"
             class="Sidebar__content__option__menu__item"
-            >Plantilla de cuestionario para cliente.</span
+            >{{ 'customerTemplate' | translate }}.</span
           >
           <span routerLink="/budget" class="Sidebar__content__option__menu__item"
-            >Plantilla para presupuesto.</span
+            >{{ 'budgetTemplate' | translate }}</span
           >
           <span routerLink="/pack" class="Sidebar__content__option__menu__item"
-            >Pack 20% de descuento.</span
+            >{{ 'pack' | translate }}</span
           >
         </div>
       </span>
       <span routerLink="/newsletter" class="Sidebar__content__option">Newsletter</span>
-      <span routerLink="/contact" class="Sidebar__content__option">Contacto</span>
+      <span routerLink="/contact" class="Sidebar__content__option">{{ 'contact' | translate }}</span>
 
 
       <span class="Sidebar__content__language">

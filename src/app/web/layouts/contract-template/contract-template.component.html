@@ -3,9 +3,9 @@
 
     <section class="Main__body">
       <section class="Main__body__welcome">
-        <h1 class="Main__body__welcome__title">Plantilla Canva | ${{template().price}}</h1>
+        <h1 class="Main__body__welcome__title">Plantilla Canva | ${{template()?.price}}</h1>
 
-        <h2 class="Main__body__welcome__description">{{template().description}}</h2>
+        <h2 class="Main__body__welcome__description">{{template()?.description}}</h2>
 
         <button class="Main__body__welcome__button"
           (click)="addTemplate()"

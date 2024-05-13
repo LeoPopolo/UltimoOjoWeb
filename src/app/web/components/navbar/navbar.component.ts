@@ -6,14 +6,14 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { CartService } from '../../services/cart.service';
 import { ITemplate } from '../../models/template';
 import { TranslatorService } from '../../../shared/translate/translator.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss',
-    imports: [RouterModule, CurrencyPipe, ButtonComponent, SidebarComponent, NgStyle]
+    imports: [RouterModule, CurrencyPipe, ButtonComponent, SidebarComponent, NgStyle,TranslateModule]
 })
 export class NavbarComponent implements OnInit {
   private readonly cartService = inject(CartService);
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeLanguage() {
+    console.log("funca")
     this.translatorService.toggleLanguage();
     this.lang = this.translatorService.getCurrentLanguage();
   }
