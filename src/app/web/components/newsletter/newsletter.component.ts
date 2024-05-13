@@ -4,7 +4,7 @@ import { ButtonComponent } from "../button/button.component";
 import { SubscriptorService } from '../../../admin/services/subscriptor.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-newsletter',
@@ -17,6 +17,7 @@ export class NewsletterComponent {
   private readonly subscriptionServices = inject(SubscriptorService);
   private readonly fb = inject(FormBuilder);
   private readonly snackbarServices = inject(MatSnackBar)
+  private readonly translater = inject(TranslateService)
 
   form = signal<FormGroup>(this.createForm());
 
@@ -52,8 +53,9 @@ export class NewsletterComponent {
     });
   }
 
-  getTranslate(clue:string){
-    
+  getTranslate(key: string){
+    const translation = this.translater.instant(key);
+    return translation;
   }
 
 }

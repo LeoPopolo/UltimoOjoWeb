@@ -31,5 +31,6 @@
   "bonus":"EXCLUSIVE BONUS!",
   "bonusInfo":"Each template includes a video tutorial where I will show you how to make the most of these tools, and you will receive my personal recommendations for using them.",
   "follow":"Follow us on Instagram",
-  "suscribeB":"Suscribe"
+  "suscribeB":"Suscribe",
+  "placeholderName": "Name"
 }
