@@ -54,23 +54,29 @@ export class ProjectsComponent implements OnInit {
   }
 
   parseFileToURL() {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
+    this.galleryToBeCreated()?.forEach(item => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
 
-      reader.onload = (event) => {
+        reader.onload = (event) => {
+          if (event.target && event.target.result) {
+            let tmpGallery = this.galleryToShow()! as (string | ArrayBuffer)[];
 
-        let tmpGallery = this.galleryToShow()!;
+            tmpGallery.push(event.target.result);
+            this.galleryToShow.set(tmpGallery as (string[] | ArrayBuffer[]));
+            resolve(tmpGallery);
+          } else {
+            reject(new Error('Error al leer el archivo'));
+          }
+        };
 
-        tmpGallery.push(event.target!.result!) ;
-        resolve(event.target!.result);
-      };
+        reader.onerror = (error) => {
+          console.log(error);
+          reject(new Error('Error al leer el archivo'));
+        };
 
-      reader.onerror = (error) => {
-        console.log(error);
-        reject(new Error('Error al leer el archivo'));
-      };
-
-      reader.readAsDataURL(this.imageToBeCreated()!);
+        reader.readAsDataURL(item!);
+      });
     });
   }
 
@@ -84,16 +90,18 @@ export class ProjectsComponent implements OnInit {
   }
 
   uploadFile() {
-    this.fileServices.uploadFile(this.imageToBeCreated()!).subscribe(
-      (data) => {
-        if (data) this.createProject(data.images);
-        else this.openSnackbar('error al crear el post');
-      },
-      (err) => {
-        console.log(err);
-        this.openSnackbar('error al crear el post');
-      }
-    );
+    this.galleryToBeCreated()?.forEach(file => {
+      this.fileServices.uploadFile(file).subscribe(
+        (data) => {
+          if (data) this.createProject(data.images);
+          else this.openSnackbar('error al crear el post');
+        },
+        (err) => {
+          console.log(err);
+          this.openSnackbar('error al crear el post');
+        }
+      );
+    })
   }
 
   createProject(images: string[]) {
