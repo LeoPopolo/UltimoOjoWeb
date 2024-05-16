@@ -7,17 +7,17 @@
 
       <form class="Main__body__form__inputs">
         <div class="Main__body__form__inputs__name">
-          <app-input class="Main__body__form__inputs__name__control" placeholderValue="Nombre"></app-input>
-          <app-input class="Main__body__form__inputs__name__control" placeholderValue="Apellido"></app-input>
+          <app-input class="Main__body__form__inputs__name__control" [placeholderValue]="getTranslate('placeholderName')"></app-input>
+          <app-input class="Main__body__form__inputs__name__control" [placeholderValue]="getTranslate('placeholderLastName')"></app-input>
         </div>
         <div class="Main__body__form__inputs__email">
           <app-input class="Main__body__form__inputs__email__control" [placeholderValue]="'Email'"></app-input>
         </div>
         <div class="Main__body__form__inputs__message">
-          <app-textarea class="Main__body__form__inputs__message__control" placeholderValue="Mensaje"></app-textarea>
+          <app-textarea class="Main__body__form__inputs__message__control" [placeholderValue]="getTranslate('message')"></app-textarea>
         </div>
         <div class="Main__body__form__inputs__send">
-          <app-button [text]="'Enviar Mensaje'"></app-button>
+          <app-button [text]="'send' | translate"></app-button>
         </div>
       </form>
     </section>

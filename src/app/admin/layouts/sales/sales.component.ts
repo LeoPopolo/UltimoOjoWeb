@@ -4,25 +4,29 @@ import { SaleResponse } from '../../../web/models/sale';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSeeSaleComponent } from '../../components/dialog-see-sale/dialog-see-sale.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PaginatorComponent } from '../../../../shared/components/paginator/paginator.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss',
+  imports: [PaginatorComponent, FormsModule],
 })
 export class SalesComponent implements OnInit {
   private readonly saleServices = inject(SaleService);
   private readonly dialog = inject(MatDialog);
   private readonly snackbarServices = inject(MatSnackBar);
 
+  searchFilter: string = '';
+
   totalItems = signal<number>(1);
   maxPages = signal<number>(1);
   sales = signal<SaleResponse[]>([]);
 
   currentPage: number = 1;
-  readonly pageSize = 2;
+  readonly pageSize = 10;
 
   ngOnInit(): void {
     this.getSales();
@@ -70,5 +74,14 @@ export class SalesComponent implements OnInit {
       duration: 3000,
       panelClass: ['Snackbar'],
     });
+  }
+
+  setFilter() {
+    this.getSales(this.searchFilter);
+  }
+
+  onPageChanged(page: number) {
+    this.currentPage = page;
+    this.getSales(this.searchFilter);
   }
 }

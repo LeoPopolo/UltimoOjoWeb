@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { InputComponent } from "../../components/input/input.component";
 import { ButtonComponent } from "../../components/button/button.component";
 import { TextareaComponent } from "../../components/textarea/textarea.component";
 import { FooterComponent } from "../../components/footer/footer.component";
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-contact',
@@ -15,4 +15,11 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ContactComponent {
 
+    private readonly translater = inject(TranslateService)
+
+    getTranslate(key: string){
+        const translation = this.translater.instant(key);
+        return translation;
+      }
+    
 }

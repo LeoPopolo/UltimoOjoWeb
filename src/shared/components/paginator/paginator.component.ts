@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatIcon } from  '@angular/material/icon'
+
+
 
 @Component({
   selector: 'app-paginator',
   standalone: true,
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss',
-  imports: [MatIcon],
+  imports: [],
 })
 export class PaginatorComponent {
   @Input() maxPages: number = 1;

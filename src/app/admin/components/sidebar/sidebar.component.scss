@@ -14,16 +14,24 @@
     margin-top: 20px;
 
     &__image {
-      width: 80px;
-      height: 80px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       background-color: tools.colors(beigeThree);
       display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
     }
 
     &__name {
       margin-top: 10px;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       font-size: 20px;
       color: #eee;
     }
@@ -42,7 +50,7 @@
       color: #fff;
       cursor: pointer;
       margin-left: 5px;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       display: inline-flex;
       align-items: center;
       gap: 5px;

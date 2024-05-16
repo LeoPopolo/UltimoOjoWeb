@@ -5,13 +5,14 @@ import { BonusComponent } from '../../components/bonus/bonus.component';
 import { ITemplate } from '../../models/template';
 import { CartService } from '../../services/cart.service';
 import { TemplateService } from '../../services/template.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-questionnaire',
   standalone: true,
   templateUrl: './questionnaire.component.html',
   styleUrl: './questionnaire.component.scss',
-  imports: [NavbarComponent, FooterComponent, BonusComponent],
+  imports: [NavbarComponent, FooterComponent, BonusComponent, TranslateModule],
 })
 export class QuestionnaireComponent implements OnInit {
   private readonly cartService = inject(CartService);

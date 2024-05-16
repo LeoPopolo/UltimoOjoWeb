@@ -5,13 +5,14 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ITemplate } from '../../models/template';
 import { CartService } from '../../services/cart.service';
 import { TemplateService } from '../../services/template.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contract-template',
   standalone: true,
   templateUrl: './contract-template.component.html',
   styleUrl: './contract-template.component.scss',
-  imports: [BonusComponent, FooterComponent, NavbarComponent],
+  imports: [BonusComponent, FooterComponent, NavbarComponent, TranslateModule],
 })
 export class ContractTemplateComponent implements OnInit {
   private readonly cartService = inject(CartService);

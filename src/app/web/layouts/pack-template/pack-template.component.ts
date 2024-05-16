@@ -5,13 +5,14 @@ import { BonusComponent } from '../../components/bonus/bonus.component';
 import { ITemplate } from '../../models/template';
 import { CartService } from '../../services/cart.service';
 import { TemplateService } from '../../services/template.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-pack-template',
   standalone: true,
   templateUrl: './pack-template.component.html',
   styleUrl: './pack-template.component.scss',
-  imports: [FooterComponent, NavbarComponent, BonusComponent],
+  imports: [FooterComponent, NavbarComponent, BonusComponent,TranslateModule],
 })
 export class PackTemplateComponent implements OnInit {
   private readonly cartService = inject(CartService);

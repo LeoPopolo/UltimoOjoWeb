@@ -3,7 +3,7 @@
 
     <section class="Main__body">
       <section class="Main__body__welcome">
-        <h1 class="Main__body__welcome__title">Plantilla Canva | ${{template()?.price}}</h1>
+        <h1 class="Main__body__welcome__title">{{ 'canvaTemplate' | translate }}| ${{template()?.price}}</h1>
 
         <h2 class="Main__body__welcome__description">{{template()?.description}}</h2>
 
@@ -11,7 +11,7 @@
           (click)="addTemplate()"
         >
           <img class="Main__body__welcome__button__icon" src="../../../../assets/svg/cart.svg">
-          Agregar al carrito
+          {{ 'cart' | translate }}
         </button>
       </section>
       <section class="Main__body__banner"></section>

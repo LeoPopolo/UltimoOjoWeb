@@ -27,7 +27,6 @@
 
     &__button {
       display: flex;
-      background-color: tools.colors(blackOne);
       color: tools;
       cursor: pointer;
       outline: none;
@@ -42,7 +41,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
         font-size: tools.spacing(s);
       }
     }

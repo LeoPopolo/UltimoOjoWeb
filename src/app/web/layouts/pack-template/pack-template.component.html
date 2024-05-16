@@ -3,7 +3,7 @@
 
   <section class="Main__body">
     <section class="Main__body__welcome">
-      <h1 class="Main__body__welcome__title">Pack 3 Plantillas | ${{template().price}}</h1>
+      <h1 class="Main__body__welcome__title">{{ 'packTemplate' | translate }}| ${{template()?.price}}</h1>
 
       <div class="Main__body__welcome__list">
         <h2 class="Main__body__welcome__list__ul">
@@ -12,7 +12,7 @@
             src="../../../../assets/svg/check.svg"
             alt="Ceck"
           />
-          Contrato para prestación de servicios
+          {{ 'contractDescription' | translate }}
         </h2>
         <h2 class="Main__body__welcome__list__ul">
           <img
@@ -20,18 +20,18 @@
             src="../../../../assets/svg/check.svg"
             alt="Ceck"
           />
-          Cuestionario para clientes
+          {{ 'questionnaire' | translate }}
         </h2>
         <h2 class="Main__body__welcome__list__ul">
           <img
             class="Main__body__welcome__list__ul__img"
             src="../../../../assets/svg/check.svg"
             alt="Ceck"
-          />Presupuestos
+          />{{ 'budgets' | translate }}
         </h2>
       </div>
 
-      <button class="Main__body__welcome__button"  (click)="addTemplate()"> <img class="Main__body__welcome__button__icon" src="../../../../assets/svg/cart.svg"> Agregar al carrito</button>
+      <button class="Main__body__welcome__button"  (click)="addTemplate()"> <img class="Main__body__welcome__button__icon" src="../../../../assets/svg/cart.svg"> {{ 'cart' | translate }}</button>
     </section>
     <section class="Main__body__banner"></section>
   </section>

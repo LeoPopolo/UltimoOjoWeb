@@ -46,6 +46,10 @@ export const routes: Routes = [
         loadComponent: () => import('./admin/layouts/subscriptor/subscriptor.component').then(c => c.SubscriptorsComponent),
       },
       {
+        path: 'project',
+        loadComponent: () => import('./admin/layouts/projects/projects.component').then(c => c.ProjectsComponent),
+      },
+      {
         path: '',
         redirectTo: 'sales',
         pathMatch: 'full'

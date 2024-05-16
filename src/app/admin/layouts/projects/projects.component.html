@@ -1,0 +1,78 @@
+<main class="Posts">
+  <h1 class="Posts__title">Proyectos</h1>
+
+  <section class="Posts__body">
+    @for (project of projects(); track $index) {
+    <div class="Posts__body__card">
+      <div class="Posts__body__card__image">
+        <img [src]="downloadImageUrl + '/' + project.portrait" alt="post" />
+      </div>
+      <span class="Posts__body__card__link">
+        Titulo:
+        {{ project.title }}
+      </span>
+      <span class="Posts__body__card__delete" (click)="deleteProject(project.id)">
+        <img src="../../../../assets/svg/delete.svg" alt="delete" />
+      </span>
+    </div>
+    }
+    <div
+      class="Posts__body__card"
+      [class.Posts__body__card--new]="!isCreatingNewPost()"
+      [class.Posts__body__card--create]="isCreatingNewPost()"
+    >
+      @if (isCreatingNewPost()) {
+      <div class="NewPost">
+        <div class="NewPost__file">
+          @if (imageToShow()) {
+          <div class="NewPost__file__preview">
+            <img
+              class="NewPost__file__preview__delete"
+              src="../../../../assets/svg/delete-red.svg"
+              (click)="deleteImage()"
+            />
+            <img class="NewPost__file__preview__image" [src]="imageToShow()" />
+          </div>
+          }
+          <button class="NewPost__file--upload" (click)="image.click()">
+            <img src="../../../../assets/svg/upload.svg" alt="upload" />
+            Cargar fotos del proyecto
+          </button>
+          <!-- <button class="NewPost__file--upload" (click)="image.click()">
+            <img src="../../../../assets/svg/upload.svg" alt="upload" />
+            Cargar planos del proyecto
+          </button> -->
+          <input
+            #image
+            type="file"
+            multiple
+            style="display: none"
+            (change)="onLoadedGalleryImage($event)"
+          />
+        </div>
+        <div class="NewPost__link">
+          <input
+            class="NewPost__link__control"
+            type="text"
+            [(ngModel)]="title"
+            placeholder="Nombre del proyecto"
+          />
+        </div>
+        <div class="NewPost__actions">
+          <button class="NewPost__actions--create" (click)="startPostUpload()">
+            Crear
+          </button>
+          <button
+            class="NewPost__actions--cancel"
+            (click)="isCreatingNewPost.set(false)"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+      } @else {
+      <span (click)="isCreatingNewPost.set(true)">+</span>
+      }
+    </div>
+  </section>
+</main>

@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
   isCreatingNewPost = signal<boolean>(false);
 
   link = '';
-
+  
   ngOnInit(): void {
     this.getPosts();
   }

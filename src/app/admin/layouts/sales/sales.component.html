@@ -1,8 +1,17 @@
 <main class="Sales">
-  <h1 class="Sales__title">Mis ventas</h1>
+  <div class="Sales__nav">
+    <h1 class="Sales__nav__title">Mis ventas</h1>
+    <span class="Sales__nav__browser"
+      ><img src="../../../../assets/svg/lupa.svg" alt="" />
+      <input
+        [(ngModel)]="searchFilter"
+        (ngModelChange)="setFilter()"
+        type="text"
+        placeholder="Buscar"
+    /></span>
+  </div>
 
   <section class="Sales__table">
-
     <div class="Sales__table__header">
       <span class="Sales__table__header__item">Cliente</span>
       <span class="Sales__table__header__item">CUIT/CUIL</span>
@@ -15,24 +24,50 @@
     </div>
     <div class="Sales__table__body">
       @for (sale of sales(); track $index) {
-        <div class="Sales__table__body__row">
-          <span class="Sales__table__body__row__column">{{sale.customerName + ' ' + sale.customerLastName}}</span>
-          <span class="Sales__table__body__row__column">{{sale.customerCuit}}</span>
-          <span class="Sales__table__body__row__column">{{sale.customerPhoneNumber}}</span>
-          <span class="Sales__table__body__row__column">{{sale.customerAddress}}</span>
-          <span class="Sales__table__body__row__column">{{sale.customerEmail}}</span>
-          <span class="Sales__table__body__row__column Sales__table__body__row__column--templates">
-            @for (template of sale.templates; track $index) {
-              <span>{{template.name}}</span>
-            }
-          </span>
-          <span class="Sales__table__body__row__column">${{sale.total}}</span>
-          <span class="Sales__table__body__row__column">{{sale.isPaid ? 'Sí' : 'No'}}</span>
-          <span class="Sales__table__body__row__column">
-            <img src="../../../../assets/svg/eye.svg" alt="Ver" (click)="openDialogSeeSale(sale)">
-          </span>
-        </div>
+      <div class="Sales__table__body__row">
+        <span class="Sales__table__body__row__column">{{
+          sale.customerName + " " + sale.customerLastName
+        }}</span>
+        <span class="Sales__table__body__row__column">{{
+          sale.customerCuit
+        }}</span>
+        <span class="Sales__table__body__row__column">{{
+          sale.customerPhoneNumber
+        }}</span>
+        <span class="Sales__table__body__row__column">{{
+          sale.customerAddress
+        }}</span>
+        <span class="Sales__table__body__row__column">{{
+          sale.customerEmail
+        }}</span>
+        <span
+          class="Sales__table__body__row__column Sales__table__body__row__column--templates"
+        >
+          @for (template of sale.templates; track $index) {
+          <span>{{ template.name }}</span>
+          }
+        </span>
+        <span class="Sales__table__body__row__column">${{ sale.total }}</span>
+        <span class="Sales__table__body__row__column">{{
+          sale.isPaid ? "Sí" : "No"
+        }}</span>
+        <span class="Sales__table__body__row__column">
+          <img
+            src="../../../../assets/svg/eye.svg"
+            alt="Ver"
+            (click)="openDialogSeeSale(sale)"
+          />
+        </span>
+      </div>
       }
+    </div>
+    <div class="Sales__table__paginator">
+      <app-paginator
+        [maxPages]="maxPages()"
+        [totalItems]="totalItems()"
+        (pageChanged)="onPageChanged($event)"
+      >
+      </app-paginator>
     </div>
   </section>
 </main>

@@ -32,5 +32,12 @@
   "bonusInfo":"Each template includes a video tutorial where I will show you how to make the most of these tools, and you will receive my personal recommendations for using them.",
   "follow":"Follow us on Instagram",
   "suscribeB":"Suscribe",
-  "placeholderName": "Name"
+  "placeholderName": "Name",
+  "placeholderLastName": "Last Name",
+  "packTemplate":"Pack 3 templates",
+  "contractDescription":"Service provision contract",
+  "questionnaire":"Client questionnaire",
+  "budgets":"budgets",
+  "send":"Send Message",
+  "message":"message"
 }
