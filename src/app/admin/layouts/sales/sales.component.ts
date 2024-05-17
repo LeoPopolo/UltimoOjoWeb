@@ -4,7 +4,7 @@ import { SaleResponse } from '../../../web/models/sale';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSeeSaleComponent } from '../../components/dialog-see-sale/dialog-see-sale.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PaginatorComponent } from '../../../../shared/components/paginator/paginator.component';
+import { PaginatorComponent } from '../../../shared/components/paginator/paginator.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({

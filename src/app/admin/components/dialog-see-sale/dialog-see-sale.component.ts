@@ -2,8 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { SaleResponse } from '../../../web/models/sale';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ButtonComponent } from "../../../web/components/button/button.component";
-import { FileService } from '../../../../shared/services/file.service';
-import { DialogAlertComponent } from '../../../../shared/components/dialog-alert/dialog-alert.component';
+import { FileService } from '../../../shared/services/file.service';
+import { DialogAlertComponent } from '../../../shared/components/dialog-alert/dialog-alert.component';
 
 @Component({
     selector: 'app-dialog-see-sale',

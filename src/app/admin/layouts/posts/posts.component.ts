@@ -3,7 +3,7 @@ import { PostService } from '../../services/post.service';
 import { IPost } from '../../models/post';
 import { InputComponent } from "../../../web/components/input/input.component";
 import { AsyncPipe } from '@angular/common';
-import { FileService } from '../../../../shared/services/file.service';
+import { FileService } from '../../../shared/services/file.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../environments/environments';
@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
   isCreatingNewPost = signal<boolean>(false);
 
   link = '';
-  
+
   ngOnInit(): void {
     this.getPosts();
   }

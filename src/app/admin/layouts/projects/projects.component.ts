@@ -9,7 +9,7 @@ import { ProjectService } from '../../../web/services/project.service';
 import { Project } from '../../../web/models/project';
 import { InputComponent } from '../../../web/components/input/input.component';
 import { AsyncPipe } from '@angular/common';
-import { FileService } from '../../../../shared/services/file.service';
+import { FileService } from '../../../shared/services/file.service';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../environments/environments';
@@ -37,7 +37,7 @@ export class ProjectsComponent implements OnInit {
 
   isCreatingNewPost = signal<boolean>(false);
 
-  title = ''; 
+  title = '';
 
   ngOnInit() {
     this.getProjects();
@@ -106,11 +106,6 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-
-  deleteImage() {
-    this.galleryToBeCreated.set(null);
-    this.galleryToShow.set(null);
-  }
   // deleteImage() {
   //   this.imageToBeCreated.set(null);
   //   this.imageToShow.set(null);
@@ -134,7 +129,7 @@ export class ProjectsComponent implements OnInit {
         (err) => {
           console.log(err);
           this.openSnackbar('error al crear el post');
-        }  
+        }
       );
     })
   }
@@ -152,8 +147,8 @@ export class ProjectsComponent implements OnInit {
     this.projectServices.createProject(body).subscribe((data) => {
       console.log(data);
       this.getProjects();
-      this.imageToBeCreated.set(null);
-      this.imageToShow.set(null);
+      // this.imageToBeCreated.set(null);
+      // this.imageToShow.set(null);
       this.title = '';
     });
   }

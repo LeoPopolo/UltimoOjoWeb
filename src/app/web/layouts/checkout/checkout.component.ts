@@ -13,9 +13,9 @@ import {
 } from '@angular/forms';
 import { SaleRequest } from '../../models/sale';
 import { SaleService } from '../../services/sale.service';
-import { FileService } from '../../../../shared/services/file.service';
+import { FileService } from '../../../shared/services/file.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAlertComponent } from '../../../../shared/components/dialog-alert/dialog-alert.component';
+import { DialogAlertComponent } from '../../../shared/components/dialog-alert/dialog-alert.component';
 import { Router } from '@angular/router';
 
 @Component({
