@@ -1,0 +1,19 @@
+<div class="card">
+  <p-galleria
+      [value]="images"
+      [containerStyle]="{ 'max-width': '1024px' }"
+      [numVisible]="5"
+      [showThumbnailNavigators]="false"
+  >
+          <ng-template pTemplate="item" let-item>
+              <div class="img-wrapper">
+                <img [src]="downloadImageUrl + '/' + item" style="width: 100%;" />
+              </div>
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+              <div class="grid grid-nogutter justify-content-center">
+                  <img [src]="downloadImageUrl + '/' + item" />
+              </div>
+          </ng-template>
+  </p-galleria>
+</div>

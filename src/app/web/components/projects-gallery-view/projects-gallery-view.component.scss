@@ -1,0 +1,22 @@
+::ng-deep .p-galleria-item-wrapper .img-wrapper {
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+::ng-deep .p-galleria-thumbnail-item img {
+  width: 150px;
+  height: 15vh;
+  object-fit: cover;
+}
+
+::ng-deep .p-galleria-thumbnail-wrapper {
+  background-color: #252525;
+}

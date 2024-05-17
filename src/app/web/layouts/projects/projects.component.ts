@@ -6,6 +6,8 @@ import { Project } from '../../models/project';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FlatViewComponent } from '../../components/flat-view/flat-view.component';
+import { ProjectsGalleryViewComponent } from '../../components/projects-gallery-view/projects-gallery-view.component';
+import { environment } from '../../../../environments/environments';
 
 @Component({
     selector: 'app-projects',
@@ -17,6 +19,7 @@ import { FlatViewComponent } from '../../components/flat-view/flat-view.componen
 export class ProjectsComponent implements OnInit {
   private readonly projectServices = inject(ProjectService);
   private readonly dialog = inject(MatDialog);
+  public readonly downloadImageUrl = `${environment.api_url}/file/download`;
 
   projects = signal<Project[]>([]);
 
@@ -36,6 +39,16 @@ export class ProjectsComponent implements OnInit {
       height: '80%',
       data: {
         flat: flatPath
+      }
+    });
+  }
+
+  viewGallery(imagesPaths: string[]) {
+    this.dialog.open(ProjectsGalleryViewComponent, {
+      width: '1024px',
+      height: 'auto',
+      data: {
+        images: imagesPaths
       }
     });
   }
