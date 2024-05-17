@@ -15,10 +15,7 @@ export class ProjectService {
 
   constructor() {}
 
-  createProject(bodyProject: {  title: string;
-    portrait: string;
-    flat: string;
-    images: string[];}) {
+  createProject(bodyProject: Project) {
     return this.httpClient.post<Project>(`${this.api_url}/project/`, bodyProject);
   }
 

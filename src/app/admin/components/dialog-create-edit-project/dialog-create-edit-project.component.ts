@@ -1,0 +1,80 @@
+import { Component, inject, signal } from '@angular/core';
+import { ProjectService } from '../../../web/services/project.service';
+import { FormsModule } from '@angular/forms';
+import { Project } from '../../../web/models/project';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FileService } from '../../../shared/services/file.service';
+import { forkJoin } from 'rxjs';
+
+@Component({
+  selector: 'app-dialog-create-edit-project',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './dialog-create-edit-project.component.html',
+  styleUrl: './dialog-create-edit-project.component.scss'
+})
+export class DialogCreateEditProjectComponent {
+
+  private readonly projectServices = inject(ProjectService);
+  private readonly fileServices = inject(FileService);
+  private readonly dialogRef = inject(MatDialogRef<DialogCreateEditProjectComponent>);
+
+  name: string = '';
+  flat = signal<File | null>(null);
+  gallery = signal<File[]>([]);
+
+  onLoadedFlat(event: any) {
+    this.flat.set(event.target.files[0]);
+  }
+
+  onLoadedGallery(event: any) {
+    this.gallery.set(Array.from(event.target.files));
+  }
+
+  async startUpload() {
+    const galleryResults = await this.uploadGalleryFiles();
+    console.log(galleryResults)
+  }
+
+  uploadGalleryFiles() {
+    return new Promise((resolve, reject) => {
+      this.uploadGallery(this.gallery()).subscribe({
+        next: results => {
+          console.log("ya termino de subir todos")
+          resolve(results);
+        },
+        error: err => {
+          console.log(err);
+          console.log("falló la subida")
+          reject()
+        }
+      })
+    });
+  }
+
+  uploadGallery(files: File[]) {
+    const uploaded = files.map(file => this.fileServices.uploadFile(file));
+    return forkJoin(uploaded);
+  }
+
+  save(images: string[], flat: string) {
+    const body: Project = {
+      title: this.name,
+      portrait: images[0],
+      flat,
+      images
+    }
+
+    this.projectServices.createProject(body).subscribe(
+      data => {
+        if (data) {
+          this.dialogRef.close(true);
+        }
+      },
+      err => {
+        console.log(err)
+        this.dialogRef.close(null);
+      }
+    );
+  }
+}

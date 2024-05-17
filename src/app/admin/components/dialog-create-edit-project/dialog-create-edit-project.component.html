@@ -1,0 +1,31 @@
+<main class="Dialog">
+  <header class="Dialog__header">
+    <h1 class="Dialog__header__title">Nuevo proyecto</h1>
+  </header>
+
+  <section class="Dialog__body">
+    <div class="Dialog__body__control">
+      <input class="Dialog__body__control__input Input" [(ngModel)]="name" type="text" placeholder="Nombre del proyecto">
+    </div>
+
+    <div class="Dialog__body__flat">
+      <button class="Dialog__body__flat__button Button Button__primary" (click)="flat.click()">
+        <img src="../../../../assets/svg/upload.svg" alt="upload">
+        Cargar plano
+      </button>
+      <input #flat type="file" style="display: none;" (change)="onLoadedFlat($event)">
+    </div>
+
+    <div class="Dialog__body__gallery">
+      <button class="Dialog__body__gallery__button Button Button__primary" (click)="images.click()">
+        <img src="../../../../assets/svg/upload.svg" alt="upload">
+        Cargar imagenes
+      </button>
+      <input #images multiple type="file" style="display: none;" (change)="onLoadedGallery($event)">
+    </div>
+  </section>
+
+  <footer class="Dialog__footer">
+    <button class="Dialog__footer__save Button Button__primary" (click)="startUpload()">Guardar</button>
+  </footer>
+</main>

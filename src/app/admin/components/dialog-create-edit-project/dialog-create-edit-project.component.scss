@@ -1,0 +1,40 @@
+@use '../../../styles/tools.scss' as tools;
+
+
+.Dialog {
+  & {
+    padding: 5%;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &__header {
+    &__title {
+      font-size: 2em;
+      font-family: "Poppins", sans-serif;
+      font-weight: 200;
+    }
+  }
+
+  &__body {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    button {
+      width: 300px;
+    }
+  }
+
+  &__footer {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__save {
+      width: 300px;
+    }
+  }
+}
