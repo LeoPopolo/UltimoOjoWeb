@@ -19,6 +19,7 @@ export class CartService {
     id: 0,
     name: '',
     price: 0,
+    usdPrice: 0,
     description: '',
     pdfPath: '',
   };

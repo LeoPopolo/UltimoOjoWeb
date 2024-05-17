@@ -17,6 +17,10 @@
 
     &__control {
       padding-block: 25px;
+
+      &__label {
+        color: tools.colors(beigeOne);
+      }
     }
   }
 }

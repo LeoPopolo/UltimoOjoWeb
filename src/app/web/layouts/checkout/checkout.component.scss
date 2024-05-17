@@ -58,6 +58,11 @@
     width: 25%;
     gap: 50px;
 
+    hr {
+      height: 1px;
+      background-color: #ccc;
+    }
+
     @media screen and (max-width: 799px) {
       width: 100%;
       padding-inline: 25px;
@@ -72,6 +77,35 @@
       font-size: 1.1em;
       font-family: "Poppins", sans-serif;
       font-weight: bold;
+    }
+
+    &__payoneer {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      &__title {
+        font-size: 1.1em;
+      }
+
+      &__text {
+        font-weight: 300;
+      }
+    }
+
+    &__paypal {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      &__title {
+        font-size: 1.1em;
+      }
+
+      &__linkButton {
+        background-color: #0079c1;
+        width: 300px;
+      }
     }
   }
 

@@ -44,7 +44,11 @@
     <span routerLink="/contact" class="Navbar__sections__link">{{ 'contact' | translate }}</span>
   </div>
   <div class="Navbar__cart" routerLink="/checkout">
-    <span class="Navbar__cart__total">{{ total | currency }} </span>
+    @if (country === 'Argentina') {
+      <span class="Navbar__cart__total">{{ total | currency }} </span>
+    } @else {
+      <span class="Navbar__cart__total">{{ usdTotal | currency }} </span>
+    }
     <img
       class="Navbar__cart__image"
       src="../../../../assets/svg/cart.svg"

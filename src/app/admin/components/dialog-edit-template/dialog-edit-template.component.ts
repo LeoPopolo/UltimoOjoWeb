@@ -15,12 +15,19 @@ export class DialogEditTemplateComponent {
   dialogData = inject<IDialogData>(MAT_DIALOG_DATA)
 
   price = this.dialogData.price;
+  usdPrice = this.dialogData.usdPrice;
 
   changePrice() {
-    this.dialogRef.close(this.price);
+    const newPrices = {
+      price: this.price,
+      usdPrice: this.usdPrice
+    }
+
+    this.dialogRef.close(newPrices);
   }
 }
 
 interface IDialogData {
-  price: number
+  price: number,
+  usdPrice: number
 }

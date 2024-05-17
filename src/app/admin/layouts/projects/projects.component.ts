@@ -80,10 +80,10 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  deleteImage() {
-    this.imageToBeCreated.set(null);
-    this.imageToShow.set(null);
-  }
+  // deleteImage() {
+  //   this.imageToBeCreated.set(null);
+  //   this.imageToShow.set(null);
+  // }
 
   startPostUpload() {
     this.uploadFile();
@@ -117,8 +117,8 @@ export class ProjectsComponent implements OnInit {
     this.projectServices.createProject(body).subscribe((data) => {
       console.log(data);
       this.getProjects();
-      this.imageToBeCreated.set(null);
-      this.imageToShow.set(null);
+      // this.imageToBeCreated.set(null);
+      // this.imageToShow.set(null);
       this.title = '';
     });
   }

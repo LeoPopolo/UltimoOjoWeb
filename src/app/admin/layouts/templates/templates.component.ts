@@ -48,14 +48,16 @@ export class TemplatesComponent implements OnInit {
     const dialog = this.dialog.open(DialogEditTemplateComponent, {
       width: '300px',
       data: {
-        price: template.price
+        price: template.price,
+        usdPrice: template.usdPrice
       }
     });
 
     dialog.afterClosed().subscribe(data => {
       const updatedTemplate = {
         ...template,
-        price: data
+        price: data.price,
+        usdPrice: data.usdPrice
       }
 
       this.updateTemplate(updatedTemplate);

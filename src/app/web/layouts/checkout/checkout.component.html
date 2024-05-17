@@ -11,11 +11,19 @@
         (click)="deleteItem(item.id)"
       />
       <span> {{ item.name }}</span>
-      <span>${{ item.price }}</span>
+      @if (country === 'Argentina') {
+        <span>${{ item.price }}</span>
+      } @else {
+        <span>${{ item.usdPrice }}</span>
+      }
     </div>
     } @if (cart().length > 0) {
     <div class="Checkout__cart__total">
-      <span>Total: ${{ total }}</span>
+      @if (country === 'Argentina') {
+        <span>Total: ${{ total }}</span>
+      } @else {
+        <span>Total: ${{ usdTotal }}</span>
+      }
       <app-button
         (click)="emptyCart()"
         class="Checkout__cart__total__button"
@@ -26,19 +34,49 @@
   </section>
   @if (cart().length > 0) {
   <section class="Checkout__receipt">
+
     <p class="Checkout__receipt__text">
-      Complete la transferencia de ${{ total }} a este CBU , cargue el
-      comprobante fácilmente con un click en el botón adjunto y cargue los datos
-      requeridos en el formulario para finalizar su compra.
+      @if (country === 'Argentina') {
+        Complete la transferencia de ${{ total }} a este CBU o con link de pago a PayPal, cargue el
+        comprobante fácilmente con un click en el botón adjunto y cargue los datos
+        requeridos en el formulario para finalizar su compra.
+      } @else {
+        Complete the transfer of ${{ usdTotal }} to this bank account (CBU) or use the PayPal payment link. Easily upload the receipt by clicking
+        the attached button and fill in the required information in the form to complete your purchase.
+      }
     </p>
-    <p class="Checkout__receipt__cbu">
-      CBU: 00140027401508706212295 <br>
-      ALIAS: ULTIMOOJO.ARQ
-    </p>
+
+    @if (country === 'Argentina') {
+      <hr>
+      <p class="Checkout__receipt__cbu">
+        CBU PESOS: 0170109440000015425926 <br>
+        ALIAS: ULTIMOOJOSRL
+      </p>
+    }
+
+    <hr>
+    <div class="Checkout__receipt__payoneer">
+      <h3 class="Checkout__receipt__payoneer__title">Payoneer:</h3>
+      <p class="Checkout__receipt__payoneer__text">
+        <b>SWIFT Code:</b> CITIUS33 <br>
+        <b>Account number:</b> 70587030001015938 <br>
+        <b>Account type:</b> CHECKING <br>
+        <b>Beneficiary name:</b> Jimena Paz
+      </p>
+    </div>
+
+    <hr>
+    <div class="Checkout__receipt__paypal">
+      <h3>PayPal:</h3>
+      <button class="Button Button__primary Checkout__receipt__paypal__linkButton" (click)="gotoPaypal()">Link de pago</button>
+    </div>
+
     @if (receipt()) {
     <div class="Checkout__receipt__preview">{{ receipt()!.name }}</div>
     }
 
+    <hr>
+    <h3 class="Checkout__receipt__transferText">Si ya realizaste tu transferencia:</h3>
     <app-button text="Cargar comprobante" (click)="file.click()" />
     <input
       type="file"

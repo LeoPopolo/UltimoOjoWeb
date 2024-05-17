@@ -22,12 +22,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.setMetaInfo();
     this.getCurrentCountry();
-    this.setDefaultLanguage();
   }
 
-  setDefaultLanguage() {
-    this.translate.setDefaultLang('es');
-    this.translator.setCurrentLanguage('es');
+  setDefaultLanguage(country: string) {
+    if (country === 'Argentina') {
+      this.translate.setDefaultLang('es');
+      this.translator.setCurrentLanguage('es');
+    } else {
+      this.translate.setDefaultLang('en');
+      this.translator.setCurrentLanguage('en');
+    }
   }
 
   setMetaInfo() {
@@ -44,6 +48,8 @@ export class AppComponent implements OnInit {
   getCurrentCountry() {
     this.geolocationServices.getCurrentCountry().subscribe(data => {
       localStorage.setItem('country', data.country_name);
+
+      this.setDefaultLanguage(data.country_name);
     });
   }
 

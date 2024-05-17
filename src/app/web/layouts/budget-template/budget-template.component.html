@@ -4,7 +4,7 @@
   <section class="Main__body">
     <section class="Main__body__welcome">
       <h1 class="Main__body__welcome__title">
-        {{ 'canvaTemplate' | translate }}| ${{ template()?.price }}
+        {{ 'canvaTemplate' | translate }} | ${{ country === 'Argentina' ? template()?.price : template()?.usdPrice }}
       </h1>
 
       <h2 class="Main__body__welcome__description">

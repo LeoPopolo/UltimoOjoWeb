@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   sidebarOpen = false;
   cart = signal<ITemplate[]>([]);
   lang: string = localStorage.getItem('lang')!;
+  country = localStorage.getItem('country') || 'Argentina';
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe((data) => {
@@ -49,6 +50,10 @@ export class NavbarComponent implements OnInit {
 
   get total() {
     return this.cart().reduce((acc, item) => acc + item.price, 0);
+  }
+
+  get usdTotal() {
+    return this.cart().reduce((acc, item) => acc + item.usdPrice, 0);
   }
 
   toggleOptionsMobile() {}
