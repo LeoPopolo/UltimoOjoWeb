@@ -24,14 +24,14 @@
       @if (isCreatingNewPost()) {
       <div class="NewPost">
         <div class="NewPost__file">
-          @if (imageToShow()) {
+          @if (galleryToShow()) {
           <div class="NewPost__file__preview">
             <img
               class="NewPost__file__preview__delete"
               src="../../../../assets/svg/delete-red.svg"
               (click)="deleteImage()"
             />
-            <img class="NewPost__file__preview__image" [src]="imageToShow()" />
+            <img class="NewPost__file__preview__image" [src]="galleryToShow()" />
           </div>
           }
           <button class="NewPost__file--upload" (click)="image.click()">

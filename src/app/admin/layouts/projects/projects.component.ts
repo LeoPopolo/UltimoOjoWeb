@@ -30,13 +30,14 @@ export class ProjectsComponent implements OnInit {
 
   projects = signal<Project[]>([]);
 
-  flatToBeCreated = signal<File | null>(null);
   galleryToBeCreated = signal<File[] | null>([]);
   galleryToShow = signal<string[] | null | ArrayBuffer[]>([]);
+  flatToBeCreated = signal<File | null>(null);
+  flatToShow = signal<string | null | ArrayBuffer>('');
 
   isCreatingNewPost = signal<boolean>(false);
 
-  title = '';
+  title = ''; 
 
   ngOnInit() {
     this.getProjects();
@@ -50,10 +51,15 @@ export class ProjectsComponent implements OnInit {
 
   onLoadedGalleryImage(event: any) {
     this.galleryToBeCreated.set(event.target.files);
-    this.parseFileToURL();
+    this.parseGalleryToURL();
   }
 
-  parseFileToURL() {
+  onLoadedFlatImage(event: any) {
+    this.flatToBeCreated.set(event.target.file[0]);
+    this.parseFlatToURL();
+  }
+
+  parseGalleryToURL() {
     this.galleryToBeCreated()?.forEach(item => {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -80,26 +86,51 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
+  parseFlatToURL() {
+    return new Promise((resolve, reject) => {
+
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        this.flatToShow.set(event.target!.result);
+        resolve(event.target!.result)
+      }
+
+      reader.onerror = (error) => {
+        console.log(error);
+        reject(new Error('Error al leer el archivo'))
+      }
+
+      reader.readAsDataURL(this.flatToBeCreated()!)
+
+    });
+  }
+
+
   deleteImage() {
-    this.imageToBeCreated.set(null);
-    this.imageToShow.set(null);
+    this.galleryToBeCreated.set(null);
+    this.galleryToShow.set(null);
   }
 
   startPostUpload() {
-    this.uploadFile();
+    this.uploadFiles();
   }
 
-  uploadFile() {
+  uploadFiles() {
+    let gallery:string[] = [];
+    let flat:string= '';
+
     this.galleryToBeCreated()?.forEach(file => {
       this.fileServices.uploadFile(file).subscribe(
         (data) => {
-          if (data) this.createProject(data.images);
-          else this.openSnackbar('error al crear el post');
+          if (data) {
+            gallery.push(data.image_path)
+          } else this.openSnackbar('error al crear el post');
         },
         (err) => {
           console.log(err);
           this.openSnackbar('error al crear el post');
-        }
+        }  
       );
     })
   }
@@ -117,8 +148,8 @@ export class ProjectsComponent implements OnInit {
     this.projectServices.createProject(body).subscribe((data) => {
       console.log(data);
       this.getProjects();
-      this.imageToBeCreated.set(null);
-      this.imageToShow.set(null);
+      this.galleryToBeCreated.set(null);
+      this.galleryToShow.set(null);
       this.title = '';
     });
   }
