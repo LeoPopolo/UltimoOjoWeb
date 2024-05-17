@@ -42,6 +42,7 @@ export class CheckoutComponent implements OnInit {
   form = signal<FormGroup>(this.createForm());
   cart = signal<ITemplate[]>([]);
   receipt = signal<File | null>(null);
+  country = localStorage.getItem('country') || 'Argentina';
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe((data) => {
@@ -118,6 +119,14 @@ export class CheckoutComponent implements OnInit {
 
   deleteItem(id: number){
     this.cartService.deleteItem(id)
+  }
+
+  gotoPaypal() {
+    window.location.href = 'https://www.paypal.com/paypalme/ultimoojo?country.x=AR&locale.x=es_XC';
+  }
+
+  get usdTotal() {
+    return this.cart().reduce((acc, item) => acc + item.usdPrice, 0);
   }
 
   get total() {

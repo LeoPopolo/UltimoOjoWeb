@@ -111,6 +111,10 @@ export class ProjectsComponent implements OnInit {
     this.galleryToBeCreated.set(null);
     this.galleryToShow.set(null);
   }
+  // deleteImage() {
+  //   this.imageToBeCreated.set(null);
+  //   this.imageToShow.set(null);
+  // }
 
   startPostUpload() {
     this.uploadFiles();
@@ -148,8 +152,8 @@ export class ProjectsComponent implements OnInit {
     this.projectServices.createProject(body).subscribe((data) => {
       console.log(data);
       this.getProjects();
-      this.galleryToBeCreated.set(null);
-      this.galleryToShow.set(null);
+      this.imageToBeCreated.set(null);
+      this.imageToShow.set(null);
       this.title = '';
     });
   }

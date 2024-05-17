@@ -6,7 +6,8 @@
       <div class="Templates__body__item">
         <span class="Templates__body__item__name">{{template.name}}</span>
         <div class="Templates__body__item__actions">
-          <span>{{template.price | currency}}</span>
+          <span>ARS{{template.price | currency}}</span>
+          <span>US{{template.usdPrice | currency}}</span>
           <img src="../../../../assets/svg/edit.svg" alt="edit price" (click)="openDialogEditTemplate(template)">
         </div>
       </div>

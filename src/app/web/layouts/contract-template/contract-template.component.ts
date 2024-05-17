@@ -22,9 +22,11 @@ export class ContractTemplateComponent implements OnInit {
     id: 0,
     name: '',
     price: 0,
+    usdPrice: 0,
     description: '',
     pdfPath: '',
   });
+  country = localStorage.getItem('country') || 'Argentina';
 
   ngOnInit(): void {
     this.getTemplate();
