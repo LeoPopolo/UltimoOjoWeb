@@ -89,6 +89,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 
     &__save {
       width: 300px;

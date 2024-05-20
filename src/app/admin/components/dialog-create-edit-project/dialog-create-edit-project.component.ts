@@ -144,4 +144,8 @@ export class DialogCreateEditProjectComponent {
       }
     );
   }
+
+  closeDialog(){
+    this.dialogRef.close(false);
+  }
 }
