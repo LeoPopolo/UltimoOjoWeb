@@ -11,13 +11,14 @@ import { forkJoin } from 'rxjs';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './dialog-create-edit-project.component.html',
-  styleUrl: './dialog-create-edit-project.component.scss'
+  styleUrl: './dialog-create-edit-project.component.scss',
 })
 export class DialogCreateEditProjectComponent {
-
   private readonly projectServices = inject(ProjectService);
   private readonly fileServices = inject(FileService);
-  private readonly dialogRef = inject(MatDialogRef<DialogCreateEditProjectComponent>);
+  private readonly dialogRef = inject(
+    MatDialogRef<DialogCreateEditProjectComponent>
+  );
 
   name: string = '';
   flat = signal<File | null>(null);
@@ -33,28 +34,37 @@ export class DialogCreateEditProjectComponent {
 
   async startUpload() {
     const galleryResults = await this.uploadGalleryFiles();
-    console.log(galleryResults)
+    const flatResults = await this.uploadFlatFile();
+    const galleryImages = (galleryResults as any[]).map(
+      (item) => item.image_path
+    );
+    this.save(galleryImages, flatResults.image_path);
   }
 
   uploadGalleryFiles() {
     return new Promise((resolve, reject) => {
       this.uploadGallery(this.gallery()).subscribe({
-        next: results => {
-          console.log("ya termino de subir todos")
+        next: (results) => {
+          console.log('ya termino de subir todos');
           resolve(results);
         },
-        error: err => {
+        error: (err) => {
           console.log(err);
-          console.log("falló la subida")
-          reject()
-        }
-      })
+          console.log('falló la subida');
+          reject();
+        },
+      });
     });
   }
 
   uploadGallery(files: File[]) {
-    const uploaded = files.map(file => this.fileServices.uploadFile(file));
+    const uploaded = files.map((file) => this.fileServices.uploadFile(file));
     return forkJoin(uploaded);
+  }
+
+  uploadFlatFile() {
+    const uploaded = this.fileServices.uploadFile(this.flat()!);
+    return uploaded.toPromise();
   }
 
   save(images: string[], flat: string) {
@@ -62,17 +72,17 @@ export class DialogCreateEditProjectComponent {
       title: this.name,
       portrait: images[0],
       flat,
-      images
-    }
+      images,
+    };
 
     this.projectServices.createProject(body).subscribe(
-      data => {
+      (data) => {
         if (data) {
           this.dialogRef.close(true);
         }
       },
-      err => {
-        console.log(err)
+      (err) => {
+        console.log(err);
         this.dialogRef.close(null);
       }
     );

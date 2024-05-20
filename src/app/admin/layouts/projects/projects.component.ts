@@ -43,16 +43,17 @@ export class ProjectsComponent implements OnInit {
 
   openDialogCreateProject() {
     const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
-      width: '50%'
+      width: '50%',
     });
 
-    dialog.afterClosed().subscribe(data => {
+    dialog.afterClosed().subscribe((data) => {
       if (data) {
         this.openSnackbar('Proyecto creado con éxito');
       } else {
         this.openSnackbar('No se pudo crear el proyecto');
       }
-    })
+      this.getProjects();
+    });
   }
 
   deleteProject(projectId: number) {
