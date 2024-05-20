@@ -24,12 +24,17 @@ export class DialogCreateEditProjectComponent {
   flat = signal<File | null>(null);
   gallery = signal<File[]>([]);
 
+  flatPreview: string | ArrayBuffer | null = '';
+  galleryPreview: (string | ArrayBuffer | null)[] = [];
+
   onLoadedFlat(event: any) {
     this.flat.set(event.target.files[0]);
+    this.parseFlatToURL();
   }
 
   onLoadedGallery(event: any) {
     this.gallery.set(Array.from(event.target.files));
+    this.parseGalleryToURL();
   }
 
   async startUpload() {
@@ -45,7 +50,6 @@ export class DialogCreateEditProjectComponent {
     return new Promise((resolve, reject) => {
       this.uploadGallery(this.gallery()).subscribe({
         next: (results) => {
-          console.log('ya termino de subir todos');
           resolve(results);
         },
         error: (err) => {
@@ -65,6 +69,59 @@ export class DialogCreateEditProjectComponent {
   uploadFlatFile() {
     const uploaded = this.fileServices.uploadFile(this.flat()!);
     return uploaded.toPromise();
+  }
+
+
+  parseFlatToURL() {
+    return new Promise((resolve, reject) => {
+
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        this.flatPreview = event.target!.result;
+        resolve(event.target!.result)
+      }
+
+      reader.onerror = (error) => {
+        console.log(error);
+        reject(new Error('Error al leer el archivo'))
+      }
+
+      reader.readAsDataURL(this.flat()!)
+
+    });
+  }
+
+  parseGalleryToURL() {
+    this.gallery().forEach(item => {
+      return new Promise((resolve, reject) => {
+
+        const reader = new FileReader();
+
+        reader.onload = (event) => {
+          this.galleryPreview.push(event.target!.result);
+          resolve(event.target!.result)
+        }
+
+        reader.onerror = (error) => {
+          console.log(error);
+          reject(new Error('Error al leer el archivo'))
+        }
+
+        reader.readAsDataURL(item)
+
+      });
+    })
+  }
+
+  deleteGalleryItem(index: number) {
+    this.gallery().splice(index, 1);
+    this.galleryPreview.splice(index, 1);
+  }
+
+  deleteFlat() {
+    this.flat.set(null);
+    this.flatPreview = null;
   }
 
   save(images: string[], flat: string) {

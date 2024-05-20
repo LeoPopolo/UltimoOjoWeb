@@ -14,6 +14,13 @@
         Cargar plano
       </button>
       <input #flat type="file" style="display: none;" (change)="onLoadedFlat($event)">
+
+      @if(flatPreview) {
+        <span class="Dialog__body__flat__preview">
+          <img class="Dialog__body__flat__preview__image" [src]="flatPreview">
+          <img class="Dialog__body__flat__preview__delete" (click)="deleteFlat()" src="../../../../assets/svg/delete-red.svg">
+        </span>
+      }
     </div>
 
     <div class="Dialog__body__gallery">
@@ -22,6 +29,17 @@
         Cargar imagenes
       </button>
       <input #images multiple type="file" style="display: none;" (change)="onLoadedGallery($event)">
+
+      @if(galleryPreview.length) {
+        <div class="Dialog__body__gallery__preview">
+          @for (item of galleryPreview; track $index;) {
+            <div class="Dialog__body__gallery__preview__item">
+              <img class="Dialog__body__gallery__preview__item__image" [src]="item">
+              <img class="Dialog__body__gallery__preview__item__delete" (click)="deleteGalleryItem($index)" src="../../../../assets/svg/delete-red.svg">
+            </div>
+          }
+        </div>
+      }
     </div>
   </section>
 

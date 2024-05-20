@@ -25,6 +25,63 @@
     button {
       width: 300px;
     }
+
+    &__flat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__preview {
+        position: relative;
+        height: auto;
+        width: auto;
+
+        &__image {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+        }
+
+        &__delete {
+          position: absolute;
+          top: 0;
+          right: -5px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__gallery {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &__preview {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        &__item {
+          position: relative;
+          height: auto;
+          width: auto;
+
+          &__image {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+          }
+
+          &__delete {
+            position: absolute;
+            top: 0;
+            right: -5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 
   &__footer {
