@@ -33,3 +33,22 @@
     color: tools.colors(blackOne);
   }
 }
+
+.Spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid tools.colors(beigeOne);
+  border-right: 2px solid transparent;
+  border-radius: 50px;
+  animation: spin 500ms infinite both;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

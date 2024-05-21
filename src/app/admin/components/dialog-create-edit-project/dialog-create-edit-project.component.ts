@@ -27,6 +27,8 @@ export class DialogCreateEditProjectComponent {
   flatPreview: string | ArrayBuffer | null = '';
   galleryPreview: (string | ArrayBuffer | null)[] = [];
 
+  loading = signal(false);
+
   onLoadedFlat(event: any) {
     this.flat.set(event.target.files[0]);
     this.parseFlatToURL();
@@ -38,6 +40,7 @@ export class DialogCreateEditProjectComponent {
   }
 
   async startUpload() {
+    this.loading.set(true);
     const galleryResults = await this.uploadGalleryFiles();
     const flatResults = await this.uploadFlatFile();
     const galleryImages = (galleryResults as any[]).map(
@@ -136,11 +139,13 @@ export class DialogCreateEditProjectComponent {
       (data) => {
         if (data) {
           this.dialogRef.close(true);
+          this.loading.set(false);
         }
       },
       (err) => {
         console.log(err);
         this.dialogRef.close(null);
+        this.loading.set(false);
       }
     );
   }

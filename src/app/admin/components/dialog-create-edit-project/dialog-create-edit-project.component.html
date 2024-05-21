@@ -44,7 +44,12 @@
   </section>
 
   <footer class="Dialog__footer">
-    <button class="Dialog__footer__save Button Button__primary" (click)="startUpload()">Guardar</button>
+    <button class="Dialog__footer__save Button Button__primary" (click)="startUpload()" [disabled]="loading()">
+      @if (loading()) {
+        <span class="Spinner"></span>
+      }
+      Guardar
+    </button>
     <button class="Dialog__footer__save Button Button__primary" (click)="closeDialog()">Cancelar</button>
   </footer>
 </main>
