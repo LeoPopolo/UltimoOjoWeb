@@ -12,10 +12,14 @@
 
               <div class="Main__body__grid__card__capture__panel">
                 <span class="Main__body__grid__card__capture__panel__option" (click)="viewGallery(item.images)">Galería</span>
-                <span class="Main__body__grid__card__capture__panel__option" (click)="viewFlat(item.flat)">Ver plano</span>
+                @if(item.flat){
+                  <span class="Main__body__grid__card__capture__panel__option" (click)="viewFlat(item.flat)">Ver plano</span>
+                }
               </div>
             </div>
-            <h3 class="Main__body__grid__card__title">{{item.title}}</h3>
+            <h2 class="Main__body__grid__card__title">{{item.title}}</h2>
+            <h3 class="Main__body__grid__card__subtitle">{{item.subtitle}}</h3>
+            <h4 class="Main__body__grid__card__description">{{item.description}}</h4>
           </div>
         }
       </section>

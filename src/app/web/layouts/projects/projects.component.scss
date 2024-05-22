@@ -37,7 +37,7 @@
       &__card {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+      
 
         &__capture {
           width: 100%;
@@ -48,7 +48,7 @@
           justify-content: center;
           position: relative;
 
-          &:hover &__panel{
+          &:hover &__panel {
             display: flex;
           }
 
@@ -91,9 +91,41 @@
 
         &__title {
           text-align: left;
-          font-weight: 300;
-          margin-left: 3em;
+          font-size: tools.fontSizes(m);
+          font-weight: 400;
+          margin-left: 3.5rem;
           color: tools.colors(blackOne);
+        }
+
+        &__subtitle {
+          text-align: left;
+          font-weight: lighter;
+          font-size:20px;
+          margin-left: 3.5rem;
+          color: tools.colors(blackOne);
+        }
+
+        &__description {
+          text-align: left;
+          font-weight: lighter;
+          font-size: 16px;
+          margin-left: 3.5rem;
+          color: #807974;
+        }
+
+        @media screen and (max-width: 799px) {
+
+          &__title {
+            margin-left: 1rem;
+          }
+  
+          &__subtitle {
+            margin-left: 1rem;
+          }
+  
+          &__description {
+            margin-left: 1rem;
+          }
         }
       }
     }

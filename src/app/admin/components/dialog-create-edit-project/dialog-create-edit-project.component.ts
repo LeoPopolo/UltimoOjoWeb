@@ -21,6 +21,8 @@ export class DialogCreateEditProjectComponent {
   );
 
   name: string = '';
+  subtitle: string = '';
+  description: string = '';
   flat = signal<File | null>(null);
   gallery = signal<File[]>([]);
 
@@ -41,12 +43,23 @@ export class DialogCreateEditProjectComponent {
 
   async startUpload() {
     this.loading.set(true);
-    const galleryResults = await this.uploadGalleryFiles();
-    const flatResults = await this.uploadFlatFile();
-    const galleryImages = (galleryResults as any[]).map(
-      (item) => item.image_path
-    );
-    this.save(galleryImages, flatResults.image_path);
+    if (this.flat()) {
+      const galleryResults = await this.uploadGalleryFiles();
+
+      const flatResults = await this.uploadFlatFile();
+
+      const galleryImages = (galleryResults as any[]).map(
+        (item) => item.image_path
+      );
+      this.save(galleryImages, flatResults.image_path);
+    } else {
+      const galleryResults = await this.uploadGalleryFiles();
+
+      const galleryImages = (galleryResults as any[]).map(
+        (item) => item.image_path
+      );
+      this.save(galleryImages);
+    }
   }
 
   uploadGalleryFiles() {
@@ -74,47 +87,42 @@ export class DialogCreateEditProjectComponent {
     return uploaded.toPromise();
   }
 
-
   parseFlatToURL() {
     return new Promise((resolve, reject) => {
-
       const reader = new FileReader();
 
       reader.onload = (event) => {
         this.flatPreview = event.target!.result;
-        resolve(event.target!.result)
-      }
+        resolve(event.target!.result);
+      };
 
       reader.onerror = (error) => {
         console.log(error);
-        reject(new Error('Error al leer el archivo'))
-      }
+        reject(new Error('Error al leer el archivo'));
+      };
 
-      reader.readAsDataURL(this.flat()!)
-
+      reader.readAsDataURL(this.flat()!);
     });
   }
 
   parseGalleryToURL() {
-    this.gallery().forEach(item => {
+    this.gallery().forEach((item) => {
       return new Promise((resolve, reject) => {
-
         const reader = new FileReader();
 
         reader.onload = (event) => {
           this.galleryPreview.push(event.target!.result);
-          resolve(event.target!.result)
-        }
+          resolve(event.target!.result);
+        };
 
         reader.onerror = (error) => {
           console.log(error);
-          reject(new Error('Error al leer el archivo'))
-        }
+          reject(new Error('Error al leer el archivo'));
+        };
 
-        reader.readAsDataURL(item)
-
+        reader.readAsDataURL(item);
       });
-    })
+    });
   }
 
   deleteGalleryItem(index: number) {
@@ -127,9 +135,11 @@ export class DialogCreateEditProjectComponent {
     this.flatPreview = null;
   }
 
-  save(images: string[], flat: string) {
+  save(images: string[], flat?: string) {
     const body: Project = {
       title: this.name,
+      subtitle:this.subtitle,
+      description:this.description,
       portrait: images[0],
       flat,
       images,
@@ -150,7 +160,7 @@ export class DialogCreateEditProjectComponent {
     );
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialogRef.close(false);
   }
 }
