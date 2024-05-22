@@ -21,7 +21,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.setMetaInfo();
-    this.getCurrentCountry();
+
+    const country = localStorage.getItem('country');
+    if (!country) {
+      this.getCurrentCountry();
+      return;
+    }
+
+    this.setDefaultLanguage(country);
   }
 
   setDefaultLanguage(country: string) {
