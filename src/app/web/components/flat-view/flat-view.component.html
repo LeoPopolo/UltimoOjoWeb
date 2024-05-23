@@ -1,3 +1,18 @@
-<main class="Dialog">
-  <img class="Dialog__image" [src]="downloadImageUrl + '/' + flat" />
-</main>
+<div class="card">
+  <p-galleria
+    [value]="flat"
+    [responsiveOptions]="responsiveOptions"
+    [showItemNavigators]="true"
+    [circular]="true"
+    [numVisible]="5"
+    [containerStyle]="{ 'max-width': '1024px' }">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="downloadImageUrl + '/' + item" style="width: 100%;" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+                <img [src]="downloadImageUrl + '/' + item"  />
+            </div>
+        </ng-template>
+  </p-galleria>
+</div>

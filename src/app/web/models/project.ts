@@ -4,6 +4,6 @@ export interface Project {
   subtitle:string;
   description:string;
   portrait: string;
-  flat?: string;
+  flat?: string[];
   images: string[];
 }

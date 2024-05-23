@@ -14,20 +14,43 @@
       <input class="Dialog__body__control__input Input" [(ngModel)]="description" type="text" placeholder="Descripción / categoría">
     </div>
 
+    
+    <div class="Dialog__body__flat">
+      <button class="Dialog__body__flat__button Button Button__primary" (click)="portrait.click()">
+        <img src="../../../../assets/svg/upload.svg" alt="upload">
+        Cargar Portada
+      </button>
+      <input #portrait type="file" style="display: none;" (change)="onLoadedPortrait($event)">
+
+      @if(portraitPreview) {
+        <span class="Dialog__body__flat__preview">
+          <img class="Dialog__body__flat__preview__image" [src]="portraitPreview">
+          <img class="Dialog__body__flat__preview__delete" (click)="deletePortrait()" src="../../../../assets/svg/delete-red.svg">
+        </span>
+      }
+    </div>
+
+
+
     <div class="Dialog__body__flat">
       <button class="Dialog__body__flat__button Button Button__primary" (click)="flat.click()">
         <img src="../../../../assets/svg/upload.svg" alt="upload">
         Cargar plano
       </button>
-      <input #flat type="file" style="display: none;" (change)="onLoadedFlat($event)">
+      <input #flat  multiple type="file" style="display: none;" (change)="onLoadedFlat($event)">
 
-      @if(flatPreview) {
-        <span class="Dialog__body__flat__preview">
-          <img class="Dialog__body__flat__preview__image" [src]="flatPreview">
-          <img class="Dialog__body__flat__preview__delete" (click)="deleteFlat()" src="../../../../assets/svg/delete-red.svg">
-        </span>
+      @if(flatPreview.length) {
+        <div class="Dialog__body__flat__preview">
+          @for (item of flatPreview; track $index;) {
+            <div class="Dialog__body__flat__preview__item">
+              <img class="Dialog__body__flat__preview__item__image" [src]="item">
+              <img class="Dialog__body__flat__preview__item__delete" (click)="deleteFlat($index)" src="../../../../assets/svg/delete-red.svg">
+            </div>
+          }
+        </div>
       }
     </div>
+  
 
     <div class="Dialog__body__gallery">
       <button class="Dialog__body__gallery__button Button Button__primary" (click)="images.click()">

@@ -33,12 +33,12 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  viewFlat(flatPath: string) {
+  viewFlat(flatPaths: string[]) {
     this.dialog.open(FlatViewComponent, {
-      width: '80%',
-      height: '80%',
+      width: '1024px',
+      height: 'auto',
       data: {
-        flat: flatPath
+        flat: flatPaths
       }
     });
   }
