@@ -14,71 +14,107 @@
       <input class="Dialog__body__control__input Input" [(ngModel)]="description" type="text" placeholder="Descripción / categoría">
     </div>
 
-    
-    <div class="Dialog__body__flat">
-      <button class="Dialog__body__flat__button Button Button__primary" (click)="portrait.click()">
-        <img src="../../../../assets/svg/upload.svg" alt="upload">
-        Cargar Portada
-      </button>
-      <input #portrait type="file" style="display: none;" (change)="onLoadedPortrait($event)">
+    <div class="Dialog__body__portrait">
+      <h3 class="Dialog__body__portrait__title">Portada</h3>
+      <div class="Dialog__body__portrait__images">
+        @if(portraitPreview()) {
+          <span class="Dialog__body__portrait__images__preview">
+            <img class="Dialog__body__portrait__images__preview__image" [src]="portraitPreview()">
+            <img class="Dialog__body__portrait__images__preview__delete" (click)="deletePortrait()" src="../../../../assets/svg/delete-red.svg">
+          </span>
+        }
 
-      @if(portraitPreview) {
-        <span class="Dialog__body__flat__preview">
-          <img class="Dialog__body__flat__preview__image" [src]="portraitPreview">
-          <img class="Dialog__body__flat__preview__delete" (click)="deletePortrait()" src="../../../../assets/svg/delete-red.svg">
+        @if(portraitToEdit()) {
+          <span class="Dialog__body__portrait__images__preview">
+            <img class="Dialog__body__portrait__images__preview__image" [src]="downloadImageUrl + portraitToEdit()">
+            <img class="Dialog__body__portrait__images__preview__delete" (click)="deleteLoadedPortrait()" src="../../../../assets/svg/delete-red.svg">
+          </span>
+        }
+
+        @if (!portrait() && !portraitToEdit()) {
+          <span class="Dialog__body__portrait__images__button" (click)="portrait.click()">
+            <img src="../../../../assets/svg/plus.svg" alt="add">
+          </span>
+          <input #portrait type="file" style="display: none;" (change)="onLoadedPortrait($event)">
+        }
+      </div>
+    </div>
+
+    <div class="Dialog__body__flat">
+      <h3 class="Dialog__body__flat__title">Planos</h3>
+
+      <div class="Dialog__body__flat__images">
+        @if(flatPreview.length || flatsToEdit().length) {
+          <div class="Dialog__body__flat__images__preview">
+            @for (item of flatPreview; track $index;) {
+              <div class="Dialog__body__flat__images__preview__item">
+                <img class="Dialog__body__flat__images__preview__item__image" [src]="item">
+                <img class="Dialog__body__flat__images__preview__item__delete" (click)="deleteFlat($index)" src="../../../../assets/svg/delete-red.svg">
+              </div>
+            }
+
+            @for (item of flatsToEdit(); track $index;) {
+              <div class="Dialog__body__gallery__images__preview__item">
+                <img class="Dialog__body__gallery__images__preview__item__image" [src]="downloadImageUrl + item">
+                <img class="Dialog__body__gallery__images__preview__item__delete" (click)="deleteFlatToEditItem($index)" src="../../../../assets/svg/delete-red.svg">
+              </div>
+            }
+          </div>
+        }
+
+        <span class="Dialog__body__flat__images__button" (click)="flat.click()">
+          <img src="../../../../assets/svg/plus.svg" alt="add">
         </span>
-      }
+        <input #flat  multiple type="file" style="display: none;" (change)="onLoadedFlat($event)">
+      </div>
     </div>
-
-
-
-    <div class="Dialog__body__flat">
-      <button class="Dialog__body__flat__button Button Button__primary" (click)="flat.click()">
-        <img src="../../../../assets/svg/upload.svg" alt="upload">
-        Cargar plano
-      </button>
-      <input #flat  multiple type="file" style="display: none;" (change)="onLoadedFlat($event)">
-
-      @if(flatPreview.length) {
-        <div class="Dialog__body__flat__preview">
-          @for (item of flatPreview; track $index;) {
-            <div class="Dialog__body__flat__preview__item">
-              <img class="Dialog__body__flat__preview__item__image" [src]="item">
-              <img class="Dialog__body__flat__preview__item__delete" (click)="deleteFlat($index)" src="../../../../assets/svg/delete-red.svg">
-            </div>
-          }
-        </div>
-      }
-    </div>
-  
 
     <div class="Dialog__body__gallery">
-      <button class="Dialog__body__gallery__button Button Button__primary" (click)="images.click()">
-        <img src="../../../../assets/svg/upload.svg" alt="upload">
-        Cargar imagenes
-      </button>
-      <input #images multiple type="file" style="display: none;" (change)="onLoadedGallery($event)">
+      <h3 class="Dialog__body__gallery__title">Galería</h3>
 
-      @if(galleryPreview.length) {
-        <div class="Dialog__body__gallery__preview">
-          @for (item of galleryPreview; track $index;) {
-            <div class="Dialog__body__gallery__preview__item">
-              <img class="Dialog__body__gallery__preview__item__image" [src]="item">
-              <img class="Dialog__body__gallery__preview__item__delete" (click)="deleteGalleryItem($index)" src="../../../../assets/svg/delete-red.svg">
-            </div>
-          }
-        </div>
-      }
+      <div class="Dialog__body__gallery__images">
+        @if(galleryPreview.length || galleryToEdit().length) {
+          <div class="Dialog__body__gallery__images__preview">
+            @for (item of galleryPreview; track $index;) {
+              <div class="Dialog__body__gallery__images__preview__item">
+                <img class="Dialog__body__gallery__images__preview__item__image" [src]="item">
+                <img class="Dialog__body__gallery__images__preview__item__delete" (click)="deleteGalleryItem($index)" src="../../../../assets/svg/delete-red.svg">
+              </div>
+            }
+
+            @for (item of galleryToEdit(); track $index;) {
+              <div class="Dialog__body__gallery__images__preview__item">
+                <img class="Dialog__body__gallery__images__preview__item__image" [src]="downloadImageUrl + item">
+                <img class="Dialog__body__gallery__images__preview__item__delete" (click)="deleteGalleryToEditItem($index)" src="../../../../assets/svg/delete-red.svg">
+              </div>
+            }
+          </div>
+        }
+
+        <span class="Dialog__body__gallery__images__button" (click)="images.click()">
+          <img src="../../../../assets/svg/plus.svg" alt="upload">
+        </span>
+        <input #images multiple type="file" style="display: none;" (change)="onLoadedGallery($event)">
+      </div>
     </div>
   </section>
 
   <footer class="Dialog__footer">
-    <button class="Dialog__footer__save Button Button__primary" (click)="startUpload()" [disabled]="loading()">
-      @if (loading()) {
-        <span class="Spinner"></span>
-      }
-      Guardar
-    </button>
+    @if (edit()) {
+      <button class="Dialog__footer__save Button Button__primary" (click)="startUpdate()" [disabled]="loading()">
+        @if (loading()) {
+          <span class="Spinner"></span>
+        }
+        Guardar
+      </button>
+    } @else {
+      <button class="Dialog__footer__save Button Button__primary" (click)="startUpload()" [disabled]="loading()">
+        @if (loading()) {
+          <span class="Spinner"></span>
+        }
+        Guardar
+      </button>
+    }
     <button class="Dialog__footer__save Button Button__primary" (click)="closeDialog()">Cancelar</button>
   </footer>
 </main>

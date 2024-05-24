@@ -25,21 +25,33 @@
       width: 300px;
     }
 
-    &__flat {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      &__preview {
+    &__portrait {
+      display: flex;
+      flex-direction: column;
+
+      &__images {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         gap: 10px;
 
-        &__item {
+        &__button {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          background-color: #25252580;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        &__preview {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
           position: relative;
-          height: auto;
-          width: auto;
 
           &__image {
             width: 50px;
@@ -57,33 +69,99 @@
       }
     }
 
-    &__gallery {
+    &__flat {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
 
-      &__preview {
+      &__images {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         gap: 10px;
 
-        &__item {
-          position: relative;
-          height: auto;
-          width: auto;
+        &__button {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          background-color: #25252580;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
 
-          &__image {
+        &__preview {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+
+          &__item {
+            position: relative;
             width: 50px;
             height: 50px;
             border-radius: 5px;
-          }
 
-          &__delete {
-            position: absolute;
-            top: 0;
-            right: -5px;
-            cursor: pointer;
+            &__image {
+              width: 50px;
+              height: 50px;
+              border-radius: 5px;
+            }
+
+            &__delete {
+              position: absolute;
+              top: 0;
+              right: -5px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    &__gallery {
+      display: flex;
+      flex-direction: column;
+
+      &__images {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &__button {
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          background-color: #25252580;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        &__preview {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+
+          &__item {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+
+            &__image {
+              width: 50px;
+              height: 50px;
+              border-radius: 5px;
+            }
+
+            &__delete {
+              position: absolute;
+              top: 0;
+              right: -5px;
+              cursor: pointer;
+            }
           }
         }
       }

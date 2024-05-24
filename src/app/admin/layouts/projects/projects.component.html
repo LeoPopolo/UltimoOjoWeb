@@ -19,12 +19,17 @@
         {{ project.images.length }}
       </span>
       <span class="Posts__body__card__flatLoaded">
-        Plano cargado:
-        {{ project.flat ? 'Sí' : 'No' }}
+        Planos cargados:
+        {{ project.flat?.length }}
       </span>
-      <span class="Posts__body__card__delete" (click)="deleteProject(project.id!)">
-        <img src="../../../../assets/svg/delete.svg" alt="delete" />
-      </span>
+      <div class="Posts__body__card__actions">
+        <span class="Posts__body__card__actions__edit" (click)="editProject(project.id!)">
+          <img src="../../../../assets/svg/edit-white.svg" alt="edit" />
+        </span>
+        <span class="Posts__body__card__actions__delete" (click)="deleteProject(project.id!)">
+          <img src="../../../../assets/svg/delete.svg" alt="delete" />
+        </span>
+      </div>
     </div>
     }
   </section>

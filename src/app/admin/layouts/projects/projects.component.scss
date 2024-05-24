@@ -63,22 +63,48 @@
         }
       }
 
-      &__delete {
-        background-color: #50505080;
-        color: #fff;
-        width: 100%;
-        border-radius: 10px;
+      &__actions {
         display: flex;
         align-items: center;
-        justify-content: center;
-        position: relative;
-        bottom: 0;
-        padding: 10px;
-        cursor: pointer;
-        transition: all 200ms;
+        justify-content: space-between;
+        gap: 1em;
 
-        &:hover {
-          background-color: #50505050;
+        &__edit {
+          background-color: #50505080;
+          color: #fff;
+          width: 100%;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          bottom: 0;
+          padding: 10px;
+          cursor: pointer;
+          transition: all 200ms;
+
+          &:hover {
+            background-color: #50505050;
+          }
+        }
+
+        &__delete {
+          background-color: #50505080;
+          color: #fff;
+          width: 100%;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          bottom: 0;
+          padding: 10px;
+          cursor: pointer;
+          transition: all 200ms;
+
+          &:hover {
+            background-color: #50505050;
+          }
         }
       }
     }

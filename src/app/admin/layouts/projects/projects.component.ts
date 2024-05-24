@@ -49,8 +49,26 @@ export class ProjectsComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       if (data) {
         this.openSnackbar('Proyecto creado con éxito');
-      } else {
+      } else if (data === null) {
         this.openSnackbar('No se pudo crear el proyecto');
+      }
+      this.getProjects();
+    });
+  }
+
+  editProject(projectId: number) {
+    const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
+      width: '50%',
+      data: {
+        projectId
+      }
+    });
+
+    dialog.afterClosed().subscribe((data) => {
+      if (data) {
+        this.openSnackbar('Proyecto modificado con éxito');
+      } else if (data === null) {
+        this.openSnackbar('No se pudo modificar el proyecto');
       }
       this.getProjects();
     });

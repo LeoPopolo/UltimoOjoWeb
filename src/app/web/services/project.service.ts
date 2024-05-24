@@ -19,6 +19,10 @@ export class ProjectService {
     return this.httpClient.post<Project>(`${this.api_url}/project/`, bodyProject);
   }
 
+  updateProject(bodyProject: Project) {
+    return this.httpClient.put<Project>(`${this.api_url}/project/${bodyProject.id}`, bodyProject);
+  }
+
   getProjects() {
     return this.httpClient.get<projectsResponseType>(`${this.api_url}/project/`);
   }
