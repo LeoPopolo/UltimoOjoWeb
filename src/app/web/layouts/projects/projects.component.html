@@ -11,8 +11,10 @@
               <img class="Main__body__grid__card__capture__image" [src]="downloadImageUrl + '/' + item.portrait">
 
               <div class="Main__body__grid__card__capture__panel">
-                <span class="Main__body__grid__card__capture__panel__option" (click)="viewGallery(item.images)">Galería</span>
-                @if(item.flat){
+                @if(item.images && item.images.length) {
+                  <span class="Main__body__grid__card__capture__panel__option" (click)="viewGallery(item.images)">Galería</span>
+                }
+                @if(item.flat && item.flat.length) {
                   <span class="Main__body__grid__card__capture__panel__option" (click)="viewFlat(item.flat)">Ver plano</span>
                 }
               </div>
