@@ -70,4 +70,32 @@
       </app-paginator>
     </div>
   </section>
+  <section class="Sales__mobile">
+    @for (sale of sales(); track $index) {
+      <div class="Sales__mobile__item">
+        <span class="Sales__mobile__item__name">{{
+          sale.customerName + " " + sale.customerLastName
+        }}</span>
+        <span class="Sales__mobile__item__paid">{{
+          sale.isPaid ? "Enviado" : "Pendiente"
+        }}</span>
+        <span class="Sales__mobile__item__eye">
+          <img
+            src="../../../../assets/svg/eye.svg"
+            alt="Ver"
+            (click)="openDialogSeeSale(sale)"
+          />
+        </span>
+      </div>
+
+    }
+    <div class="Sales__mobile__paginator">
+      <app-paginator
+        [maxPages]="maxPages()"
+        [totalItems]="totalItems()"
+        (pageChanged)="onPageChanged($event)"
+      >
+      </app-paginator>
+    </div>
+  </section>
 </main>

@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../environments/environments';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateEditProjectComponent } from '../../components/dialog-create-edit-project/dialog-create-edit-project.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-projects',
@@ -27,6 +28,7 @@ export class ProjectsComponent implements OnInit {
   private readonly projectServices = inject(ProjectService);
   private readonly dialog = inject(MatDialog);
   private readonly snackbarServices = inject(MatSnackBar);
+  private readonly breakpointObserver = inject(BreakpointObserver);
   public readonly downloadImageUrl = `${environment.api_url}/file/download`;
 
   projects = signal<Project[]>([]);
@@ -42,38 +44,50 @@ export class ProjectsComponent implements OnInit {
   }
 
   openDialogCreateProject() {
-    const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
-      width: '50%',
-    });
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .subscribe((result) => {
+        const dialogWidth = result.matches ? '80%' : '50%';
 
-    dialog.afterClosed().subscribe((data) => {
-      if (data) {
-        this.openSnackbar('Proyecto creado con éxito');
-      } else if (data === null) {
-        this.openSnackbar('No se pudo crear el proyecto');
-      }
-      this.getProjects();
-    });
+        const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
+          width: dialogWidth,
+        });
+
+        dialog.afterClosed().subscribe((data) => {
+          if (data) {
+            this.openSnackbar('Proyecto creado con éxito');
+          } else if (data === null) {
+            this.openSnackbar('No se pudo crear el proyecto');
+          }
+          this.getProjects();
+        });
+      });
   }
 
   editProject(projectId: number) {
-    const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
-      width: '50%',
-      data: {
-        projectId
-      }
-    });
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .subscribe((result) => {
+        const dialogWidth = result.matches ? '100%' : '50%';
 
-    dialog.afterClosed().subscribe((data) => {
-      if (data) {
-        this.openSnackbar('Proyecto modificado con éxito');
-      } else if (data === null) {
-        this.openSnackbar('No se pudo modificar el proyecto');
-      }
-      this.getProjects();
-    });
+        const dialog = this.dialog.open(DialogCreateEditProjectComponent, {
+          width: dialogWidth,
+          data: {
+            projectId,
+          },
+        });
+
+        dialog.afterClosed().subscribe((data) => {
+          if (data) {
+            this.openSnackbar('Proyecto modificado con éxito');
+          } else if (data === null) {
+            this.openSnackbar('No se pudo modificar el proyecto');
+          }
+          this.getProjects();
+        });
+      });
   }
-
+  
   deleteProject(projectId: number) {
     if (confirm('Seguro desea eliminar esta publicación?')) {
       this.projectServices.deleteProject(projectId).subscribe(

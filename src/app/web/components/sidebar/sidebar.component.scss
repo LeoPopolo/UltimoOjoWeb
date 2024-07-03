@@ -1,4 +1,4 @@
-@use '../../../styles/tools.scss' as tools;
+@use "../../../styles/tools.scss" as tools;
 
 .Wrapper {
   width: 100vw;
@@ -46,28 +46,28 @@
             font-size: 16px;
             border-bottom: 1px solid #ccc;
             padding-block: 10px;
-            font-weight:300;
+            font-weight: 300;
           }
         }
       }
 
-      &__login {
-        color: #fff;
-        font-size: 20px;
-        position: absolute;
-        bottom: 40px;
-        padding: 10px 20px;
-        background-color: tools.colors(beigeOne);
-        border-radius: 100px;
-        font-size: tools.fontSizes(s);
-      }
-
-      &__language {
+      &__bottom {
         position: absolute;
         bottom: 50px;
+        width: 75%;
+        display: flex;
+        
+        justify-content: space-between;
 
-        img {
-          height: 100%;
+        &__language {
+          img {
+            height: 100%;
+          }
+        }
+        &__login {
+          img {
+            height: 100%;
+          }
         }
       }
     }

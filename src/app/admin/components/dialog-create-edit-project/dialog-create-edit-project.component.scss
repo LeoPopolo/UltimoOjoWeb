@@ -12,6 +12,13 @@
       font-size: 2em;
       font-family: "Poppins", sans-serif;
       font-weight: 200;
+
+      @media screen and (max-width: 799px) {
+        font-size: 1.5em;
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+      }
+
     }
   }
 

@@ -31,10 +31,18 @@
       <span routerLink="/projects" class="Sidebar__content__option">{{ 'projects' | translate }}</span>
       <span routerLink="/contact" class="Sidebar__content__option">{{ 'contact' | translate }}</span>
 
-
-      <span class="Sidebar__content__language">
-        <img [src]="getFlagPath()" alt="language" (click)="changeLanguage()">
-      </span>
+      <div class="Sidebar__content__bottom">
+        <span class="Sidebar__content__bottom__language">
+          <img [src]="getFlagPath()" alt="language" (click)="changeLanguage()">
+        </span>
+        <span class="Sidebar__content__bottom__login">
+          <img
+            src="../../../../assets/svg/login.svg"
+            alt="login"
+            routerLink="/login"
+          >
+        </span>
+      </div>
       <!-- <span routerLink="/login" class="Sidebar__content__login">Login</span> -->
     </div>
 

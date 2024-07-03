@@ -7,11 +7,35 @@
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 799px) {
+   flex-direction: row;
+   height: 80px;
+   width: 100%;
+   background-color:tools.colors(beigeTwo) ;
+   align-items: center;
+   justify-content: space-around;
+  }
+
+  &__menu {
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+
+    &__image {
+      height: 40px;
+    }
+  }
+
   &__profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+
+    @media screen and (max-width: 799px) {
+      justify-content: center;
+      margin-top: 2px;
+    }
 
     &__image {
       width: 150px;
@@ -22,10 +46,21 @@
       align-items: center;
       justify-content: center;
 
+      @media screen and (max-width: 799px) {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+
       img {
         width: 150px;
         height: 150px;
         border-radius: 50%;
+
+        @media screen and (max-width: 799px) {
+          width: 60px;
+          height: 60px;
+        }
       }
     }
 
@@ -34,6 +69,9 @@
       font-family: "Poppins", sans-serif;
       font-size: 20px;
       color: #eee;
+      @media screen and (max-width: 799px) {
+        display: none;
+      }
     }
   }
 
@@ -45,6 +83,10 @@
     width: 100%;
     position: relative;
     height: 100%;
+
+    @media screen and (max-width: 799px) {
+      display: none;
+    }
 
     &__item {
       color: #fff;
@@ -59,6 +101,29 @@
         position: absolute;
         bottom: 25px;
       }
+    }
+  }
+  &__mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+
+    &__logout {
+    color: tools.colors(blackOne);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+
+    
     }
   }
 }

@@ -1,4 +1,7 @@
 <aside class="Sidebar">
+  <span class="Sidebar__menu" (click)="toggleSidebar()">
+    <img class="Navbar__menu__image" src="../../../../assets/svg/menu.svg" />
+  </span>
   <div class="Sidebar__profile">
     <span class="Sidebar__profile__image"> <img src="../../../../assets/images/banner.jpg" alt="right"></span>
     <span class="Sidebar__profile__name">Jimena Paz</span>
@@ -12,4 +15,12 @@
 
     <span class="Sidebar__sections__item Sidebar__sections__item--logout" (click)="logout()"> <img src="../../../../assets/svg/logout.svg" alt=""> Cerrar sesión</span>
   </div>
+  <div class="Sidebar__mobile">
+    <span class="Sidebar__mobile__logout" (click)="logout()"> <img src="../../../../assets/svg/logout.svg" alt=""> </span>
+  </div>
 </aside>
+
+@if (sidebarOpen) {
+  <app-sidebar-mobile (closed)="toggleSidebar()" />
+  }
+

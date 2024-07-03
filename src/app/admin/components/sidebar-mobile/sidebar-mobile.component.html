@@ -1,0 +1,36 @@
+<main class="Wrapper">
+  <aside class="Sidebar">
+    <!-- <div class="Sidebar__profile">
+            <span class="Sidebar__profile__image"> <img src="../../../../assets/images/banner.jpg" alt="right"></span>
+            <span class="Sidebar__profile__name">Jimena Paz</span>
+        </div> -->
+    <div class="Sidebar__sections">
+      <span class="Sidebar__sections__item" (click)="redirect('sales')">
+        <img src="../../../../assets/svg/cart.svg" alt="" /> Ventas</span
+      >
+      <span class="Sidebar__sections__item" (click)="redirect('posts')">
+        <img src="../../../../assets/svg/instagram.svg" alt="" />
+        Publicaciones</span
+      >
+      <span class="Sidebar__sections__item" (click)="redirect('templates')">
+        <img src="../../../../assets/svg/template.svg" alt="" />
+        Plantillas</span
+      >
+      <span class="Sidebar__sections__item" (click)="redirect('subscriptors')">
+        <img src="../../../../assets/svg/message.svg" alt="" />
+        Suscriptores</span
+      >
+      <span class="Sidebar__sections__item" (click)="redirect('project')">
+        <img src="../../../../assets/svg/projects.svg" alt="" /> Proyectos</span
+      >
+
+      <span class="Sidebar__sections__item Sidebar__sections__item--logout" (click)="logout()">
+        <img src="../../../../assets/svg/logout.svg" alt="" /> Cerrar
+        sesión</span
+      >
+    </div>
+  </aside>
+  <span class="Sidebar__close" (click)="close()">
+    <img src="../../../../assets/svg/close.svg">
+  </span>
+</main>
